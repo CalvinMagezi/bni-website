@@ -13,7 +13,7 @@ export default function HomePage() {
         className="relative flex flex-col items-center justify-end text-center"
         style={{
           minHeight: '80vh',
-          paddingTop: '64px',
+          paddingTop: '100px',
           paddingBottom: '60px',
           background: `linear-gradient(0deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 100%),
             url(https://framerusercontent.com/images/ushcJaHUEQISMdAgpQ84KYQEY24.jpg) top center/cover no-repeat`,
@@ -90,6 +90,39 @@ export default function HomePage() {
                 className="brightness-0 invert"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── VIDEO ────────────────────────────────────────────── */}
+      <section style={{ background: '#f3f4f8', padding: '72px 0' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+          <div className="text-center mb-10">
+            <h2
+              className="font-bold text-3xl md:text-4xl mb-3"
+              style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0d1787' }}
+            >
+              A Word from Our Director
+            </h2>
+            <p
+              className="text-bni-slate text-base max-w-xl mx-auto"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Hear from Bryan Muwonge on the heart behind Boys Network International.
+            </p>
+          </div>
+          <div
+            className="relative w-full mx-auto overflow-hidden"
+            style={{ borderRadius: '20px', maxWidth: '860px', background: '#000' }}
+          >
+            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+            <video
+              src="https://framerusercontent.com/assets/f5UdNw7STGhKlJ4DYIfp1fPMJyk.mp4"
+              controls
+              playsInline
+              className="w-full block"
+              style={{ aspectRatio: '16/9', objectFit: 'cover' }}
+            />
           </div>
         </div>
       </section>
