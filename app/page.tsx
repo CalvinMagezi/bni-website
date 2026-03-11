@@ -100,71 +100,63 @@ export default function HomePage() {
       <FoundationalPillars topPadding="430px" />
 
       {/* ── BIBLICAL FOUNDATION ─────────────────────────────────────────
-          Matches original exactly:
-          - Section 1000×612px, position relative, overflow hidden
-          - Image fills the entire section as an absolute layer
-          - Text column: 480px wide, left-aligned, starts 119px from top
-          - Scripture text: rgb(181,181,181), 16px, NOT italic
-          - Proverbs 22:6: white bold paragraph
+          White background, 2-column: text left + rounded image card right.
+          Contained within max-width — does NOT bleed full viewport width.
       ──────────────────────────────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden"
-        style={{ minHeight: '612px' }}
-      >
-        {/* Background image — fills section like the original <img> element */}
-        <Image
-          src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
-          alt=""
-          fill
-          className="object-cover"
-          unoptimized
-        />
-        {/* Subtle left-side gradient so white text stays legible */}
+      <section style={{ background: '#ffffff' }}>
         <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(90deg, rgba(7,13,79,0.72) 0%, rgba(7,13,79,0.45) 55%, rgba(0,0,0,0.05) 100%)',
-          }}
-        />
-
-        {/* Text — 480px column, 100px from content left, 119px from top */}
-        <div
-          className="relative z-10"
-          style={{ maxWidth: '1200px', margin: '0 auto', padding: '119px 100px 118px' }}
+          style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px 100px' }}
         >
-          <div style={{ maxWidth: '480px' }}>
-            <h2
-              className="text-white font-bold leading-tight mb-6"
-              style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
-              }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            {/* Left — text */}
+            <div>
+              <h2
+                className="font-bold leading-tight mb-6"
+                style={{
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
+                  color: '#070d4f',
+                }}
+              >
+                Our Biblical Foundation
+              </h2>
+              <p
+                className="leading-relaxed mb-8"
+                style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: '#515c63' }}
+              >
+                At Boys Network International, we believe that mentoring boys is not just a program
+                — it&apos;s a calling. Everything we do is rooted in Scripture, pointing boys toward
+                a life of purpose, leadership, and faith.
+              </p>
+              {/* Scripture — muted gray, NOT italic */}
+              <p
+                className="leading-relaxed mb-3"
+                style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: '#b5b5b5' }}
+              >
+                &ldquo;Train up a child in the way he should go; even when he is old he will not
+                depart from it.&rdquo;
+              </p>
+              <p
+                className="font-bold"
+                style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '16px', color: '#070d4f' }}
+              >
+                Proverbs 22:6
+              </p>
+            </div>
+
+            {/* Right — image card */}
+            <div
+              className="relative w-full overflow-hidden"
+              style={{ borderRadius: '24px', aspectRatio: '4 / 3' }}
             >
-              <strong>Our Biblical Foundation</strong>
-            </h2>
-            <p
-              className="text-white/80 leading-relaxed mb-8"
-              style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px' }}
-            >
-              At Boys Network International, we believe that mentoring boys is not just a program
-              — it&apos;s a calling. Everything we do is rooted in Scripture, pointing boys toward
-              a life of purpose, leadership, and faith.
-            </p>
-            {/* Scripture — muted gray, NOT italic, matching computed style */}
-            <p
-              className="leading-relaxed mb-3"
-              style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: '#b5b5b5' }}
-            >
-              &ldquo;Train up a child in the way he should go; even when he is old he will not
-              depart from it.&rdquo;
-            </p>
-            <p
-              className="text-white font-bold"
-              style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '16px' }}
-            >
-              <strong>Proverbs 22:6</strong>
-            </p>
+              <Image
+                src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
+                alt="Biblical foundation — boys in prayer"
+                fill
+                className="object-cover"
+                unoptimized
+              />
+            </div>
           </div>
         </div>
       </section>
