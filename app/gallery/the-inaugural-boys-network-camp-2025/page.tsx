@@ -9,32 +9,21 @@ export const metadata: Metadata = {
   description: 'Photos from the inaugural Boys Network International camp held in 2025.',
 }
 
-// The 3 visible camp photos captured during site analysis
-const campPhotos = [
-  {
-    src: 'https://framerusercontent.com/images/5v7dGA4WDpwIeNXkE4HwYyfNjcE.jpg',
-    alt: 'Camp leader speaking on stage at the inaugural Boys Network Camp 2025',
-  },
-  {
-    src: 'https://framerusercontent.com/images/Mpfb4UC3smoeX6ukSqlYGSZvt2g.jpg',
-    alt: 'Boys engaged in woodworking and hands-on practical skills at camp',
-  },
-  {
-    src: 'https://framerusercontent.com/images/xFGs0HH0etkFYMRyCi2kYJSgyE.jpg',
-    alt: 'Boy using power tools during practical skills training at the camp',
-  },
-  {
-    src: 'https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg',
-    alt: 'Young man studying and reading during the camp programme',
-  },
-  {
-    src: 'https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg',
-    alt: 'Boys participating in outdoor physical activities at camp',
-  },
-  {
-    src: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg',
-    alt: 'Group of boys smiling and bonding during the inaugural camp',
-  },
+// All 12 photos extracted directly from the original site (Framer CDN)
+// aspect: 'portrait' = 2:3 (1024×1536), 'landscape' = 3:2 (1024×683)
+const campPhotos: { src: string; alt: string; aspect: 'portrait' | 'landscape' }[] = [
+  { src: 'https://framerusercontent.com/images/tHvY3AbJZ8zaSnRhxUWdzbSA4cY.jpg',  alt: 'Boys Network Camp 2025 — activity session', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/23E8Glzn2lG32ufwoYudaeHWI2M.jpg',  alt: 'Boys Network Camp 2025 — mentorship moment', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/FItTHEGhmchbftUSG01x7HznJQ.jpg',   alt: 'Boys Network Camp 2025 — leadership workshop', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/6CNYl3k4sfCKAgpMNH3l0zQ6XQo.jpg',  alt: 'Boys Network Camp 2025 — group activity', aspect: 'landscape' },
+  { src: 'https://framerusercontent.com/images/2hVv3DmxdxAfuR3ce5DxKlxry4o.jpg',  alt: 'Boys Network Camp 2025 — camp programme', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/VrM5zXzaGHj1y4jxYG5JjfkgZc.jpg',   alt: 'Boys Network Camp 2025 — practical skills', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/ugzMo1jx88Hsj49Qgi5SEuppg.jpg',    alt: 'Boys Network Camp 2025 — outdoor session', aspect: 'landscape' },
+  { src: 'https://framerusercontent.com/images/YHnOeCG842ZFYULBtDXkOYTtKaA.jpg',  alt: 'Boys Network Camp 2025 — spiritual foundation', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/UkulDs9QxnuajA52Ju4VjH61jk.jpg',   alt: 'Boys Network Camp 2025 — character formation', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/2Oaz7IRaE7fcY5T2G8vQSGw4ueU.jpg',  alt: 'Boys Network Camp 2025 — holistic development', aspect: 'portrait' },
+  { src: 'https://framerusercontent.com/images/A5LgDdUsG2rJSt74nFgiwqTqsM.jpg',   alt: 'Boys Network Camp 2025 — community engagement', aspect: 'landscape' },
+  { src: 'https://framerusercontent.com/images/6mPfUJONO954I5liILa9tzMyP4.jpg',   alt: 'Boys Network Camp 2025 — camp highlights', aspect: 'portrait' },
 ]
 
 export default function CampGalleryPage() {
@@ -54,13 +43,16 @@ export default function CampGalleryPage() {
             ← Back to Gallery
           </Link>
 
-          {/* Photo grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Photo grid — portrait and landscape at their native ratios */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-5">
             {campPhotos.map((photo) => (
               <div
                 key={photo.src}
                 className="relative w-full overflow-hidden"
-                style={{ borderRadius: '12px', aspectRatio: '4/3' }}
+                style={{
+                  borderRadius: '12px',
+                  aspectRatio: photo.aspect === 'portrait' ? '2/3' : '3/2',
+                }}
               >
                 <Image
                   src={photo.src}

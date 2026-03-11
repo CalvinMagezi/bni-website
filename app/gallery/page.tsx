@@ -13,8 +13,8 @@ const collections = [
   {
     title: 'The Inaugural Boys Network Camp 2025',
     slug: 'the-inaugural-boys-network-camp-2025',
-    coverImage: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg',
-    count: 3,
+    coverImage: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg',
+    count: 12,
   },
 ]
 
