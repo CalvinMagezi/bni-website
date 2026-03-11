@@ -82,8 +82,11 @@ export default function HomePage() {
           {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
           <video
             src="https://framerusercontent.com/assets/f5UdNw7STGhKlJ4DYIfp1fPMJyk.mp4"
-            controls
+            autoPlay
+            muted
+            loop
             playsInline
+            controls
             className="w-full block"
             style={{ borderRadius: '24px', aspectRatio: '16/9', objectFit: 'cover' }}
           />
