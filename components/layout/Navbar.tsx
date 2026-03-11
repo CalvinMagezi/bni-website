@@ -100,21 +100,29 @@ export default function Navbar() {
       {/* Mobile slide-down menu */}
       {menuOpen && (
         <div
-          className="md:hidden mt-2 flex flex-col gap-1 px-5 py-4"
+          className="md:hidden mt-2 flex flex-col"
           style={{
             backdropFilter: 'blur(55px)',
             WebkitBackdropFilter: 'blur(55px)',
-            background: 'rgba(10, 20, 80, 0.88)',
+            background: 'rgba(10, 20, 80, 0.92)',
             borderRadius: '24px',
             border: '1px solid rgba(255,255,255,0.12)',
+            padding: '8px 24px 24px',
           }}
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="py-2.5 text-base font-medium border-b border-white/10 last:border-0"
-              style={{ fontFamily: 'Inter, sans-serif', color: 'rgba(255,255,255,0.9)' }}
+              className="flex items-center border-b border-white/10 last:border-0"
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                color: 'rgba(255,255,255,0.92)',
+                fontSize: '17px',
+                fontWeight: 500,
+                padding: '16px 0',
+                letterSpacing: '-0.01em',
+              }}
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
@@ -122,12 +130,13 @@ export default function Navbar() {
           ))}
           <Link
             href="/programs"
-            className="inline-flex items-center justify-center text-white text-sm font-bold mt-3"
+            className="inline-flex items-center justify-center text-white font-bold mt-5"
             style={{
               background: '#1f2fe6',
               borderRadius: '100px',
-              padding: '12px 24px',
+              padding: '14px 28px',
               fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: '15px',
             }}
             onClick={() => setMenuOpen(false)}
           >

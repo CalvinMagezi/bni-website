@@ -41,7 +41,7 @@ export default function AboutPage() {
       {/* ── WHO WE ARE ──────────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           <div>
@@ -80,7 +80,7 @@ export default function AboutPage() {
       {/* ── OUR VISION ──────────────────────────────────────── */}
       <section style={{ background: '#f3f4f8', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           <div
@@ -116,7 +116,7 @@ export default function AboutPage() {
       {/* ── OUR MISSION ─────────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           <div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
 
       {/* ── WHAT WE DO ──────────────────────────────────────── */}
       <section style={{ background: '#f3f4f8', padding: '80px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <div className="text-center mb-12">
             <h2
               className="text-bni-navy font-bold text-3xl md:text-4xl mb-4"
@@ -199,7 +199,7 @@ export default function AboutPage() {
 
       {/* ── WHY WE EXIST ────────────────────────────────────── */}
       <section style={{ background: 'linear-gradient(rgb(13,23,135) 0%, rgb(7,13,79) 100%)', padding: '80px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <h2
             className="text-white font-bold text-3xl md:text-4xl mb-8"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}

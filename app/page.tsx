@@ -13,6 +13,7 @@ export default function HomePage() {
           exactly like the original Framer site.
       ──────────────────────────────────────────────────────────────────── */}
       <section
+        className="hero-section"
         style={{
           position: 'relative',
           overflow: 'visible',
@@ -23,7 +24,7 @@ export default function HomePage() {
       >
         {/* Text block — centred in the upper portion */}
         <div
-          className="flex flex-col items-center text-center px-6"
+          className="hero-text-pad flex flex-col items-center text-center px-6"
           style={{ paddingTop: '220px', paddingBottom: '80px', maxWidth: '680px', margin: '0 auto' }}
         >
           <h1
@@ -71,6 +72,7 @@ export default function HomePage() {
 
         {/* Video — at the bottom of the hero, overflowing into the next section */}
         <div
+          className="hero-video-wrap"
           style={{
             maxWidth: '1120px',
             margin: '0 auto -240px',
@@ -105,6 +107,7 @@ export default function HomePage() {
       ──────────────────────────────────────────────────────────────────── */}
       <section style={{ background: '#ffffff' }}>
         <div
+          className="section-inner section-v-pad"
           style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px 100px' }}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -166,7 +169,7 @@ export default function HomePage() {
 
       {/* ── PARTNERS ────────────────────────────────────────────────── */}
       <section style={{ background: '#ffffff', paddingTop: '70px', paddingBottom: '70px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
           {/* "Partners" label inline with logos, all centered */}
           <div className="flex flex-wrap items-center justify-center gap-12">
             <h3

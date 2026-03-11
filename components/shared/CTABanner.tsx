@@ -6,14 +6,14 @@ const ENROLL_URL =
 export default function CTABanner() {
   return (
     <section style={{ background: '#ffffff', paddingBottom: '80px' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
+      <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
         {/* Rounded card — not full viewport width */}
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-6"
           style={{
             background: 'linear-gradient(rgb(13,23,135) 0%, rgb(7,13,79) 100%)',
             borderRadius: '24px',
-            padding: '36px 48px',
+            padding: 'clamp(24px, 4vw, 36px) clamp(24px, 5vw, 48px)',
           }}
         >
           <h4

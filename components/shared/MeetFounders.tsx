@@ -25,7 +25,7 @@ const founders = [
 export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoundersProps) {
   return (
     <section style={{ background: 'linear-gradient(rgb(13,23,135) 0%, rgb(7,13,79) 100%)' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px' }}>
+      <div className="section-inner section-v-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px' }}>
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
           <h2

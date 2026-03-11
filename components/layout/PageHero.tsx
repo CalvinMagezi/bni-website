@@ -11,7 +11,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
       className="relative flex items-center justify-center text-center"
       style={{
         minHeight: '300px',
-        background: `linear-gradient(rgba(7,13,79,0.88) 0%, rgba(13,23,135,0.78) 100%), url(${HERO_BG}) center/cover no-repeat`,
+        background: `linear-gradient(rgba(7,13,79,0.88) 0%, rgba(13,23,135,0.78) 100%), url(${HERO_BG}) top center/cover no-repeat`,
       }}
     >
       <div className="relative z-10 py-20 px-6">

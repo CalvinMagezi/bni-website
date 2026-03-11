@@ -41,7 +41,7 @@ export default function ProgramsPage() {
       {/* ── PROGRAM DETAIL ──────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           {/* Photo */}
@@ -121,7 +121,7 @@ export default function ProgramsPage() {
         </div>
 
         {/* Description */}
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 40px 0' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 40px 0' }}>
           <p
             className="text-bni-slate text-base leading-relaxed mb-8"
             style={{ fontFamily: 'Inter, sans-serif', maxWidth: '800px' }}

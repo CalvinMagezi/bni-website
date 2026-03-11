@@ -30,3 +30,35 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
+
+/* ── Mobile overrides ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  /* Hero section — shorter on mobile */
+  .hero-section {
+    min-height: 560px !important;
+  }
+  /* Hero text block — less top padding on mobile */
+  .hero-text-pad {
+    padding-top: 130px !important;
+    padding-bottom: 40px !important;
+  }
+  /* Video — no negative overlap on mobile, just sits inline */
+  .hero-video-wrap {
+    margin-bottom: 0 !important;
+    padding: 0 16px !important;
+  }
+  /* Foundational pillars — reduce top padding that clears video overlap */
+  .pillars-section {
+    padding-top: 48px !important;
+  }
+  /* Shared section inner wrapper — 24px sides on mobile */
+  .section-inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  /* Sections with 100px vertical — reduce on mobile */
+  .section-v-pad {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+  }
+}

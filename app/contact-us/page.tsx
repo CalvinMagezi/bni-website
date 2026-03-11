@@ -44,7 +44,7 @@ export default function ContactPage() {
 
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           {/* Form */}

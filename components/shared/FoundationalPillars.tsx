@@ -23,8 +23,8 @@ const pillars = [
 
 export default function FoundationalPillars({ topPadding = '80px' }: { topPadding?: string }) {
   return (
-    <section style={{ background: '#f3f4f8', paddingTop: topPadding, paddingBottom: '100px' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
+    <section className="pillars-section section-v-pad" style={{ background: '#f3f4f8', paddingTop: topPadding, paddingBottom: '100px' }}>
+      <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
           <h2
