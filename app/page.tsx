@@ -7,19 +7,25 @@ import CTABanner from '@/components/shared/CTABanner'
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ─────────────────────────────────────────────── */}
-      {/* Shorter hero (~85vh), background-position top to show boys' faces */}
+      {/* ── HERO ─────────────────────────────────────────────────────────
+          826px tall. Text in upper centre. Video sits at the bottom and
+          spills 240px into the gray Foundational Pillars section below,
+          exactly like the original Framer site.
+      ──────────────────────────────────────────────────────────────────── */}
       <section
-        className="relative flex flex-col items-center justify-end text-center"
         style={{
-          minHeight: '80vh',
-          paddingTop: '100px',
-          paddingBottom: '60px',
-          background: `linear-gradient(0deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.4) 65%, rgba(0,0,0,0) 100%),
+          position: 'relative',
+          overflow: 'visible',
+          minHeight: '860px',
+          background: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.92) 78%, rgba(0,0,0,0.92) 100%),
             url(https://framerusercontent.com/images/ushcJaHUEQISMdAgpQ84KYQEY24.jpg) top center/cover no-repeat`,
         }}
       >
-        <div className="relative z-10 flex flex-col items-center px-6 mt-auto" style={{ maxWidth: '680px' }}>
+        {/* Text block — centred in the upper portion */}
+        <div
+          className="flex flex-col items-center text-center px-6"
+          style={{ paddingTop: '220px', paddingBottom: '80px', maxWidth: '680px', margin: '0 auto' }}
+        >
           <h1
             className="text-white font-bold leading-tight mb-4"
             style={{
@@ -62,75 +68,34 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-      </section>
 
-      {/* ── INSET CARD (separate white section below hero) ──── */}
-      <section style={{ background: '#ffffff', padding: '40px 0 60px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div
-            className="relative w-full overflow-hidden"
-            style={{ borderRadius: '20px', aspectRatio: '16/7' }}
-          >
-            <Image
-              src="https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg"
-              alt="Boys Network International mentor working with young men in a professional setting"
-              fill
-              className="object-cover object-center"
-              unoptimized
-              priority
-            />
-            {/* Logo watermark overlay — matches original */}
-            <div className="absolute top-5 left-5 opacity-70">
-              <Image
-                src="https://framerusercontent.com/images/zB5KOyiCxdp4LttYLBVC0dNDugQ.png"
-                alt="Boys Network International"
-                width={60}
-                height={36}
-                unoptimized
-                className="brightness-0 invert"
-              />
-            </div>
-          </div>
+        {/* Video — at the bottom of the hero, overflowing into the next section */}
+        <div
+          style={{
+            maxWidth: '1120px',
+            margin: '0 auto -240px',
+            padding: '0 40px',
+            position: 'relative',
+            zIndex: 10,
+          }}
+        >
+          {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+          <video
+            src="https://framerusercontent.com/assets/f5UdNw7STGhKlJ4DYIfp1fPMJyk.mp4"
+            controls
+            playsInline
+            className="w-full block"
+            style={{ borderRadius: '24px', aspectRatio: '16/9', objectFit: 'cover' }}
+          />
         </div>
       </section>
 
-      {/* ── VIDEO ────────────────────────────────────────────── */}
-      <section style={{ background: '#f3f4f8', padding: '72px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div className="text-center mb-10">
-            <h2
-              className="font-bold text-3xl md:text-4xl mb-3"
-              style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0d1787' }}
-            >
-              A Word from Our Director
-            </h2>
-            <p
-              className="text-bni-slate text-base max-w-xl mx-auto"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              Hear from Bryan Muwonge on the heart behind Boys Network International.
-            </p>
-          </div>
-          <div
-            className="relative w-full mx-auto overflow-hidden"
-            style={{ borderRadius: '20px', maxWidth: '860px', background: '#000' }}
-          >
-            {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-            <video
-              src="https://framerusercontent.com/assets/f5UdNw7STGhKlJ4DYIfp1fPMJyk.mp4"
-              controls
-              playsInline
-              className="w-full block"
-              style={{ aspectRatio: '16/9', objectFit: 'cover' }}
-            />
-          </div>
-        </div>
-      </section>
+      {/* ── FOUNDATIONAL PILLARS ────────────────────────────────────────
+          topPadding="280px" gives clearance for the video overlap above.
+      ──────────────────────────────────────────────────────────────────── */}
+      <FoundationalPillars topPadding="280px" />
 
-      {/* ── FOUNDATIONAL PILLARS ────────────────────────────── */}
-      <FoundationalPillars />
-
-      {/* ── BIBLICAL FOUNDATION ─────────────────────────────── */}
+      {/* ── BIBLICAL FOUNDATION ─────────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
           className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
@@ -185,10 +150,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── MEET THE FOUNDERS ───────────────────────────────── */}
+      {/* ── MEET THE FOUNDERS ───────────────────────────────────────── */}
       <MeetFounders />
 
-      {/* ── PARTNERS ────────────────────────────────────────── */}
+      {/* ── PARTNERS ────────────────────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '64px 0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <h3
@@ -201,7 +166,7 @@ export default function HomePage() {
             <div className="relative h-14 w-44">
               <Image
                 src="https://framerusercontent.com/images/y9Lt3M9oqgQXMYtQiFooT0GYDgg.png"
-                alt="Boys Network International partner organisation logo"
+                alt="Partner organisation logo"
                 fill
                 className="object-contain object-left"
                 unoptimized
@@ -210,7 +175,7 @@ export default function HomePage() {
             <div className="relative h-14 w-44">
               <Image
                 src="https://framerusercontent.com/images/uBZGDq1rg3z7Qng5fQAXN8tBMM.png"
-                alt="Boys Network International partner organisation logo"
+                alt="Partner organisation logo"
                 fill
                 className="object-contain object-left"
                 unoptimized
@@ -220,7 +185,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA ─────────────────────────────────────────────── */}
+      {/* ── CTA ─────────────────────────────────────────────────────── */}
       <CTABanner />
     </>
   )
