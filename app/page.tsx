@@ -43,34 +43,37 @@ export default function HomePage() {
           >
             Empowering boys to grow in faith, lead with purpose, and impact their world.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full mb-10">
-            <Link
-              href="/programs"
-              className="inline-flex items-center justify-center text-white font-bold text-sm hover:opacity-90 transition-opacity w-full sm:w-auto"
-              style={{
-                background: '#1f2fe6',
-                borderRadius: '100px',
-                padding: '14px 32px',
-                fontFamily: 'Space Grotesk, sans-serif',
-              }}
-            >
-              Join Us
-            </Link>
-            <Link
-              href="/about-us"
-              className="inline-flex items-center justify-center text-white font-bold text-sm hover:bg-white/10 transition-colors w-full sm:w-auto"
-              style={{
-                border: '1.5px solid rgba(255,255,255,0.7)',
-                borderRadius: '100px',
-                padding: '14px 32px',
-                fontFamily: 'Space Grotesk, sans-serif',
-              }}
-            >
-              About Us
-            </Link>
+          {/* Buttons + countdown share the same gap so spacing is consistent */}
+          <div className="flex flex-col items-center w-full gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
+              <Link
+                href="/programs"
+                className="inline-flex items-center justify-center text-white font-bold text-sm hover:opacity-90 transition-opacity w-full sm:w-auto"
+                style={{
+                  background: '#1f2fe6',
+                  borderRadius: '100px',
+                  padding: '14px 32px',
+                  fontFamily: 'Space Grotesk, sans-serif',
+                }}
+              >
+                Join Us
+              </Link>
+              <Link
+                href="/about-us"
+                className="inline-flex items-center justify-center text-white font-bold text-sm hover:bg-white/10 transition-colors w-full sm:w-auto"
+                style={{
+                  border: '1.5px solid rgba(255,255,255,0.7)',
+                  borderRadius: '100px',
+                  padding: '14px 32px',
+                  fontFamily: 'Space Grotesk, sans-serif',
+                }}
+              >
+                About Us
+              </Link>
+            </div>
+            {/* Camp countdown — same gap-3 spacing as between the buttons */}
+            <CampCountdown />
           </div>
-          {/* Camp countdown — creates urgency for the upcoming bootcamp */}
-          <CampCountdown />
         </div>
 
         {/* Video — at the bottom of the hero, overflowing into the next section */}
