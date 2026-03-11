@@ -28,8 +28,8 @@ export default function FoundationalPillars() {
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-12">
           <h2
-            className="text-bni-navy text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', maxWidth: '340px' }}
+            className="text-3xl md:text-4xl font-bold"
+            style={{ fontFamily: 'Space Grotesk, sans-serif', maxWidth: '340px', color: '#1f2fe6' }}
           >
             Our Foundational Pillars
           </h2>
