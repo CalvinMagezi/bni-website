@@ -100,27 +100,40 @@ export default function HomePage() {
       <FoundationalPillars topPadding="430px" />
 
       {/* ── BIBLICAL FOUNDATION ─────────────────────────────────────────
-          Full-width image background, white text overlay on left.
-          Matches original: 1000×612 landscape photo fills the section.
+          Matches original exactly:
+          - Section 1000×612px, position relative, overflow hidden
+          - Image fills the entire section as an absolute layer
+          - Text column: 480px wide, left-aligned, starts 119px from top
+          - Scripture text: rgb(181,181,181), 16px, NOT italic
+          - Proverbs 22:6: white bold paragraph
       ──────────────────────────────────────────────────────────────────── */}
       <section
-        className="relative"
-        style={{
-          background: `url(https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg) center/cover no-repeat`,
-          padding: '100px',
-        }}
+        className="relative overflow-hidden"
+        style={{ minHeight: '612px' }}
       >
-        {/* Directional overlay — opaque on left, clear on right */}
+        {/* Background image — fills section like the original <img> element */}
+        <Image
+          src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          unoptimized
+        />
+        {/* Subtle left-side gradient so white text stays legible */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(90deg, rgba(7,13,79,0.92) 0%, rgba(7,13,79,0.78) 50%, rgba(7,13,79,0.35) 100%)',
+              'linear-gradient(90deg, rgba(7,13,79,0.72) 0%, rgba(7,13,79,0.45) 55%, rgba(0,0,0,0.05) 100%)',
           }}
         />
 
-        <div className="relative z-10" style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ maxWidth: '540px' }}>
+        {/* Text — 480px column, 100px from content left, 119px from top */}
+        <div
+          className="relative z-10"
+          style={{ maxWidth: '1200px', margin: '0 auto', padding: '119px 100px 118px' }}
+        >
+          <div style={{ maxWidth: '480px' }}>
             <h2
               className="text-white font-bold leading-tight mb-6"
               style={{
@@ -128,31 +141,30 @@ export default function HomePage() {
                 fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
               }}
             >
-              Our Biblical Foundation
+              <strong>Our Biblical Foundation</strong>
             </h2>
             <p
-              className="text-white/80 text-sm leading-relaxed mb-8"
-              style={{ fontFamily: 'Inter, sans-serif' }}
+              className="text-white/80 leading-relaxed mb-8"
+              style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px' }}
             >
               At Boys Network International, we believe that mentoring boys is not just a program
               — it&apos;s a calling. Everything we do is rooted in Scripture, pointing boys toward
               a life of purpose, leadership, and faith.
             </p>
-            <blockquote className="border-l-4 pl-5" style={{ borderColor: 'rgba(255,255,255,0.5)' }}>
-              <p
-                className="text-white/80 text-sm italic leading-relaxed mb-2"
-                style={{ fontFamily: 'Inter, sans-serif' }}
-              >
-                &ldquo;Train up a child in the way he should go; even when he is old he will not
-                depart from it.&rdquo;
-              </p>
-              <cite
-                className="text-white font-bold text-xs not-italic"
-                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-              >
-                Proverbs 22:6
-              </cite>
-            </blockquote>
+            {/* Scripture — muted gray, NOT italic, matching computed style */}
+            <p
+              className="leading-relaxed mb-3"
+              style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: '#b5b5b5' }}
+            >
+              &ldquo;Train up a child in the way he should go; even when he is old he will not
+              depart from it.&rdquo;
+            </p>
+            <p
+              className="text-white font-bold"
+              style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '16px' }}
+            >
+              <strong>Proverbs 22:6</strong>
+            </p>
           </div>
         </div>
       </section>
