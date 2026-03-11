@@ -10,13 +10,13 @@ const pillars = [
   {
     title: 'Character Formation',
     description: 'Mentorship & accountability, Discipline, Family & community',
-    image: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg',
+    image: 'https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg',
     alt: 'Young man developing character through mentorship',
   },
   {
     title: 'Holistic Development',
     description: 'Leadership lessons, Practical skills, Physical development',
-    image: 'https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg',
+    image: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg',
     alt: 'Boys engaged in physical and leadership development activities',
   },
 ]

@@ -18,7 +18,7 @@ export default function HomePage() {
           overflow: 'visible',
           minHeight: '860px',
           background: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.92) 78%, rgba(0,0,0,0.92) 100%),
-            url(https://framerusercontent.com/images/ushcJaHUEQISMdAgpQ84KYQEY24.jpg) top center/cover no-repeat`,
+            url(https://framerusercontent.com/images/zB5KOyiCxdp4LttYLBVC0dNDugQ.png) top center/cover no-repeat`,
         }}
       >
         {/* Text block — centred in the upper portion */}
