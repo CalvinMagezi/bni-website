@@ -12,6 +12,8 @@ const bottomLinks = [
   { label: 'About', href: '/about-us' },
   { label: 'Programs', href: '/programs' },
   { label: 'Contact', href: '/contact-us' },
+  { label: 'Privacy Policy', href: '/info#privacy' },
+  { label: 'Terms & Conditions', href: '/info#terms' },
 ]
 
 export default function Footer() {

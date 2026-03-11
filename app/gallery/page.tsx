@@ -24,7 +24,7 @@ export default function GalleryPage() {
       <PageHero title="Gallery" />
 
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {collections.map((col) => (
               <Link
@@ -43,10 +43,25 @@ export default function GalleryPage() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     unoptimized
                   />
+                  {/* Hover overlay with "Discover More" label */}
                   <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: 'rgba(31,47,230,0.15)' }}
-                  />
+                    className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: 'rgba(7,13,79,0.55)' }}
+                  >
+                    <span
+                      className="text-white font-bold flex items-center gap-2"
+                      style={{
+                        fontFamily: 'Space Grotesk, sans-serif',
+                        fontSize: '16px',
+                        background: 'rgba(31,47,230,0.9)',
+                        borderRadius: '100px',
+                        padding: '10px 22px',
+                        backdropFilter: 'blur(4px)',
+                      }}
+                    >
+                      Discover More →
+                    </span>
+                  </div>
                 </div>
                 <h2
                   className="text-bni-navy font-bold text-lg group-hover:text-bni-blue transition-colors"

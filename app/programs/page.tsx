@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import FoundationalPillars from '@/components/shared/FoundationalPillars'
-import MeetFounders from '@/components/shared/MeetFounders'
 import CTABanner from '@/components/shared/CTABanner'
 
 export const metadata: Metadata = {
@@ -161,9 +160,6 @@ export default function ProgramsPage() {
 
       {/* ── FOUNDATIONAL PILLARS ────────────────────────────── */}
       <FoundationalPillars />
-
-      {/* ── MEET THE MENTORS ────────────────────────────────── */}
-      <MeetFounders heading="Meet the Mentors" />
 
       <CTABanner />
     </>

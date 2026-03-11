@@ -3,6 +3,7 @@ import Link from 'next/link'
 import FoundationalPillars from '@/components/shared/FoundationalPillars'
 import MeetFounders from '@/components/shared/MeetFounders'
 import CTABanner from '@/components/shared/CTABanner'
+import CampCountdown from '@/components/shared/CampCountdown'
 
 export default function HomePage() {
   return (
@@ -42,7 +43,7 @@ export default function HomePage() {
           >
             Empowering boys to grow in faith, lead with purpose, and impact their world.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex flex-wrap gap-4 justify-center mb-10">
             <Link
               href="/programs"
               className="inline-flex items-center text-white font-bold text-sm hover:opacity-90 transition-opacity"
@@ -68,6 +69,8 @@ export default function HomePage() {
               About Us
             </Link>
           </div>
+          {/* Camp countdown — creates urgency for the upcoming bootcamp */}
+          <CampCountdown />
         </div>
 
         {/* Video — at the bottom of the hero, overflowing into the next section */}

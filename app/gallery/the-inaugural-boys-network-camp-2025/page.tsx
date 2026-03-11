@@ -43,7 +43,7 @@ export default function CampGalleryPage() {
       <PageHero title="The Inaugural Boys Network Camp 2025" />
 
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
 
           {/* Back link */}
           <Link
