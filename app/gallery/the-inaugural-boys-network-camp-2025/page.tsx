@@ -66,7 +66,7 @@ export default function CampGalleryPage() {
                   src={photo.src}
                   alt={photo.alt}
                   fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
+                  className="object-cover object-top hover:scale-105 transition-transform duration-500"
                   unoptimized
                 />
               </div>
