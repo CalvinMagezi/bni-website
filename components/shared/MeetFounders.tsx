@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { FadeUp, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 
 interface MeetFoundersProps {
   heading?: string
@@ -28,27 +29,32 @@ export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoun
       <div className="section-inner section-v-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px' }}>
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
-          <h2
-            className="text-white font-bold leading-tight"
-            style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
-            }}
-          >
-            {heading}
-          </h2>
-          <p
-            className="text-bni-light text-sm md:text-base max-w-xs"
-            style={{ fontFamily: 'Inter, sans-serif', paddingTop: '8px' }}
-          >
-            Our mentors bring expertise and heart to every programme.
-          </p>
+          <FadeUp>
+            <h2
+              className="text-white font-bold leading-tight"
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
+              }}
+            >
+              {heading}
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <p
+              className="text-bni-light text-sm md:text-base max-w-xs"
+              style={{ fontFamily: 'Inter, sans-serif', paddingTop: '8px' }}
+            >
+              Our mentors bring expertise and heart to every programme.
+            </p>
+          </FadeUp>
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <StaggerGrid className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {founders.map((founder) => (
-            <div key={founder.name} className="flex flex-col gap-4">
+            <StaggerItem key={founder.name}>
+            <div className="flex flex-col gap-4">
               <div
                 className="relative w-full overflow-hidden"
                 style={{ borderRadius: '16px', aspectRatio: '327 / 306' }}
@@ -76,8 +82,9 @@ export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoun
                 </p>
               </div>
             </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
       </div>
     </section>
   )

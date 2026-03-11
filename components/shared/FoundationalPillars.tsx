@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { FadeUp, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 
 const pillars = [
   {
@@ -27,31 +28,35 @@ export default function FoundationalPillars({ topPadding = '80px' }: { topPaddin
       <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
-          <h2
-            className="font-bold leading-tight"
-            style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
-              color: '#1f2fe6',
-              maxWidth: '340px',
-            }}
-          >
-            Our Foundational Pillars
-          </h2>
-          <p
-            className="text-bni-slate text-sm md:text-base max-w-xs"
-            style={{ fontFamily: 'Inter, sans-serif', paddingTop: '8px' }}
-          >
-            We develop boys holistically — spiritually, intellectually, physically, and socially
-            through three pillars:
-          </p>
+          <FadeUp>
+            <h2
+              className="font-bold leading-tight"
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
+                color: '#1f2fe6',
+                maxWidth: '340px',
+              }}
+            >
+              Our Foundational Pillars
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <p
+              className="text-bni-slate text-sm md:text-base max-w-xs"
+              style={{ fontFamily: 'Inter, sans-serif', paddingTop: '8px' }}
+            >
+              We develop boys holistically — spiritually, intellectually, physically, and socially
+              through three pillars:
+            </p>
+          </FadeUp>
         </div>
 
         {/* Pillar cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <StaggerGrid className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {pillars.map((pillar) => (
+            <StaggerItem key={pillar.title}>
             <div
-              key={pillar.title}
               className="relative overflow-hidden"
               style={{ borderRadius: '24px', aspectRatio: '327 / 390' }}
             >
@@ -85,8 +90,9 @@ export default function FoundationalPillars({ topPadding = '80px' }: { topPaddin
                 </p>
               </div>
             </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerGrid>
       </div>
     </section>
   )

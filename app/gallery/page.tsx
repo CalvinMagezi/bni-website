@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import CTABanner from '@/components/shared/CTABanner'
+import { StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
   title: 'Gallery | The Boys Network',
@@ -25,10 +26,10 @@ export default function GalleryPage() {
 
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {collections.map((col) => (
+              <StaggerItem key={col.slug}>
               <Link
-                key={col.slug}
                 href={`/gallery/${col.slug}`}
                 className="group block"
               >
@@ -76,8 +77,9 @@ export default function GalleryPage() {
                   {col.count} photos
                 </p>
               </Link>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGrid>
         </div>
       </section>
 

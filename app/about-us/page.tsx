@@ -3,6 +3,7 @@ import Image from 'next/image'
 import PageHero from '@/components/layout/PageHero'
 import MeetFounders from '@/components/shared/MeetFounders'
 import CTABanner from '@/components/shared/CTABanner'
+import { FadeUp, SlideLeft, SlideRight } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
   title: 'About Us | The Boys Network',
@@ -44,6 +45,7 @@ export default function AboutPage() {
           className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
+          <SlideLeft>
           <div>
             <h2
               className="text-bni-blue font-bold text-3xl md:text-4xl mb-6"
@@ -62,6 +64,8 @@ export default function AboutPage() {
               physical development of boys.
             </p>
           </div>
+          </SlideLeft>
+          <SlideRight>
           <div
             className="relative w-full"
             style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3' }}
@@ -74,6 +78,7 @@ export default function AboutPage() {
               unoptimized
             />
           </div>
+          </SlideRight>
         </div>
       </section>
 
@@ -83,6 +88,7 @@ export default function AboutPage() {
           className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
+          <SlideLeft>
           <div
             className="relative w-full order-2 md:order-1"
             style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3' }}
@@ -95,6 +101,8 @@ export default function AboutPage() {
               unoptimized
             />
           </div>
+          </SlideLeft>
+          <SlideRight>
           <div className="order-1 md:order-2">
             <h2
               className="text-bni-blue font-bold text-3xl md:text-4xl mb-6"
@@ -110,6 +118,7 @@ export default function AboutPage() {
               faith, character, and community.
             </p>
           </div>
+          </SlideRight>
         </div>
       </section>
 
@@ -119,6 +128,7 @@ export default function AboutPage() {
           className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
+          <SlideLeft>
           <div>
             <h2
               className="text-bni-blue font-bold text-3xl md:text-4xl mb-6"
@@ -134,6 +144,8 @@ export default function AboutPage() {
               holistic mentorship, life-skills development, and spiritual formation.
             </p>
           </div>
+          </SlideLeft>
+          <SlideRight>
           <div
             className="relative w-full"
             style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3' }}
@@ -146,6 +158,7 @@ export default function AboutPage() {
               unoptimized
             />
           </div>
+          </SlideRight>
         </div>
       </section>
 
@@ -153,20 +166,24 @@ export default function AboutPage() {
       <section style={{ background: '#f3f4f8', padding: '80px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <div className="text-center mb-12">
-            <h2
-              className="text-bni-navy font-bold text-3xl md:text-4xl mb-4"
-              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-            >
-              What We Do
-            </h2>
-            <p
-              className="text-bni-slate text-base max-w-2xl mx-auto"
-              style={{ fontFamily: 'Inter, sans-serif' }}
-            >
-              We design and run a transformative{' '}
-              <strong>One-week Camp</strong>, which immerses participants in a carefully curated
-              experience that integrates:
-            </p>
+            <FadeUp>
+              <h2
+                className="text-bni-navy font-bold text-3xl md:text-4xl mb-4"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+              >
+                What We Do
+              </h2>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <p
+                className="text-bni-slate text-base max-w-2xl mx-auto"
+                style={{ fontFamily: 'Inter, sans-serif' }}
+              >
+                We design and run a transformative{' '}
+                <strong>One-week Camp</strong>, which immerses participants in a carefully curated
+                experience that integrates:
+              </p>
+            </FadeUp>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -200,16 +217,19 @@ export default function AboutPage() {
       {/* ── WHY WE EXIST ────────────────────────────────────── */}
       <section style={{ background: 'linear-gradient(rgb(13,23,135) 0%, rgb(7,13,79) 100%)', padding: '80px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <h2
-            className="text-white font-bold text-3xl md:text-4xl mb-8"
-            style={{ fontFamily: 'Space Grotesk, sans-serif' }}
-          >
-            Why We Exist
-          </h2>
-          <p
-            className="text-bni-light text-base md:text-lg leading-relaxed max-w-3xl"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
+          <FadeUp>
+            <h2
+              className="text-white font-bold text-3xl md:text-4xl mb-8"
+              style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Why We Exist
+            </h2>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <p
+              className="text-bni-light text-base md:text-lg leading-relaxed max-w-3xl"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
             In a world of increasing complexity and shifting values, boys need intentional spaces
             where they are taught not just{' '}
             <strong className="text-white">how to succeed</strong>, but how to{' '}
@@ -217,7 +237,8 @@ export default function AboutPage() {
             <strong className="text-white">live with purpose</strong>, and{' '}
             <strong className="text-white">build meaningful relationships</strong>. Boys Network
             International exists to fill that gap — walking with boys on their journey to manhood.
-          </p>
+            </p>
+          </FadeUp>
         </div>
       </section>
 

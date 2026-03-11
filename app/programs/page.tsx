@@ -4,6 +4,7 @@ import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import FoundationalPillars from '@/components/shared/FoundationalPillars'
 import CTABanner from '@/components/shared/CTABanner'
+import { FadeUp, SlideLeft, SlideRight } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
   title: 'Programs | The Boys Network',
@@ -44,6 +45,7 @@ export default function ProgramsPage() {
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           {/* Photo */}
+          <SlideLeft>
           <div
             className="relative w-full"
             style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3' }}
@@ -57,8 +59,10 @@ export default function ProgramsPage() {
               priority
             />
           </div>
+          </SlideLeft>
 
           {/* Stats + buttons */}
+          <SlideRight>
           <div>
             <div className="flex flex-col gap-4 mb-8">
               {stats.map((s) => (
@@ -117,10 +121,12 @@ export default function ProgramsPage() {
               </button>
             </div>
           </div>
+          </SlideRight>
         </div>
 
         {/* Description */}
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 40px 0' }}>
+          <FadeUp>
           <p
             className="text-bni-slate text-base leading-relaxed mb-8"
             style={{ fontFamily: 'Inter, sans-serif', maxWidth: '800px' }}
@@ -134,7 +140,9 @@ export default function ProgramsPage() {
             workshops, and practical learning experiences, all in a supportive, values-driven
             environment.
           </p>
+          </FadeUp>
 
+          <FadeUp delay={0.1}>
           <h4
             className="text-bni-navy font-bold text-lg mb-4"
             style={{ fontFamily: 'Space Grotesk, sans-serif' }}
@@ -155,6 +163,7 @@ export default function ProgramsPage() {
               </li>
             ))}
           </ul>
+          </FadeUp>
         </div>
       </section>
 

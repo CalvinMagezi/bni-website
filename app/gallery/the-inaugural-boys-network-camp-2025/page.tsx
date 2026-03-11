@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import CTABanner from '@/components/shared/CTABanner'
+import { StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
   title: 'The Inaugural Boys Network Camp 2025 | Gallery | The Boys Network',
@@ -44,10 +45,10 @@ export default function CampGalleryPage() {
           </Link>
 
           {/* Photo grid — portrait and landscape at their native ratios */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-5">
+          <StaggerGrid className="grid grid-cols-2 sm:grid-cols-3 gap-3 md:gap-5">
             {campPhotos.map((photo) => (
+              <StaggerItem key={photo.src}>
               <div
-                key={photo.src}
                 className="relative w-full overflow-hidden"
                 style={{
                   borderRadius: '12px',
@@ -62,8 +63,9 @@ export default function CampGalleryPage() {
                   unoptimized
                 />
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGrid>
         </div>
       </section>
 

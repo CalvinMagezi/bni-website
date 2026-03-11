@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FadeUp } from '@/components/shared/Animate'
 
 const ENROLL_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSeO84OkbLX6EMl_jYJoiR_uHcraGbuaCU2Zg7txbpXjDnXo5Q/viewform?usp=header'
@@ -8,6 +9,7 @@ export default function CTABanner() {
     <section style={{ background: '#ffffff', paddingBottom: '80px' }}>
       <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
         {/* Rounded card — not full viewport width */}
+        <FadeUp>
         <div
           className="flex flex-col sm:flex-row items-center justify-between gap-6"
           style={{
@@ -37,6 +39,7 @@ export default function CTABanner() {
             Enroll Now
           </Link>
         </div>
+        </FadeUp>
       </div>
     </section>
   )

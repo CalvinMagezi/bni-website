@@ -4,6 +4,7 @@ import FoundationalPillars from '@/components/shared/FoundationalPillars'
 import MeetFounders from '@/components/shared/MeetFounders'
 import CTABanner from '@/components/shared/CTABanner'
 import CampCountdown from '@/components/shared/CampCountdown'
+import { HeroReveal, FadeUp, SlideLeft, SlideRight, FadeIn } from '@/components/shared/Animate'
 
 export default function HomePage() {
   return (
@@ -28,22 +29,27 @@ export default function HomePage() {
           className="hero-text-pad flex flex-col items-center text-center px-6"
           style={{ paddingTop: '220px', paddingBottom: '80px', maxWidth: '680px', margin: '0 auto' }}
         >
-          <h1
-            className="text-white font-bold leading-tight mb-4"
-            style={{
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontSize: 'clamp(2rem, 4.5vw, 3.25rem)',
-            }}
-          >
-            Nurturing Potential, Shaping Lives
-          </h1>
-          <p
-            className="text-white/80 mb-8 text-sm md:text-base"
-            style={{ fontFamily: 'Inter, sans-serif' }}
-          >
-            Empowering boys to grow in faith, lead with purpose, and impact their world.
-          </p>
+          <HeroReveal delay={0.15}>
+            <h1
+              className="text-white font-bold leading-tight mb-4"
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: 'clamp(2rem, 4.5vw, 3.25rem)',
+              }}
+            >
+              Nurturing Potential, Shaping Lives
+            </h1>
+          </HeroReveal>
+          <HeroReveal delay={0.25}>
+            <p
+              className="text-white/80 mb-8 text-sm md:text-base"
+              style={{ fontFamily: 'Inter, sans-serif' }}
+            >
+              Empowering boys to grow in faith, lead with purpose, and impact their world.
+            </p>
+          </HeroReveal>
           {/* Buttons + countdown share the same gap so spacing is consistent */}
+          <HeroReveal delay={0.4}>
           <div className="flex flex-col items-center w-full gap-3">
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center w-full">
               <Link
@@ -74,6 +80,7 @@ export default function HomePage() {
             {/* Camp countdown — same gap-3 spacing as between the buttons */}
             <CampCountdown />
           </div>
+          </HeroReveal>
         </div>
 
         {/* Video — at the bottom of the hero, overflowing into the next section */}
@@ -118,6 +125,7 @@ export default function HomePage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             {/* Left — text */}
+            <SlideLeft>
             <div>
               <h2
                 className="font-bold leading-tight mb-6"
@@ -152,8 +160,10 @@ export default function HomePage() {
                 Proverbs 22:6
               </p>
             </div>
+            </SlideLeft>
 
             {/* Right — image card */}
+            <SlideRight>
             <div
               className="relative w-full overflow-hidden"
               style={{ borderRadius: '24px', aspectRatio: '4 / 3' }}
@@ -166,6 +176,7 @@ export default function HomePage() {
                 unoptimized
               />
             </div>
+            </SlideRight>
           </div>
         </div>
       </section>
@@ -177,6 +188,7 @@ export default function HomePage() {
       <section style={{ background: '#ffffff', paddingTop: '70px', paddingBottom: '70px' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
           {/* "Partners" label inline with logos, all centered */}
+          <FadeIn>
           <div className="flex flex-wrap items-center justify-center gap-12">
             <h3
               className="font-semibold text-3xl shrink-0"
@@ -212,6 +224,7 @@ export default function HomePage() {
               />
             </div>
           </div>
+          </FadeIn>
         </div>
       </section>
 

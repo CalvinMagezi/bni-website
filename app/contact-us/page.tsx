@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import PageHero from '@/components/layout/PageHero'
 import ContactForm from '@/components/contact/ContactForm'
 import CTABanner from '@/components/shared/CTABanner'
+import { SlideLeft, SlideRight } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
   title: 'Contact Us | The Boys Network',
@@ -48,9 +49,12 @@ export default function ContactPage() {
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           {/* Form */}
-          <ContactForm />
+          <SlideLeft>
+            <ContactForm />
+          </SlideLeft>
 
           {/* Contact info */}
+          <SlideRight>
           <div className="flex flex-col gap-10">
             {/* Directors */}
             <div>
@@ -121,6 +125,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
+          </SlideRight>
         </div>
       </section>
 
