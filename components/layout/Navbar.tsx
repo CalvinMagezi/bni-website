@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+import Logo from '@/components/shared/Logo'
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -39,16 +39,9 @@ export default function Navbar() {
           height: '60px',
         }}
       >
-        {/* Logo */}
+        {/* Logo — exact SVG from original site (white paths) */}
         <Link href="/" className="flex items-center shrink-0">
-          <Image
-            src="https://framerusercontent.com/images/zB5KOyiCxdp4LttYLBVC0dNDugQ.png"
-            alt="Boys Network International"
-            width={107}
-            height={64}
-            className="h-9 w-auto"
-            unoptimized
-          />
+          <Logo className="h-8 w-auto" style={{ width: 'auto', height: '32px' }} />
         </Link>
 
         {/* Desktop Nav — absolutely centered within the pill */}

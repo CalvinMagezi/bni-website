@@ -9,12 +9,6 @@ export const metadata: Metadata = {
     template: '%s | The Boys Network',
   },
   description: 'Empowering boys to grow in faith, lead with purpose, and impact their world.',
-  icons: {
-    icon: [
-      { url: 'https://framerusercontent.com/images/bmEr6BuAPZ4ibh0n7jxJ57JU4.png' },
-      { url: 'https://framerusercontent.com/images/MYF1oZQHwenYMyaQdp54v7wA2OI.png' },
-    ],
-  },
   openGraph: {
     type: 'website',
     siteName: 'The Boys Network',
@@ -47,6 +41,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        {/* Favicons — blue BNI mark, pulled directly from original site */}
+        <link rel="icon" href="https://framerusercontent.com/images/bmEr6BuAPZ4ibh0n7jxJ57JU4.png" />
+        <link rel="icon" href="https://framerusercontent.com/images/MYF1oZQHwenYMyaQdp54v7wA2OI.png" sizes="32x32" />
+        <link rel="apple-touch-icon" href="https://framerusercontent.com/images/bmEr6BuAPZ4ibh0n7jxJ57JU4.png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700;900&display=swap"
           rel="stylesheet"
