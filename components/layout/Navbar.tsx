@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'Programs', href: '/programs' },
   { label: 'Contact', href: '/contact-us' },
   { label: 'Gallery', href: '/gallery' },
+  { label: '🔴 Camp Live', href: '/camp-live' },
 ]
 
 export default function Navbar() {
