@@ -36,7 +36,6 @@ export default function ProgramsPage() {
       <PageHero
         title="Rise & Thrive Bootcamp"
         subtitle="22 August, 2026"
-        bgImage="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
       />
 
       {/* ── PROGRAM DETAIL ──────────────────────────────────── */}
