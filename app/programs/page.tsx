@@ -64,12 +64,12 @@ export default function ProgramsPage() {
           {/* Stats + buttons */}
           <SlideRight>
           <div>
-            <div className="flex flex-col gap-4 mb-8">
+            <div className="flex flex-col gap-2 mb-8">
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="flex items-center justify-between py-3 border-b"
-                  style={{ borderColor: '#f3f4f8' }}
+                  className="flex items-center justify-between px-4 py-4 rounded-xl"
+                  style={{ background: '#f3f4f8' }}
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-xl">{s.icon}</span>
@@ -125,7 +125,7 @@ export default function ProgramsPage() {
         </div>
 
         {/* Description */}
-        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 40px 0' }}>
+        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '56px 40px 0' }}>
           <FadeUp>
           <p
             className="text-bni-slate text-base leading-relaxed mb-8"
@@ -149,16 +149,17 @@ export default function ProgramsPage() {
           >
             Program Highlights
           </h4>
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-3">
             {highlights.map((h) => (
               <li
                 key={h.label}
-                className="flex gap-2 text-bni-slate text-sm"
-                style={{ fontFamily: 'Inter, sans-serif' }}
+                className="flex gap-3 text-bni-slate text-sm items-start px-4 py-3 rounded-xl"
+                style={{ fontFamily: 'Inter, sans-serif', background: '#f9f9fb' }}
               >
-                <span className="text-bni-blue font-bold shrink-0">•</span>
+                <span className="text-bni-blue font-bold shrink-0 mt-0.5">✓</span>
                 <span>
-                  <strong>{h.label}:</strong> {h.detail}
+                  <strong style={{ color: '#070d4f', fontFamily: 'Space Grotesk, sans-serif' }}>{h.label}:</strong>{' '}
+                  {h.detail}
                 </span>
               </li>
             ))}

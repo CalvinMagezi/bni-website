@@ -3,7 +3,7 @@ import Image from 'next/image'
 import PageHero from '@/components/layout/PageHero'
 import MeetFounders from '@/components/shared/MeetFounders'
 import CTABanner from '@/components/shared/CTABanner'
-import { FadeUp, SlideLeft, SlideRight } from '@/components/shared/Animate'
+import { FadeUp, SlideLeft, SlideRight, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
   title: 'About Us | The Boys Network',
@@ -14,23 +14,31 @@ export const metadata: Metadata = {
 const whatWeDo = [
   {
     icon: '🙏',
-    title: 'Spiritual growth',
-    description: 'Through daily fellowship and guided reflection',
+    title: 'Spiritual Growth',
+    description: 'Through daily fellowship, guided Bible reflection, and devotions that anchor identity and purpose in faith.',
+    accent: '#eef0fd',
+    accentBorder: 'rgba(31,47,230,0.12)',
   },
   {
     icon: '👑',
-    title: 'Leadership development',
-    description: 'Via hands-on challenges and mentorship',
+    title: 'Leadership Development',
+    description: 'Via hands-on challenges, role-playing scenarios, and one-on-one mentorship from experienced leaders.',
+    accent: '#fdf6ee',
+    accentBorder: 'rgba(245,158,11,0.2)',
   },
   {
     icon: '💰',
-    title: 'Financial and life literacy',
-    description: 'Including entrepreneurship, grooming, and career exploration',
+    title: 'Financial & Life Literacy',
+    description: 'Including entrepreneurship, budgeting, personal grooming, and career exploration — practical skills for real life.',
+    accent: '#eefdf4',
+    accentBorder: 'rgba(16,185,129,0.2)',
   },
   {
     icon: '🤝',
-    title: 'Community engagement',
-    description: 'That fosters empathy and a servant-leader mindset and nurtures lifelong friendship',
+    title: 'Community Engagement',
+    description: 'That fosters empathy and a servant-leader mindset, building lifelong friendships and a culture of giving back.',
+    accent: '#fdeef0',
+    accentBorder: 'rgba(239,68,68,0.15)',
   },
 ]
 
@@ -165,38 +173,55 @@ export default function AboutPage() {
       {/* ── WHAT WE DO ──────────────────────────────────────── */}
       <section style={{ background: '#f3f4f8', padding: '80px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <FadeUp>
               <h2
-                className="text-bni-navy font-bold text-3xl md:text-4xl mb-4"
-                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
+                className="text-bni-navy font-bold mb-4"
+                style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}
               >
                 What We Do
               </h2>
             </FadeUp>
             <FadeUp delay={0.1}>
               <p
-                className="text-bni-slate text-base max-w-2xl mx-auto"
+                className="text-bni-slate text-base max-w-xl mx-auto leading-relaxed"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                We design and run a transformative{' '}
-                <strong>One-week Camp</strong>, which immerses participants in a carefully curated
-                experience that integrates:
+                We design and run a transformative <strong>One-week Camp</strong> that immerses
+                participants in a carefully curated experience integrating four pillars of holistic
+                development.
               </p>
             </FadeUp>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {whatWeDo.map((item) => (
-              <div
-                key={item.title}
-                className="flex gap-4 items-start p-6 bg-white"
-                style={{ borderRadius: '12px' }}
-              >
-                <span className="text-2xl shrink-0">{item.icon}</span>
-                <div>
+              <StaggerItem key={item.title}>
+                <div
+                  className="flex flex-col h-full"
+                  style={{
+                    background: '#ffffff',
+                    borderRadius: '20px',
+                    padding: '32px',
+                    border: `1.5px solid ${item.accentBorder}`,
+                    boxShadow: '0 2px 16px rgba(7,13,79,0.05)',
+                  }}
+                >
+                  {/* Icon bubble */}
+                  <div
+                    className="flex items-center justify-center mb-5 shrink-0"
+                    style={{
+                      width: 56,
+                      height: 56,
+                      borderRadius: '16px',
+                      background: item.accent,
+                      fontSize: 26,
+                    }}
+                  >
+                    {item.icon}
+                  </div>
                   <h4
-                    className="text-bni-navy font-bold text-base mb-1"
+                    className="text-bni-navy font-bold text-lg mb-3"
                     style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                   >
                     {item.title}
@@ -208,9 +233,9 @@ export default function AboutPage() {
                     {item.description}
                   </p>
                 </div>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGrid>
         </div>
       </section>
 

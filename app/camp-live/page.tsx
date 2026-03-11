@@ -218,7 +218,7 @@ export default function CampLivePage() {
                     }}
                   >
                     {/* Post header */}
-                    <div className="flex items-center gap-3 p-5 pb-4">
+                    <div className="flex items-center gap-3 p-6 pb-4">
                       <div
                         className="relative shrink-0 overflow-hidden"
                         style={{ width: 46, height: 46, borderRadius: '50%', background: '#e8eaf0' }}
@@ -250,7 +250,7 @@ export default function CampLivePage() {
 
                     {/* Caption */}
                     <p
-                      className="px-5 pb-4 text-sm leading-relaxed"
+                      className="px-6 pb-5 text-sm leading-relaxed"
                       style={{ fontFamily: 'Inter, sans-serif', color: '#2d2d3e' }}
                     >
                       {post.text}
@@ -273,7 +273,7 @@ export default function CampLivePage() {
                     )}
 
                     {/* Reactions */}
-                    <div className="flex items-center justify-between px-5 py-4">
+                    <div className="flex items-center justify-between px-6 py-5" style={{ borderTop: '1px solid #f5f5f8' }}>
                       <div className="flex items-center gap-5">
                         <button className="flex items-center gap-1.5 text-sm hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}>
                           🔥 <span>{post.reactions.fire}</span>
