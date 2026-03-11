@@ -167,37 +167,38 @@ export default function HomePage() {
       {/* ── PARTNERS ────────────────────────────────────────────────── */}
       <section style={{ background: '#ffffff', paddingTop: '70px', paddingBottom: '70px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
-          <h3
-            className="font-semibold text-3xl mb-10"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#000000' }}
-          >
-            Partners
-          </h3>
-          <div className="flex flex-wrap items-center gap-12">
-            <div className="relative" style={{ height: '82px', width: '250px' }}>
+          {/* "Partners" label inline with logos, all centered */}
+          <div className="flex flex-wrap items-center justify-center gap-12">
+            <h3
+              className="font-semibold text-3xl shrink-0"
+              style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#000000' }}
+            >
+              Partners
+            </h3>
+            <div className="relative shrink-0" style={{ height: '82px', width: '250px' }}>
               <Image
                 src="https://framerusercontent.com/images/y9Lt3M9oqgQXMYtQiFooT0GYDgg.png"
                 alt="Partner organisation logo"
                 fill
-                className="object-contain object-left"
+                className="object-contain"
                 unoptimized
               />
             </div>
-            <div className="relative" style={{ height: '81px', width: '109px' }}>
+            <div className="relative shrink-0" style={{ height: '81px', width: '109px' }}>
               <Image
                 src="https://framerusercontent.com/images/yzzkyPvETMdlNXHs0OmoTu55JqM.png"
                 alt="Partner organisation logo"
                 fill
-                className="object-contain object-left"
+                className="object-contain"
                 unoptimized
               />
             </div>
-            <div className="relative" style={{ height: '82px', width: '250px' }}>
+            <div className="relative shrink-0" style={{ height: '82px', width: '250px' }}>
               <Image
                 src="https://framerusercontent.com/images/uBZGDq1rg3z7Qng5fQAXN8tBMM.png"
                 alt="Partner organisation logo"
                 fill
-                className="object-contain object-left"
+                className="object-contain"
                 unoptimized
               />
             </div>

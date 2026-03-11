@@ -57,7 +57,7 @@ export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoun
                   src={founder.image}
                   alt={`${founder.name}, ${founder.title} of Boys Network International`}
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
                   unoptimized
                 />
               </div>
