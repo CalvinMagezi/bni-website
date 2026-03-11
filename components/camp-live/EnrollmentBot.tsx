@@ -31,10 +31,11 @@ export default function EnrollmentBot() {
   const [input, setInput] = useState('')
   const [data, setData] = useState({ name: '', age: '', interest: '', parent: '' })
   const [isTyping, setIsTyping] = useState(false)
-  const endRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const el = containerRef.current
+    if (el) el.scrollTop = el.scrollHeight
   }, [messages, isTyping])
 
   function botSay(text: string, delay = 600) {
@@ -132,6 +133,7 @@ export default function EnrollmentBot() {
 
       {/* Messages */}
       <div
+        ref={containerRef}
         className="flex flex-col gap-3 p-5 overflow-y-auto"
         style={{ minHeight: 280, maxHeight: 340 }}
       >
@@ -178,7 +180,6 @@ export default function EnrollmentBot() {
             </motion.div>
           )}
         </AnimatePresence>
-        <div ref={endRef} />
       </div>
 
       {/* Input area */}

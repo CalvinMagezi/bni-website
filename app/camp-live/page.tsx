@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, FadeIn, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 import NewsletterSignup from '@/components/camp-live/NewsletterSignup'
-import EnrollmentBot from '@/components/camp-live/EnrollmentBot'
+import FloatingEnrollmentBot from '@/components/camp-live/FloatingEnrollmentBot'
+import CTABanner from '@/components/shared/CTABanner'
 
 export const metadata: Metadata = {
   title: 'Camp Live | The Boys Network',
@@ -109,7 +108,7 @@ export default function CampLivePage() {
         style={{
           background: 'linear-gradient(135deg, #0d1787 0%, #070d4f 100%)',
           paddingTop: '120px',
-          paddingBottom: '48px',
+          paddingBottom: '56px',
         }}
       >
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
@@ -140,9 +139,9 @@ export default function CampLivePage() {
       </section>
 
       {/* ── STORIES ROW ───────────────────────────────────────── */}
-      <section style={{ background: '#fafafa', borderBottom: '1px solid #f0f0f5', padding: '20px 0' }}>
+      <section style={{ background: '#fafafa', borderBottom: '1px solid #f0f0f5', padding: '24px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div className="flex gap-5 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex gap-6 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
             {stories.map((story) => (
               <div key={story.label} className="flex flex-col items-center gap-2 shrink-0 cursor-pointer group">
                 {/* Ring */}
@@ -158,10 +157,10 @@ export default function CampLivePage() {
                   <div
                     className="relative overflow-hidden"
                     style={{
-                      width: 60,
-                      height: 60,
+                      width: 62,
+                      height: 62,
                       borderRadius: '50%',
-                      border: '2px solid #fafafa',
+                      border: '2.5px solid #fafafa',
                     }}
                   >
                     <Image
@@ -201,7 +200,7 @@ export default function CampLivePage() {
       </section>
 
       {/* ── MAIN CONTENT ──────────────────────────────────────── */}
-      <section style={{ background: '#f5f5f8', padding: '40px 0 80px' }}>
+      <section style={{ background: '#f5f5f8', padding: '48px 0 96px' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
@@ -211,7 +210,7 @@ export default function CampLivePage() {
                 <FadeUp key={post.id} delay={i * 0.05}>
                   <article
                     style={{
-                      background: post.highlight ?? '#ffffff',
+                      background: (post as { highlight?: string }).highlight ?? '#ffffff',
                       borderRadius: '20px',
                       overflow: 'hidden',
                       boxShadow: '0 2px 16px rgba(7,13,79,0.06)',
@@ -219,29 +218,28 @@ export default function CampLivePage() {
                     }}
                   >
                     {/* Post header */}
-                    <div className="flex items-center gap-3 p-4 pb-3">
-                      {/* Avatar */}
+                    <div className="flex items-center gap-3 p-5 pb-4">
                       <div
                         className="relative shrink-0 overflow-hidden"
-                        style={{ width: 44, height: 44, borderRadius: '50%', background: '#e8eaf0' }}
+                        style={{ width: 46, height: 46, borderRadius: '50%', background: '#e8eaf0' }}
                       >
                         {post.avatar ? (
                           <Image src={post.avatar} alt={post.author} fill className="object-cover object-top" unoptimized />
                         ) : (
-                          <span className="flex items-center justify-center w-full h-full text-xl">{post.avatarEmoji}</span>
+                          <span className="flex items-center justify-center w-full h-full text-xl">{(post as { avatarEmoji?: string }).avatarEmoji}</span>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="font-bold text-sm truncate" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
                           {post.author}
                         </p>
-                        <p className="text-xs" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
+                        <p className="text-xs mt-0.5" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
                           {post.role} · {post.time}
                         </p>
                       </div>
                       {post.live && (
                         <span
-                          className="flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full shrink-0"
+                          className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shrink-0"
                           style={{ background: '#fef2f2', color: '#ef4444', fontFamily: 'Inter, sans-serif' }}
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
@@ -252,7 +250,7 @@ export default function CampLivePage() {
 
                     {/* Caption */}
                     <p
-                      className="px-4 pb-3 text-sm leading-relaxed"
+                      className="px-5 pb-4 text-sm leading-relaxed"
                       style={{ fontFamily: 'Inter, sans-serif', color: '#2d2d3e' }}
                     >
                       {post.text}
@@ -261,7 +259,7 @@ export default function CampLivePage() {
                     {/* Media */}
                     {post.image && (
                       <div
-                        className="relative w-full overflow-hidden mx-0"
+                        className="relative w-full overflow-hidden"
                         style={{ aspectRatio: post.imageAspect === 'portrait' ? '4/5' : '16/9' }}
                       >
                         <Image
@@ -275,8 +273,8 @@ export default function CampLivePage() {
                     )}
 
                     {/* Reactions */}
-                    <div className="flex items-center justify-between px-4 py-3">
-                      <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-between px-5 py-4">
+                      <div className="flex items-center gap-5">
                         <button className="flex items-center gap-1.5 text-sm hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}>
                           🔥 <span>{post.reactions.fire}</span>
                         </button>
@@ -305,15 +303,13 @@ export default function CampLivePage() {
                   style={{
                     background: '#ffffff',
                     borderRadius: '20px',
-                    padding: '20px',
+                    padding: '24px',
                     boxShadow: '0 2px 16px rgba(7,13,79,0.06)',
                     border: '1px solid rgba(0,0,0,0.04)',
                   }}
                 >
-                  <div className="flex items-center gap-2 mb-4">
-                    <span
-                      className="w-2 h-2 rounded-full bg-red-500 animate-pulse"
-                    />
+                  <div className="flex items-center gap-2 mb-5">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                     <p className="font-bold text-sm" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
                       Live Camp Stats
                     </p>
@@ -322,14 +318,14 @@ export default function CampLivePage() {
                     {campStats.map((stat) => (
                       <div
                         key={stat.label}
-                        className="flex flex-col items-center justify-center text-center p-3"
-                        style={{ background: '#f5f5f8', borderRadius: '12px' }}
+                        className="flex flex-col items-center justify-center text-center p-4"
+                        style={{ background: '#f5f5f8', borderRadius: '14px' }}
                       >
-                        <span className="text-xl mb-1">{stat.icon}</span>
+                        <span className="text-2xl mb-1.5">{stat.icon}</span>
                         <p className="font-bold text-lg leading-none" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
                           {stat.value}
                         </p>
-                        <p className="text-xs mt-0.5" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
+                        <p className="text-xs mt-1" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
                           {stat.label}
                         </p>
                       </div>
@@ -349,77 +345,61 @@ export default function CampLivePage() {
                   style={{
                     background: '#ffffff',
                     borderRadius: '20px',
-                    padding: '20px',
+                    padding: '24px',
                     boxShadow: '0 2px 16px rgba(7,13,79,0.06)',
                     border: '1px solid rgba(0,0,0,0.04)',
                   }}
                 >
-                  <p className="font-bold mb-1" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f', fontSize: '1rem' }}>
+                  <p className="font-bold mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f', fontSize: '1rem' }}>
                     🏕️ Enroll for 2026
                   </p>
-                  <p className="text-sm mb-4" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63' }}>
-                    Spots are filling fast. Secure your boy's place at the next Rise & Thrive Bootcamp.
+                  <p className="text-sm mb-5 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63' }}>
+                    Spots are filling fast. Secure your boy's place at the next Rise &amp; Thrive Bootcamp.
                   </p>
-                  <Link
-                    href="#enrollment"
+                  <a
+                    href="https://wa.me/256757026880?text=Hi%2C%20I%27d%20like%20to%20enroll%20my%20son%20in%20the%20Rise%20%26%20Thrive%20Bootcamp"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="block text-center text-white text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"
                     style={{ background: 'linear-gradient(135deg, #1f2fe6, #070d4f)', fontFamily: 'Space Grotesk, sans-serif' }}
                   >
                     Start Enrollment →
-                  </Link>
+                  </a>
                 </div>
               </FadeUp>
+
+              {/* Enrollment bot hint */}
+              <FadeUp delay={0.25}>
+                <div
+                  className="flex items-center gap-3 p-4"
+                  style={{
+                    background: 'linear-gradient(135deg, #eef0fd, #f0f0ff)',
+                    borderRadius: '16px',
+                    border: '1px solid rgba(31,47,230,0.1)',
+                  }}
+                >
+                  <span style={{ fontSize: 28 }}>🏕️</span>
+                  <div>
+                    <p className="text-sm font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
+                      Chat to Enroll
+                    </p>
+                    <p className="text-xs mt-0.5" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63' }}>
+                      Use the chat button in the bottom-left corner
+                    </p>
+                  </div>
+                </div>
+              </FadeUp>
+
             </div>
 
           </div>
         </div>
       </section>
 
-      {/* ── ENROLLMENT BOT ────────────────────────────────────── */}
-      <section id="enrollment" style={{ background: '#ffffff', padding: '80px 0' }}>
-        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left — copy */}
-            <FadeUp>
-              <p
-                className="text-xs font-bold uppercase tracking-widest mb-3"
-                style={{ fontFamily: 'Inter, sans-serif', color: '#1f2fe6' }}
-              >
-                Automated Enrollment
-              </p>
-              <h2
-                className="font-bold leading-tight mb-5"
-                style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', color: '#070d4f' }}
-              >
-                Register in Under 2 Minutes
-              </h2>
-              <p className="text-base leading-relaxed mb-6" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63' }}>
-                Our enrollment assistant collects your details, matches your interest area to the right programme, and passes everything to our team — before you even fill out the formal registration form.
-              </p>
-              <ul className="flex flex-col gap-3">
-                {[
-                  'No long forms — just a quick conversation',
-                  'Your interest area matched to the right track',
-                  'Parent notified instantly via email',
-                  'Team follows up within 24 hours',
-                ].map(item => (
-                  <li key={item} className="flex items-start gap-3 text-sm" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63' }}>
-                    <span className="text-bni-blue font-bold shrink-0 mt-0.5">✓</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </FadeUp>
-
-            {/* Right — bot */}
-            <FadeUp delay={0.15}>
-              <EnrollmentBot />
-            </FadeUp>
-          </div>
-        </div>
-      </section>
-
       <CTABanner />
+
+      {/* Floating enrollment chatbot */}
+      <FloatingEnrollmentBot />
     </>
   )
 }
