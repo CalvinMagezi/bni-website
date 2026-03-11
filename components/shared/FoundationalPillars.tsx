@@ -23,19 +23,24 @@ const pillars = [
 
 export default function FoundationalPillars({ topPadding = '80px' }: { topPadding?: string }) {
   return (
-    <section style={{ background: '#f3f4f8', padding: `${topPadding} 0 80px` }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+    <section style={{ background: '#f3f4f8', paddingTop: topPadding, paddingBottom: '100px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
         {/* Header row */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-12">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14">
           <h2
-            className="text-3xl md:text-4xl font-bold"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', maxWidth: '340px', color: '#1f2fe6' }}
+            className="font-bold leading-tight"
+            style={{
+              fontFamily: 'Space Grotesk, sans-serif',
+              fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
+              color: '#1f2fe6',
+              maxWidth: '340px',
+            }}
           >
             Our Foundational Pillars
           </h2>
           <p
             className="text-bni-slate text-sm md:text-base max-w-xs"
-            style={{ fontFamily: 'Inter, sans-serif' }}
+            style={{ fontFamily: 'Inter, sans-serif', paddingTop: '8px' }}
           >
             We develop boys holistically — spiritually, intellectually, physically, and socially
             through three pillars:
@@ -48,7 +53,7 @@ export default function FoundationalPillars({ topPadding = '80px' }: { topPaddin
             <div
               key={pillar.title}
               className="relative overflow-hidden"
-              style={{ borderRadius: '12px', aspectRatio: '3/4' }}
+              style={{ borderRadius: '24px', aspectRatio: '327 / 390' }}
             >
               <Image
                 src={pillar.image}
@@ -61,13 +66,13 @@ export default function FoundationalPillars({ topPadding = '80px' }: { topPaddin
               <div
                 className="absolute inset-0"
                 style={{
-                  background: 'linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%)',
+                  background: 'linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.82) 100%)',
                 }}
               />
-              {/* Text */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
+              {/* Text — 38px padding matching original */}
+              <div className="absolute bottom-0 left-0 right-0" style={{ padding: '38px' }}>
                 <h3
-                  className="text-white font-bold text-xl mb-1"
+                  className="text-white font-bold text-xl mb-2"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}
                 >
                   {pillar.title}

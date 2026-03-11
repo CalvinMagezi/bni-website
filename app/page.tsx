@@ -94,61 +94,65 @@ export default function HomePage() {
       </section>
 
       {/* ── FOUNDATIONAL PILLARS ────────────────────────────────────────
-          topPadding="280px" gives clearance for the video overlap above.
+          topPadding="430px" matches original — clears the video overlap
+          and gives breathing room above the pillar content.
       ──────────────────────────────────────────────────────────────────── */}
-      <FoundationalPillars topPadding="280px" />
+      <FoundationalPillars topPadding="430px" />
 
-      {/* ── BIBLICAL FOUNDATION ─────────────────────────────────────── */}
-      <section style={{ background: '#ffffff', padding: '80px 0' }}>
+      {/* ── BIBLICAL FOUNDATION ─────────────────────────────────────────
+          Full-width image background, white text overlay on left.
+          Matches original: 1000×612 landscape photo fills the section.
+      ──────────────────────────────────────────────────────────────────── */}
+      <section
+        className="relative"
+        style={{
+          background: `url(https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg) center/cover no-repeat`,
+          padding: '100px',
+        }}
+      >
+        {/* Directional overlay — opaque on left, clear on right */}
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
-          style={{ maxWidth: '1200px', padding: '0 40px' }}
-        >
-          {/* Text */}
-          <div>
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(90deg, rgba(7,13,79,0.92) 0%, rgba(7,13,79,0.78) 50%, rgba(7,13,79,0.35) 100%)',
+          }}
+        />
+
+        <div className="relative z-10" style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '540px' }}>
             <h2
-              className="font-bold text-3xl md:text-4xl mb-6"
-              style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#1f2fe6' }}
+              className="text-white font-bold leading-tight mb-6"
+              style={{
+                fontFamily: 'Space Grotesk, sans-serif',
+                fontSize: 'clamp(2.2rem, 4vw, 3.44rem)',
+              }}
             >
               Our Biblical Foundation
             </h2>
             <p
-              className="text-bni-slate text-sm leading-relaxed mb-8"
+              className="text-white/80 text-sm leading-relaxed mb-8"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
               At Boys Network International, we believe that mentoring boys is not just a program
               — it&apos;s a calling. Everything we do is rooted in Scripture, pointing boys toward
               a life of purpose, leadership, and faith.
             </p>
-            <blockquote className="border-l-4 pl-5" style={{ borderColor: '#1f2fe6' }}>
+            <blockquote className="border-l-4 pl-5" style={{ borderColor: 'rgba(255,255,255,0.5)' }}>
               <p
-                className="text-bni-slate text-sm italic leading-relaxed mb-2"
+                className="text-white/80 text-sm italic leading-relaxed mb-2"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 &ldquo;Train up a child in the way he should go; even when he is old he will not
                 depart from it.&rdquo;
               </p>
               <cite
-                className="font-bold text-xs not-italic"
-                style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#1f2fe6' }}
+                className="text-white font-bold text-xs not-italic"
+                style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
                 Proverbs 22:6
               </cite>
             </blockquote>
-          </div>
-
-          {/* Image */}
-          <div
-            className="relative w-full"
-            style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3' }}
-          >
-            <Image
-              src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
-              alt="Boys engaged in Bible study and spiritual reflection"
-              fill
-              className="object-cover"
-              unoptimized
-            />
           </div>
         </div>
       </section>
@@ -157,16 +161,16 @@ export default function HomePage() {
       <MeetFounders />
 
       {/* ── PARTNERS ────────────────────────────────────────────────── */}
-      <section style={{ background: '#ffffff', padding: '64px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
+      <section style={{ background: '#ffffff', paddingTop: '70px', paddingBottom: '70px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
           <h3
-            className="font-bold text-2xl mb-10"
-            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#0d1787' }}
+            className="font-semibold text-3xl mb-10"
+            style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#000000' }}
           >
             Partners
           </h3>
           <div className="flex flex-wrap items-center gap-12">
-            <div className="relative h-14 w-44">
+            <div className="relative" style={{ height: '82px', width: '250px' }}>
               <Image
                 src="https://framerusercontent.com/images/y9Lt3M9oqgQXMYtQiFooT0GYDgg.png"
                 alt="Partner organisation logo"
@@ -175,7 +179,16 @@ export default function HomePage() {
                 unoptimized
               />
             </div>
-            <div className="relative h-14 w-44">
+            <div className="relative" style={{ height: '81px', width: '109px' }}>
+              <Image
+                src="https://framerusercontent.com/images/yzzkyPvETMdlNXHs0OmoTu55JqM.png"
+                alt="Partner organisation logo"
+                fill
+                className="object-contain object-left"
+                unoptimized
+              />
+            </div>
+            <div className="relative" style={{ height: '82px', width: '250px' }}>
               <Image
                 src="https://framerusercontent.com/images/uBZGDq1rg3z7Qng5fQAXN8tBMM.png"
                 alt="Partner organisation logo"
