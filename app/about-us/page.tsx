@@ -50,13 +50,13 @@ export default function AboutPage() {
       {/* ── WHO WE ARE ──────────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           <SlideLeft>
           <div>
             <h2
-              className="text-bni-blue font-bold text-3xl md:text-4xl mb-6"
+              className="text-bni-blue font-bold text-2xl sm:text-3xl md:text-4xl mb-6"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Who We Are
@@ -93,7 +93,7 @@ export default function AboutPage() {
       {/* ── OUR VISION ──────────────────────────────────────── */}
       <section style={{ background: '#f3f4f8', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           <SlideLeft>
@@ -113,7 +113,7 @@ export default function AboutPage() {
           <SlideRight>
           <div className="order-1 md:order-2">
             <h2
-              className="text-bni-blue font-bold text-3xl md:text-4xl mb-6"
+              className="text-bni-blue font-bold text-2xl sm:text-3xl md:text-4xl mb-6"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Our Vision
@@ -133,13 +133,13 @@ export default function AboutPage() {
       {/* ── OUR MISSION ─────────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center section-inner"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           <SlideLeft>
           <div>
             <h2
-              className="text-bni-blue font-bold text-3xl md:text-4xl mb-6"
+              className="text-bni-blue font-bold text-2xl sm:text-3xl md:text-4xl mb-6"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Our Mission
@@ -202,7 +202,7 @@ export default function AboutPage() {
                   style={{
                     background: '#ffffff',
                     borderRadius: '20px',
-                    padding: '32px',
+                    padding: 'clamp(20px, 4vw, 32px)',
                     border: `1.5px solid ${item.accentBorder}`,
                     boxShadow: '0 2px 16px rgba(7,13,79,0.05)',
                   }}
@@ -244,7 +244,7 @@ export default function AboutPage() {
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <FadeUp>
             <h2
-              className="text-white font-bold text-3xl md:text-4xl mb-8"
+              className="text-white font-bold text-2xl sm:text-3xl md:text-4xl mb-8"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
               Why We Exist

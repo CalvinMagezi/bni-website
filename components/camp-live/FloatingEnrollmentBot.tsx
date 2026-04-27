@@ -29,7 +29,7 @@ export default function FloatingEnrollmentBot() {
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             style={{
-              width: 'min(380px, calc(100vw - 48px)',
+              width: 'min(380px, calc(100vw - 48px))',
               transformOrigin: 'bottom left',
               filter: 'drop-shadow(0 8px 40px rgba(7,13,79,0.18))',
             }}

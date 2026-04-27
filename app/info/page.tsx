@@ -153,7 +153,7 @@ export default function InfoPage() {
       <PageHero title="Important Information" />
 
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
-        <div style={{ maxWidth: '860px', margin: '0 auto', padding: '0 40px' }}>
+        <div className="section-inner" style={{ maxWidth: '860px', margin: '0 auto', padding: '0 40px' }}>
           <p
             className="text-bni-slate text-base leading-relaxed mb-12"
             style={{ fontFamily: 'Inter, sans-serif' }}

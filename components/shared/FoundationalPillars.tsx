@@ -53,7 +53,7 @@ export default function FoundationalPillars({ topPadding = '80px' }: { topPaddin
         </div>
 
         {/* Pillar cards */}
-        <StaggerGrid className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {pillars.map((pillar) => (
             <StaggerItem key={pillar.title}>
             <div
@@ -74,8 +74,8 @@ export default function FoundationalPillars({ topPadding = '80px' }: { topPaddin
                   background: 'linear-gradient(rgba(0,0,0,0) 0%, rgba(0,0,0,0.82) 100%)',
                 }}
               />
-              {/* Text — 38px padding matching original */}
-              <div className="absolute bottom-0 left-0 right-0" style={{ padding: '38px' }}>
+              {/* Text */}
+              <div className="absolute bottom-0 left-0 right-0" style={{ padding: 'clamp(20px, 4vw, 38px)' }}>
                 <h3
                   className="text-white font-bold text-xl mb-2"
                   style={{ fontFamily: 'Space Grotesk, sans-serif' }}

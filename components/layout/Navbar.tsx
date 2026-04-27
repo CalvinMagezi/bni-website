@@ -20,10 +20,10 @@ export default function Navbar() {
     <header
       className="fixed z-50"
       style={{
-        top: '20px',
+        top: '16px',
         left: '50%',
         transform: 'translateX(-50%)',
-        width: 'calc(100% - 40px)',
+        width: 'calc(100% - 24px)',
         maxWidth: '1160px',
       }}
     >

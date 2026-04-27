@@ -45,7 +45,7 @@ export default function ContactPage() {
 
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 section-inner"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           {/* Form */}
@@ -91,8 +91,8 @@ export default function ContactPage() {
                         <a
                           key={email}
                           href={`mailto:${email}`}
-                          className="text-bni-blue text-sm hover:underline inline-flex items-center gap-1.5"
-                          style={{ fontFamily: 'Inter, sans-serif' }}
+                          className="text-bni-blue text-sm hover:underline inline-flex items-center gap-1.5 break-all"
+                          style={{ fontFamily: 'Inter, sans-serif', wordBreak: 'break-all' }}
                         >
                           <span style={{ fontSize: 12 }}>✉</span> {email}
                         </a>

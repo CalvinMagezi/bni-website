@@ -105,6 +105,7 @@ export default function CampLivePage() {
     <>
       {/* ── HERO ──────────────────────────────────────────────── */}
       <section
+        className="camp-live-hero"
         style={{
           background: 'linear-gradient(135deg, #0d1787 0%, #070d4f 100%)',
           paddingTop: '120px',
@@ -141,7 +142,7 @@ export default function CampLivePage() {
       {/* ── STORIES ROW ───────────────────────────────────────── */}
       <section style={{ background: '#fafafa', borderBottom: '1px solid #f0f0f5', padding: '24px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div className="flex gap-6 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
+          <div className="scrollbar-hide flex gap-4 sm:gap-6 overflow-x-auto pb-1">
             {stories.map((story) => (
               <div key={story.label} className="flex flex-col items-center gap-2 shrink-0 cursor-pointer group">
                 {/* Ring */}
@@ -202,10 +203,10 @@ export default function CampLivePage() {
       {/* ── MAIN CONTENT ──────────────────────────────────────── */}
       <section style={{ background: '#f5f5f8', padding: '48px 0 96px' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             {/* ── FEED (2 cols wide) ─────────────────────────── */}
-            <div className="lg:col-span-2 flex flex-col gap-6">
+            <div className="md:col-span-2 flex flex-col gap-6">
               {posts.map((post, i) => (
                 <FadeUp key={post.id} delay={i * 0.05}>
                   <article
@@ -218,7 +219,7 @@ export default function CampLivePage() {
                     }}
                   >
                     {/* Post header */}
-                    <div className="flex items-center gap-3 p-6 pb-4">
+                    <div className="flex items-center gap-3 p-4 pb-3 sm:p-6 sm:pb-4">
                       <div
                         className="relative shrink-0 overflow-hidden"
                         style={{ width: 46, height: 46, borderRadius: '50%', background: '#e8eaf0' }}
@@ -250,7 +251,7 @@ export default function CampLivePage() {
 
                     {/* Caption */}
                     <p
-                      className="px-6 pb-5 text-sm leading-relaxed"
+                      className="px-4 pb-4 sm:px-6 sm:pb-5 text-sm leading-relaxed"
                       style={{ fontFamily: 'Inter, sans-serif', color: '#2d2d3e' }}
                     >
                       {post.text}
@@ -273,8 +274,8 @@ export default function CampLivePage() {
                     )}
 
                     {/* Reactions */}
-                    <div className="flex items-center justify-between px-6 py-5" style={{ borderTop: '1px solid #f5f5f8' }}>
-                      <div className="flex items-center gap-5">
+                    <div className="flex items-center justify-between px-4 py-4 sm:px-6 sm:py-5" style={{ borderTop: '1px solid #f5f5f8' }}>
+                      <div className="flex items-center gap-3 sm:gap-5">
                         <button className="flex items-center gap-1.5 text-sm hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}>
                           🔥 <span>{post.reactions.fire}</span>
                         </button>
@@ -300,6 +301,7 @@ export default function CampLivePage() {
               {/* Live stats */}
               <FadeUp delay={0.1}>
                 <div
+                  className="sidebar-card"
                   style={{
                     background: '#ffffff',
                     borderRadius: '20px',
@@ -314,7 +316,7 @@ export default function CampLivePage() {
                       Live Camp Stats
                     </p>
                   </div>
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-2">
                     {campStats.map((stat) => (
                       <div
                         key={stat.label}
@@ -342,6 +344,7 @@ export default function CampLivePage() {
               {/* Quick enroll CTA */}
               <FadeUp delay={0.2}>
                 <div
+                  className="sidebar-card"
                   style={{
                     background: '#ffffff',
                     borderRadius: '20px',

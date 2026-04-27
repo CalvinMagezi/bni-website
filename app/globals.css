@@ -31,6 +31,15 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
+/* ── Scrollbar hide utility ─────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Mobile overrides ──────────────────────────────────────── */
 @media (max-width: 767px) {
   /* Hero section — shorter on mobile */
@@ -39,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   /* Hero text block — less top padding on mobile */
   .hero-text-pad {
-    padding-top: 130px !important;
+    padding-top: 120px !important;
     padding-bottom: 40px !important;
   }
   /* Video — no negative overlap on mobile, just sits inline */
@@ -60,5 +69,22 @@ h1, h2, h3, h4, h5, h6 {
   .section-v-pad {
     padding-top: 60px !important;
     padding-bottom: 60px !important;
+  }
+  /* Camp live hero — reduce top padding under fixed navbar */
+  .camp-live-hero {
+    padding-top: 96px !important;
+    padding-bottom: 40px !important;
+  }
+  /* Sidebar cards — reduce internal padding on mobile */
+  .sidebar-card {
+    padding: 16px !important;
+  }
+}
+
+/* ── Tablet overrides (768px – 1023px) ─────────────────────── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .section-inner {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
   }
 }

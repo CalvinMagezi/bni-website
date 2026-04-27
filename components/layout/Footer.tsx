@@ -21,10 +21,10 @@ export default function Footer() {
     <footer style={{ background: 'linear-gradient(rgb(13,23,135) 0%, rgb(7,13,79) 100%)' }}>
       {/* Main footer */}
       <div
-        className="mx-auto py-16"
+        className="section-inner mx-auto"
         style={{ maxWidth: '1200px', padding: '64px 40px 48px' }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {/* Brand */}
           <div>
             <h3
@@ -96,7 +96,7 @@ export default function Footer() {
       {/* Bottom strip */}
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
         <div
-          className="mx-auto flex items-center gap-8 py-4"
+          className="section-inner mx-auto flex flex-wrap items-center gap-x-6 gap-y-2 py-4"
           style={{ maxWidth: '1200px', padding: '16px 40px' }}
         >
           {bottomLinks.map((link) => (

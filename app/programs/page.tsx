@@ -41,7 +41,7 @@ export default function ProgramsPage() {
       {/* ── PROGRAM DETAIL ──────────────────────────────────── */}
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div
-          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start section-inner"
+          className="mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-start section-inner"
           style={{ maxWidth: '1200px', padding: '0 40px' }}
         >
           {/* Photo */}

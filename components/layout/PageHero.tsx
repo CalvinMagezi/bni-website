@@ -18,7 +18,7 @@ export default function PageHero({ title, subtitle }: PageHeroProps) {
         background: `linear-gradient(rgba(7,13,79,0.88) 0%, rgba(13,23,135,0.78) 100%), url(${HERO_BG}) top center/cover no-repeat`,
       }}
     >
-      <div className="relative z-10 py-20 px-6">
+      <div className="relative z-10 pt-28 pb-12 sm:py-20 px-6">
         <HeroReveal delay={0.2}>
           <h1
             className="text-white font-bold"

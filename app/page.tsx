@@ -123,7 +123,7 @@ export default function HomePage() {
           className="section-inner section-v-pad"
           style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px 100px' }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
             {/* Left — text */}
             <SlideLeft>
             <div>
@@ -189,7 +189,7 @@ export default function HomePage() {
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
           {/* "Partners" label inline with logos, all centered */}
           <FadeIn>
-          <div className="flex flex-wrap items-center justify-center gap-12">
+          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
             <h3
               className="font-semibold text-3xl shrink-0"
               style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#000000' }}
