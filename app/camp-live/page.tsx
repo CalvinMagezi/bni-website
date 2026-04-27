@@ -206,42 +206,61 @@ export default function CampLivePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             {/* ── FEED (2 cols wide) ─────────────────────────── */}
-            <div className="md:col-span-2 flex flex-col gap-6 md:gap-8">
+            <div className="md:col-span-2 flex flex-col gap-5 md:gap-7">
               {posts.map((post, i) => (
                 <FadeUp key={post.id} delay={i * 0.05}>
                   <article
                     style={{
                       background: (post as { highlight?: string }).highlight ?? '#ffffff',
-                      borderRadius: '20px',
+                      borderRadius: '24px',
                       overflow: 'hidden',
-                      boxShadow: '0 2px 16px rgba(7,13,79,0.06)',
-                      border: '1px solid rgba(0,0,0,0.04)',
+                      boxShadow: '0 4px 24px rgba(7,13,79,0.08)',
+                      border: '1px solid rgba(0,0,0,0.05)',
                     }}
                   >
-                    {/* Post header */}
-                    <div className="flex items-center gap-3 p-5 pb-4 sm:p-7 sm:pb-5">
+                    {/* ── Header ── */}
+                    <div className="flex items-center gap-4 px-6 pt-6 pb-5 sm:px-8 sm:pt-7 sm:pb-6">
+                      {/* Avatar */}
                       <div
                         className="relative shrink-0 overflow-hidden"
-                        style={{ width: 46, height: 46, borderRadius: '50%', background: '#e8eaf0' }}
+                        style={{
+                          width: 52,
+                          height: 52,
+                          borderRadius: '50%',
+                          background: '#e8eaf0',
+                          boxShadow: '0 0 0 2.5px #f0f0f5',
+                        }}
                       >
                         {post.avatar ? (
                           <Image src={post.avatar} alt={post.author} fill className="object-cover object-top" unoptimized />
                         ) : (
-                          <span className="flex items-center justify-center w-full h-full text-xl">{(post as { avatarEmoji?: string }).avatarEmoji}</span>
+                          <span className="flex items-center justify-center w-full h-full text-2xl">
+                            {(post as { avatarEmoji?: string }).avatarEmoji}
+                          </span>
                         )}
                       </div>
+
+                      {/* Name + meta */}
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-base truncate" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
+                        <p
+                          className="font-bold text-base leading-snug truncate"
+                          style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}
+                        >
                           {post.author}
                         </p>
-                        <p className="text-xs mt-1" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
+                        <p
+                          className="text-xs mt-1"
+                          style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}
+                        >
                           {post.role} · {post.time}
                         </p>
                       </div>
+
+                      {/* LIVE badge */}
                       {post.live && (
                         <span
                           className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-full shrink-0"
-                          style={{ background: '#fef2f2', color: '#ef4444', fontFamily: 'Inter, sans-serif' }}
+                          style={{ background: '#fef2f2', color: '#ef4444', fontFamily: 'Inter, sans-serif', letterSpacing: '0.04em' }}
                         >
                           <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                           LIVE
@@ -249,44 +268,59 @@ export default function CampLivePage() {
                       )}
                     </div>
 
-                    {/* Caption */}
+                    {/* ── Caption ── */}
                     <p
-                      className="px-5 pb-5 sm:px-7 sm:pb-6 text-sm leading-loose"
-                      style={{ fontFamily: 'Inter, sans-serif', color: '#2d2d3e' }}
+                      className="px-6 sm:px-8 text-[15px] leading-relaxed"
+                      style={{ fontFamily: 'Inter, sans-serif', color: '#2d2d3e', paddingBottom: post.image ? '20px' : '0' }}
                     >
                       {post.text}
                     </p>
 
-                    {/* Media */}
+                    {/* ── Media ── */}
                     {post.image && (
-                      <div
-                        className="relative w-full overflow-hidden"
-                        style={{ aspectRatio: post.imageAspect === 'portrait' ? '4/5' : '16/9' }}
-                      >
-                        <Image
-                          src={post.image}
-                          alt={`Camp photo by ${post.author}`}
-                          fill
-                          className="object-cover object-top"
-                          unoptimized
-                        />
+                      <div className="px-6 sm:px-8 pb-5 sm:pb-6">
+                        <div
+                          className="relative w-full overflow-hidden"
+                          style={{
+                            borderRadius: '14px',
+                            aspectRatio: post.imageAspect === 'portrait' ? '4/5' : '16/9',
+                          }}
+                        >
+                          <Image
+                            src={post.image}
+                            alt={`Camp photo by ${post.author}`}
+                            fill
+                            className="object-cover object-top"
+                            unoptimized
+                          />
+                        </div>
                       </div>
                     )}
 
-                    {/* Reactions */}
-                    <div className="flex items-center justify-between px-5 py-4 sm:px-7 sm:py-5" style={{ borderTop: '1px solid #f5f5f8' }}>
-                      <div className="flex items-center gap-3 sm:gap-5">
-                        <button className="flex items-center gap-1.5 text-sm hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}>
-                          🔥 <span>{post.reactions.fire}</span>
-                        </button>
-                        <button className="flex items-center gap-1.5 text-sm hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}>
-                          ❤️ <span>{post.reactions.heart}</span>
-                        </button>
-                        <button className="flex items-center gap-1.5 text-sm hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}>
-                          👏 <span>{post.reactions.clap}</span>
-                        </button>
+                    {/* ── Reactions ── */}
+                    <div
+                      className="flex items-center justify-between px-6 py-4 sm:px-8 sm:py-5"
+                      style={{ borderTop: '1px solid #f0f0f5' }}
+                    >
+                      <div className="flex items-center gap-4 sm:gap-6">
+                        {[
+                          { emoji: '🔥', count: post.reactions.fire },
+                          { emoji: '❤️', count: post.reactions.heart },
+                          { emoji: '👏', count: post.reactions.clap },
+                        ].map(({ emoji, count }) => (
+                          <button
+                            key={emoji}
+                            className="flex items-center gap-1.5 text-sm font-medium hover:opacity-70 transition-opacity"
+                            style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}
+                          >
+                            {emoji} <span>{count}</span>
+                          </button>
+                        ))}
                       </div>
-                      <span className="text-xs" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
+                      <span
+                        className="text-xs"
+                        style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}
+                      >
                         💬 {post.comments} comments
                       </span>
                     </div>
