@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import WhatsAppWidget from '@/components/shared/WhatsAppWidget'
+import SiteChrome from './SiteChrome'
 
 const OG_IMAGE = 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg'
 const SITE_URL = 'https://boysnetworkinternational.com'
@@ -79,10 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="https://framerusercontent.com/images/bmEr6BuAPZ4ibh0n7jxJ57JU4.png" />
       </head>
       <body>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppWidget />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   )
