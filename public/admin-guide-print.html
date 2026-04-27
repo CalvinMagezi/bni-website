@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BNI Admin Panel — User Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: #111827;
+    background: #f8f9fb;
+    padding: 0;
+  }
+
+  .page {
+    width: 794px;
+    margin: 0 auto;
+    background: #fff;
+  }
+
+  /* Cover page */
+  .cover {
+    height: 100vh;
+    min-height: 1100px;
+    background: linear-gradient(160deg, #0d1787 0%, #070d4f 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px;
+    page-break-after: always;
+    position: relative;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(31,47,230,0.4) 0%, transparent 60%);
+  }
+
+  .cover-inner { position: relative; z-index: 1; }
+
+  .logo-box {
+    width: 80px;
+    height: 80px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 20px;
+    margin: 0 auto 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+  }
+
+  .cover h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .cover p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+  }
+
+  .cover-meta-item {
+    text-align: center;
+  }
+
+  .cover-meta-item .val {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .cover-meta-item .lbl {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  .cover-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 0; right: 0;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* Content pages */
+  .content {
+    padding: 56px 56px 40px;
+  }
+
+  /* TOC */
+  .toc-page { page-break-after: always; }
+
+  .toc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #0d1787;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .toc-num {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #0d1787;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .toc-icon { font-size: 18px; width: 24px; text-align: center; }
+
+  .toc-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #111827;
+    flex: 1;
+  }
+
+  .toc-dots {
+    flex: 1;
+    border-bottom: 2px dotted #e5e7eb;
+    margin: 0 12px;
+    height: 1px;
+    margin-top: 8px;
+  }
+
+  /* Section pages */
+  .section { page-break-before: always; }
+  .section:first-of-type { page-break-before: avoid; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    color: #fff;
+  }
+
+  .section-header .icon { font-size: 28px; }
+
+  .section-header .section-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 2px;
+  }
+
+  .section-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .steps { display: flex; flex-direction: column; gap: 0; }
+
+  .step {
+    display: flex;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f3f4f6;
+    align-items: flex-start;
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .step-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 4px;
+  }
+
+  .step-detail {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.65;
+  }
+
+  /* Tips */
+  .tips-box {
+    background: #fffbeb;
+    border: 1.5px solid #fde68a;
+    border-radius: 12px;
+    padding: 22px 26px;
+    margin-top: 24px;
+  }
+
+  .tips-box h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #92400e;
+    margin-bottom: 14px;
+  }
+
+  .tip-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+
+  .tip-row:last-child { margin-bottom: 0; }
+
+  .tip-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #78350f;
+    min-width: 130px;
+    padding-top: 1px;
+  }
+
+  .tip-detail {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #78350f;
+    line-height: 1.6;
+  }
+
+  /* Page footer */
+  .page-footer {
+    text-align: center;
+    padding: 24px 0 40px;
+    font-size: 11px;
+    color: #d1d5db;
+    border-top: 1px solid #f3f4f6;
+    margin-top: 40px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page { width: 100%; }
+    .cover { min-height: 100vh; }
+    .section { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-inner">
+      <div class="logo-box">📖</div>
+      <h1>BNI Admin Panel<br>User Guide</h1>
+      <p>Everything you need to manage the Boys Network International website. No technical knowledge required.</p>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <div class="val">8</div>
+          <div class="lbl">Sections</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="val">April 2026</div>
+          <div class="lbl">Last Updated</div>
+        </div>
+        <div class="cover-meta-item">
+          <div class="val">Internal</div>
+          <div class="lbl">Access</div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-footer">Boys Network International · boysnetworkinternational.com · Internal Use Only</div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="content toc-page">
+    <div class="toc-title">Contents</div>
+    <div class="toc-item"><div class="toc-num">1</div><div class="toc-icon">🔐</div><div class="toc-label">Signing In</div></div>
+    <div class="toc-item"><div class="toc-num">2</div><div class="toc-icon">📊</div><div class="toc-label">Dashboard Overview</div></div>
+    <div class="toc-item"><div class="toc-num">3</div><div class="toc-icon">📝</div><div class="toc-label">Camp Posts — Managing the Live Feed</div></div>
+    <div class="toc-item"><div class="toc-num">4</div><div class="toc-icon">🎬</div><div class="toc-label">Stories — Managing Story Bubbles</div></div>
+    <div class="toc-item"><div class="toc-num">5</div><div class="toc-icon">📈</div><div class="toc-label">Camp Stats — Sidebar Numbers</div></div>
+    <div class="toc-item"><div class="toc-num">6</div><div class="toc-icon">🖼️</div><div class="toc-label">Gallery — Albums & Photos</div></div>
+    <div class="toc-item"><div class="toc-num">7</div><div class="toc-icon">👥</div><div class="toc-label">Team Members — Meet the Founders</div></div>
+    <div class="toc-item"><div class="toc-num">8</div><div class="toc-icon">📬</div><div class="toc-label">Inbox — Messages, Subscribers & Enrollments</div></div>
+    <div class="toc-item"><div class="toc-num">💡</div><div class="toc-icon"></div><div class="toc-label">Helpful Tips & FAQ</div></div>
+  </div>
+
+  <!-- SECTION 1: SIGNING IN -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #0d1787, #070d4f);">
+      <div class="icon">🔐</div>
+      <div>
+        <div class="section-num">Section 1</div>
+        <h2>Signing In</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#0d1787">1</div>
+        <div><div class="step-label">Go to the admin URL</div><div class="step-detail">Open your browser and visit: <strong>boysnetworkinternational.com/admin/login</strong></div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#0d1787">2</div>
+        <div><div class="step-label">Click "Continue with Google"</div><div class="step-detail">A Google sign-in window will appear. This uses your existing Google account — no separate password needed.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#0d1787">3</div>
+        <div><div class="step-label">Choose your authorised account</div><div class="step-detail">Only email addresses on the BNI allowed list can access the admin panel. If you see an "Access Denied" message after signing in, your email is not on the list — contact the site administrator.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#0d1787">4</div>
+        <div><div class="step-label">You're in!</div><div class="step-detail">You'll be taken to the Dashboard automatically. Use the left-hand sidebar to navigate between all sections.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: DASHBOARD -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #1f2fe6, #0d1787);">
+      <div class="icon">📊</div>
+      <div>
+        <div class="section-num">Section 2</div>
+        <h2>Dashboard</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#1f2fe6">1</div>
+        <div><div class="step-label">Overview cards</div><div class="step-detail">The dashboard shows at a glance: total camp posts, stories, contact messages, newsletter subscribers, and enrollment requests.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#1f2fe6">2</div>
+        <div><div class="step-label">+ New Camp Post</div><div class="step-detail">Click the blue "New Camp Post" card to jump straight to creating a post for the Camp Live feed.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#1f2fe6">3</div>
+        <div><div class="step-label">View Inbox</div><div class="step-detail">Click "View Inbox" to see all messages from parents and visitors who have filled in forms on the website.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#1f2fe6">4</div>
+        <div><div class="step-label">Left sidebar navigation</div><div class="step-detail">The sidebar is always visible. Click any item to jump to that section. Your name and email appear at the top so you always know which account you're signed in with.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: CAMP POSTS -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #7c3aed, #5b21b6);">
+      <div class="icon">📝</div>
+      <div>
+        <div class="section-num">Section 3</div>
+        <h2>Camp Posts</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#7c3aed">1</div>
+        <div><div class="step-label">What are posts?</div><div class="step-detail">Posts appear on the Camp Live page as the main social feed — like a WhatsApp status or Instagram post. Parents see these updates to follow along with the bootcamp in real time.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#7c3aed">2</div>
+        <div><div class="step-label">Creating a new post</div><div class="step-detail">Click "+ New Post" (top right of the posts list). Fill in: Author name, their Role, and the post text. Optionally attach a photo URL. Set "Is Live?" to No while drafting, then Yes when ready to publish.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#7c3aed">3</div>
+        <div><div class="step-label">Draft vs Published</div><div class="step-detail"><strong>Live = No</strong> keeps the post hidden from visitors. <strong>Live = Yes</strong> makes it visible on the website. You can always switch back to No to hide it again.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#7c3aed">4</div>
+        <div><div class="step-label">Ordering posts</div><div class="step-detail">The "Position" number controls the order. <strong>0 = top of the feed</strong>, 1 = second, and so on. Give your most recent post the lowest number.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#7c3aed">5</div>
+        <div><div class="step-label">Editing a post</div><div class="step-detail">Click "Edit" on any post in the list to change the text, photo, time label, or live status.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#7c3aed">6</div>
+        <div><div class="step-label">Deleting a post</div><div class="step-detail">Click "Delete" to permanently remove a post. This cannot be undone — if unsure, set Live = No to hide it instead.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: STORIES -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #db2777, #9d174d);">
+      <div class="icon">🎬</div>
+      <div>
+        <div class="section-num">Section 4</div>
+        <h2>Stories</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#db2777">1</div>
+        <div><div class="step-label">What are stories?</div><div class="step-detail">Stories are the circular photo bubbles at the top of the Camp Live page — similar to Instagram Stories. Each one highlights a participant or a camp moment.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#db2777">2</div>
+        <div><div class="step-label">Adding a story</div><div class="step-detail">Scroll to the "Add Story" form at the bottom of the page. Enter: a Label (person's name, e.g. "Bryan M."), an Image URL (direct link to their photo), and whether it should be Live.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#db2777">3</div>
+        <div><div class="step-label">Live status</div><div class="step-detail">A story with Live = Yes shows a red "LIVE" badge on the Camp Live page. Use this during active camp sessions to highlight who is currently featured.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#db2777">4</div>
+        <div><div class="step-label">Deleting a story</div><div class="step-detail">Click "Delete" next to any story to remove it from the page immediately.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: STATS -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #059669, #065f46);">
+      <div class="icon">📈</div>
+      <div>
+        <div class="section-num">Section 5</div>
+        <h2>Camp Stats</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#059669">1</div>
+        <div><div class="step-label">What are camp stats?</div><div class="step-detail">The 4 key numbers shown in the Camp Live sidebar — for example: "47 Boys Enrolled", "Day 3 of Camp", "3 Mentors". These appear live on the website.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#059669">2</div>
+        <div><div class="step-label">Editing stats</div><div class="step-detail">Click directly into any field and type your change. You can update: the emoji icon, the label text (e.g. "Boys Enrolled"), and the value (e.g. "47").</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#059669">3</div>
+        <div><div class="step-label">Saving changes</div><div class="step-detail">Click <strong>"Save All Stats"</strong> at the bottom. All 4 stats are saved at once and go live on the website immediately.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: GALLERY -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #d97706, #92400e);">
+      <div class="icon">🖼️</div>
+      <div>
+        <div class="section-num">Section 6</div>
+        <h2>Gallery</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#d97706">1</div>
+        <div><div class="step-label">Albums</div><div class="step-detail">The gallery is organised into albums — for example "Rise &amp; Thrive 2024" or "Leadership Camp 2023". Each album has a cover photo and a collection of photos inside it.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#d97706">2</div>
+        <div><div class="step-label">Creating an album</div><div class="step-detail">Click "+ New Album". Enter: a Title (e.g. "Rise &amp; Thrive 2024"), a Slug (URL name with no spaces, e.g. <em>rise-thrive-2024</em>), and a Cover Image URL.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#d97706">3</div>
+        <div><div class="step-label">Adding photos</div><div class="step-detail">Click "Manage Photos" on any album. Use the Add Photo form at the bottom — paste the image URL and a short description of the photo. Click "Add Photo".</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#d97706">4</div>
+        <div><div class="step-label">Deleting a photo</div><div class="step-detail">Click "Delete" next to any photo. The photo count in the album updates automatically.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#d97706">5</div>
+        <div><div class="step-label">Deleting an album</div><div class="step-detail">Click "Delete" on an album card from the Gallery list. This removes the album and its public page from the website.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: TEAM -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #0891b2, #164e63);">
+      <div class="icon">👥</div>
+      <div>
+        <div class="section-num">Section 7</div>
+        <h2>Team Members</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#0891b2">1</div>
+        <div><div class="step-label">What is this?</div><div class="step-detail">Team members appear in the "Meet the Founders" section on the About page. This is how visitors learn about the BNI leadership team.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#0891b2">2</div>
+        <div><div class="step-label">Adding a member</div><div class="step-detail">Fill in: their Name, Title/role (e.g. "Co-Founder &amp; Director"), and optionally paste a headshot image URL. Set an Order number — lower appears first (0 = first card).</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#0891b2">3</div>
+        <div><div class="step-label">Removing a member</div><div class="step-detail">Click "Remove" on their card. They will no longer appear on the public About page.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 8: INBOX -->
+  <div class="content section">
+    <div class="section-header" style="background: linear-gradient(135deg, #dc2626, #7f1d1d);">
+      <div class="icon">📬</div>
+      <div>
+        <div class="section-num">Section 8</div>
+        <h2>Inbox</h2>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num" style="background:#dc2626">1</div>
+        <div><div class="step-label">Read-only</div><div class="step-detail">The Inbox shows all form submissions from the public website. You can view but not delete entries from here.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#dc2626">2</div>
+        <div><div class="step-label">Contact Messages</div><div class="step-detail">Submitted via the Contact page. Shows the date, name, email, phone number, and message. Click any email address to open a reply in your email app.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#dc2626">3</div>
+        <div><div class="step-label">Newsletter Subscribers</div><div class="step-detail">Email addresses collected from the newsletter signup on the website, with the date they signed up.</div></div>
+      </div>
+      <div class="step">
+        <div class="step-num" style="background:#dc2626">4</div>
+        <div><div class="step-label">Enrollment Intakes</div><div class="step-detail">Submitted via the Camp Live enrollment chatbot. Shows the child's name, age, area of interest, and the parent's email address. Click the email to follow up.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="content">
+    <div class="tips-box">
+      <h3>💡 Helpful Tips</h3>
+      <div class="tip-row">
+        <div class="tip-label">Image URLs</div>
+        <div class="tip-detail">The site uses image URLs instead of file uploads. To use a photo, upload it to Google Drive with public sharing and copy the direct link — or use any hosted image link.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-label">Drafts vs Live</div>
+        <div class="tip-detail">Always create posts as "Live = No" first, check they look right, then switch to "Live = Yes" to publish. You can always switch back to hide them.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-label">Ordering content</div>
+        <div class="tip-detail">The Position number controls what appears first. Position 0 = top of the page. You can use any numbers you like — 0, 1, 2, 3… or 10, 20, 30 if you want gaps to insert new items later.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-label">Stats are instant</div>
+        <div class="tip-detail">Camp Stats appear on the website as soon as you click "Save All Stats". Posts and stories only appear after you set them to Live = Yes.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-label">Deletions are permanent</div>
+        <div class="tip-detail">Once you delete a post, story, photo, or team member it cannot be undone from the admin panel. If unsure, hide it with Live = No instead of deleting.</div>
+      </div>
+      <div class="tip-row">
+        <div class="tip-label">Signing out</div>
+        <div class="tip-detail">Click "Sign out" at the bottom of the left sidebar to end your session securely.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      Boys Network International · Admin Panel User Guide · April 2026 · Internal Use Only
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

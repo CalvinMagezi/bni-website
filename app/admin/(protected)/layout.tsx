@@ -10,6 +10,7 @@ const navItems = [
   { href: '/admin/gallery', label: 'Gallery', icon: '🖼️' },
   { href: '/admin/team', label: 'Team', icon: '👥' },
   { href: '/admin/inbox', label: 'Inbox', icon: '📬' },
+  { href: '/admin/guide', label: 'User Guide', icon: '📖' },
 ]
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
