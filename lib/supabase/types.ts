@@ -40,6 +40,7 @@ export type TeamMember = {
   name: string
   title: string
   image_url: string | null
+  bio: string | null
   position: number
   created_at: string
 }
