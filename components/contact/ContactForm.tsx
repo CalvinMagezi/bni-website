@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { submitContact } from '@/app/actions/contact'
 
 const inputStyle: React.CSSProperties = {
   width: '100%',
@@ -25,10 +26,16 @@ export default function ContactForm() {
   })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Contact form submitted:', form)
-    setSubmitted(true)
+    const fd = new FormData()
+    fd.set('name', form.name)
+    fd.set('email', form.email)
+    fd.set('phone', form.phone)
+    fd.set('message', form.message)
+    if (form.agreed) fd.set('agreed', 'on')
+    const result = await submitContact(fd)
+    if (result.success) setSubmitted(true)
   }
 
   if (submitted) {

@@ -2,14 +2,16 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { submitNewsletter } from '@/app/actions/newsletter'
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState('')
   const [done, setDone] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!email.trim()) return
+    await submitNewsletter(email.trim())
     setDone(true)
   }
 

@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { submitEnrollment } from '@/app/actions/enrollment'
 
 const INTEREST_OPTIONS = [
   'Spiritual Growth',
@@ -72,6 +73,12 @@ export default function EnrollmentBot() {
         userSay(val)
         setData(d => ({ ...d, parent: val }))
         setStep('done')
+        submitEnrollment({
+          name: data.name,
+          age: data.age,
+          interest: data.interest,
+          parent_email: val,
+        })
         botSay(
           `Perfect! Here's a summary of your intake:\n\n👤 Name: ${data.name}\n📅 Age: ${data.age}\n⭐ Interest: ${data.interest}\n📧 Parent email: ${val}\n\nWe'll send full details to that email shortly. Welcome to the Boys Network family! 🙌`,
           800
