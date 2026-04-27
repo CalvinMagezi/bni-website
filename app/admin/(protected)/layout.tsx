@@ -40,7 +40,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             BNI Admin
           </span>
           <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '11px', color: 'rgba(255,255,255,0.5)', marginTop: '2px' }}>
-            {user.email}
+            {user?.email}
           </p>
         </div>
         <nav style={{ padding: '16px 12px', flex: 1 }}>
