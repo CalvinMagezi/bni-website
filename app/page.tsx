@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import FoundationalPillars from '@/components/shared/FoundationalPillars'
@@ -6,9 +7,56 @@ import CTABanner from '@/components/shared/CTABanner'
 import CampCountdown from '@/components/shared/CampCountdown'
 import { HeroReveal, FadeUp, SlideLeft, SlideRight, FadeIn } from '@/components/shared/Animate'
 
+export const metadata: Metadata = {
+  title: 'Boys Network International — Nurturing Potential, Shaping Lives',
+  description:
+    'Boys Network International empowers boys through faith-based mentorship, leadership development and the Rise & Thrive Bootcamp — raising purpose-driven young men in Uganda.',
+  alternates: { canonical: 'https://boysnetworkinternational.com' },
+  openGraph: {
+    title: 'Boys Network International — Nurturing Potential, Shaping Lives',
+    description: 'Empowering boys to grow in faith, lead with purpose, and impact their world through the Rise & Thrive Bootcamp.',
+    url: 'https://boysnetworkinternational.com',
+    images: [{ url: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg', width: 1200, height: 630, alt: 'Boys Network International — Rise & Thrive Bootcamp group photo' }],
+  },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'NGO',
+  name: 'Boys Network International',
+  alternateName: 'BNI',
+  url: 'https://boysnetworkinternational.com',
+  logo: 'https://framerusercontent.com/images/bmEr6BuAPZ4ibh0n7jxJ57JU4.png',
+  description: 'A faith-based mentorship and leadership organisation committed to raising the next generation of grounded, confident, and purpose-driven young men.',
+  foundingDate: '2024',
+  areaServed: 'Uganda',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+256-757-026880',
+    contactType: 'customer support',
+    email: 'join@boysnetwork.com',
+  },
+  sameAs: [],
+}
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Boys Network International',
+  url: 'https://boysnetworkinternational.com',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: 'https://boysnetworkinternational.com/programs' },
+    'query-input': 'required name=search_term_string',
+  },
+}
+
 export default function HomePage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+
       {/* ── HERO ─────────────────────────────────────────────────────────
           826px tall. Text in upper centre. Video sits at the bottom and
           spills 240px into the gray Foundational Pillars section below,

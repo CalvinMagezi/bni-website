@@ -6,8 +6,15 @@ import FloatingEnrollmentBot from '@/components/camp-live/FloatingEnrollmentBot'
 import CTABanner from '@/components/shared/CTABanner'
 
 export const metadata: Metadata = {
-  title: 'Camp Live | The Boys Network',
-  description: 'Real-time updates, stories and highlights from the Boys Network International Rise & Thrive Bootcamp.',
+  title: 'Camp Live Hub',
+  description: 'Real-time stories, updates and highlights from the Boys Network International Rise & Thrive Bootcamp — for parents, supporters, and the BNI community.',
+  alternates: { canonical: 'https://boysnetworkinternational.com/camp-live' },
+  openGraph: {
+    title: 'Camp Live Hub | Boys Network International',
+    description: 'Real-time stories, updates and highlights from the Rise & Thrive Bootcamp.',
+    url: 'https://boysnetworkinternational.com/camp-live',
+    images: [{ url: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg', width: 1200, height: 630, alt: 'Boys Network International Rise & Thrive Bootcamp' }],
+  },
 }
 
 // ── Stories ──────────────────────────────────────────────────────

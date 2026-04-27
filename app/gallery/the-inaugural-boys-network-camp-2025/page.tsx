@@ -6,8 +6,15 @@ import CTABanner from '@/components/shared/CTABanner'
 import { StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
-  title: 'The Inaugural Boys Network Camp 2025 | Gallery | The Boys Network',
-  description: 'Photos from the inaugural Boys Network International camp held in 2025.',
+  title: 'The Inaugural Boys Network Camp 2025',
+  description: 'Photos from the inaugural Boys Network International Rise & Thrive Bootcamp held in 2025 — spiritual growth, leadership, practical skills, and community.',
+  alternates: { canonical: 'https://boysnetworkinternational.com/gallery/the-inaugural-boys-network-camp-2025' },
+  openGraph: {
+    title: 'The Inaugural Boys Network Camp 2025 | Gallery',
+    description: 'Photos from the inaugural Boys Network International Rise & Thrive Bootcamp 2025.',
+    url: 'https://boysnetworkinternational.com/gallery/the-inaugural-boys-network-camp-2025',
+    images: [{ url: 'https://framerusercontent.com/images/tHvY3AbJZ8zaSnRhxUWdzbSA4cY.jpg', width: 1024, height: 1536, alt: 'Boys Network International Camp 2025' }],
+  },
 }
 
 // All 12 photos extracted directly from the original site (Framer CDN)

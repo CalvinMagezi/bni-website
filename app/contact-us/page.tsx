@@ -5,9 +5,14 @@ import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, SlideLeft, SlideRight } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
-  title: 'Contact Us | The Boys Network',
-  description:
-    'Get in touch with Boys Network International. We\'d love to hear from you.',
+  title: 'Contact Us',
+  description: 'Get in touch with Boys Network International. Reach our directors by email or phone, or send us a message directly.',
+  alternates: { canonical: 'https://boysnetworkinternational.com/contact-us' },
+  openGraph: {
+    title: 'Contact Us | Boys Network International',
+    description: 'Reach our directors by email or phone, or send us a message directly.',
+    url: 'https://boysnetworkinternational.com/contact-us',
+  },
 }
 
 const directors = [

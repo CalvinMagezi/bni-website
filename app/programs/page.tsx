@@ -7,9 +7,16 @@ import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, SlideLeft, SlideRight } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
-  title: 'Programs | The Boys Network',
+  title: 'Rise & Thrive Bootcamp',
   description:
-    'Rise & Thrive Bootcamp — a 7-day life-transforming mentorship camp for boys and young men, focusing on spiritual grounding, personal growth, life skills, and leadership.',
+    'The Rise & Thrive Bootcamp is a 7-day mentorship camp for boys in Uganda — spiritual grounding, leadership, life skills, and physical development. Enrol for August 2026.',
+  alternates: { canonical: 'https://boysnetworkinternational.com/programs' },
+  openGraph: {
+    title: 'Rise & Thrive Bootcamp | Boys Network International',
+    description: '7-day life-transforming mentorship camp for boys — spiritual grounding, leadership, life skills, and physical development. Enrol now for August 2026.',
+    url: 'https://boysnetworkinternational.com/programs',
+    images: [{ url: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg', width: 1200, height: 800, alt: 'Boys at the Rise & Thrive Bootcamp outdoor activities' }],
+  },
 }
 
 const ENROLL_URL =
@@ -30,9 +37,38 @@ const highlights = [
   { label: 'Physical Fitness', detail: 'Daily sports and farm work sessions' },
 ]
 
+const eventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'Rise & Thrive Bootcamp 2026',
+  description: 'A 7-day life-transforming mentorship camp for boys and young men, focusing on spiritual grounding, personal growth, life skills, and leadership.',
+  startDate: '2026-08-22',
+  endDate: '2026-08-29',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: {
+    '@type': 'Place',
+    name: 'Boys Network International Camp',
+    address: { '@type': 'PostalAddress', addressCountry: 'UG', addressRegion: 'Uganda' },
+  },
+  organizer: {
+    '@type': 'Organization',
+    name: 'Boys Network International',
+    url: 'https://boysnetworkinternational.com',
+  },
+  image: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg',
+  url: 'https://boysnetworkinternational.com/programs',
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    url: 'https://docs.google.com/forms/d/e/1FAIpQLSeO84OkbLX6EMl_jYJoiR_uHcraGbuaCU2Zg7txbpXjDnXo5Q/viewform',
+  },
+}
+
 export default function ProgramsPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <PageHero
         title="Rise & Thrive Bootcamp"
         subtitle="22 August, 2026"

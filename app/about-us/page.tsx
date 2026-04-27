@@ -6,9 +6,16 @@ import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, SlideLeft, SlideRight, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
-  title: 'About Us | The Boys Network',
+  title: 'About Us',
   description:
-    'Boys Network International is a faith-based mentorship and leadership organisation committed to raising the next generation of grounded, confident, and purpose-driven young men.',
+    'Boys Network International is a faith-based mentorship organisation committed to raising the next generation of grounded, confident, and purpose-driven young men in Uganda.',
+  alternates: { canonical: 'https://boysnetworkinternational.com/about-us' },
+  openGraph: {
+    title: 'About Us | Boys Network International',
+    description: 'Faith-based mentorship and leadership organisation raising purpose-driven young men in Uganda.',
+    url: 'https://boysnetworkinternational.com/about-us',
+    images: [{ url: 'https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg', width: 1200, height: 800, alt: 'Boys Network International mentorship' }],
+  },
 }
 
 const whatWeDo = [
