@@ -8,18 +8,23 @@ interface MeetFoundersProps {
 const founders = [
   {
     name: 'Bryan Muwonge',
-    title: 'Founder',
+    title: 'Founder, Executive & Marketing Director',
     image: 'https://framerusercontent.com/images/5v7dGA4WDpwIeNXkE4HwYyfNjcE.jpg',
   },
   {
     name: 'Alyce Kampire Muwonge',
-    title: 'Co- Founder',
+    title: 'Co-founder & Director Finance & Operations',
     image: 'https://framerusercontent.com/images/Mpfb4UC3smoeX6ukSqlYGSZvt2g.jpg',
   },
   {
     name: 'Pastor Sam Muyinda',
-    title: 'Co- Founder',
+    title: 'Co-founder & Director Programs & Impact',
     image: 'https://framerusercontent.com/images/xFGs0HH0etkFYMRyCi2kYJSgyE.jpg',
+  },
+  {
+    name: 'Martin',
+    title: 'Director, Head of Partnerships',
+    image: null,
   },
 ]
 
@@ -51,7 +56,7 @@ export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoun
         </div>
 
         {/* Cards */}
-        <StaggerGrid className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {founders.map((founder) => (
             <StaggerItem key={founder.name}>
             <div className="flex flex-col gap-4">
@@ -59,13 +64,25 @@ export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoun
                 className="relative w-full overflow-hidden"
                 style={{ borderRadius: '16px', aspectRatio: '327 / 306' }}
               >
-                <Image
-                  src={founder.image}
-                  alt={`${founder.name}, ${founder.title} of Boys Network International`}
-                  fill
-                  className="object-cover object-top"
-                  unoptimized
-                />
+                {founder.image ? (
+                  <Image
+                    src={founder.image}
+                    alt={`${founder.name}, ${founder.title} of Boys Network International`}
+                    fill
+                    className="object-cover object-top"
+                    unoptimized
+                  />
+                ) : (
+                  <div
+                    className="w-full h-full flex items-center justify-center"
+                    style={{ background: 'rgba(255,255,255,0.08)' }}
+                  >
+                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="40" cy="32" r="18" fill="rgba(255,255,255,0.2)" />
+                      <ellipse cx="40" cy="70" rx="28" ry="16" fill="rgba(255,255,255,0.2)" />
+                    </svg>
+                  </div>
+                )}
               </div>
               <div>
                 <h4
