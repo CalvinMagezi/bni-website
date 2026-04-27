@@ -1,22 +1,6 @@
 export type Json = string | number | boolean | null | { [key: string]: Json } | Json[]
 
-export interface Database {
-  public: {
-    Tables: {
-      posts: { Row: Post; Insert: Omit<Post, 'id' | 'created_at'>; Update: Partial<Post> }
-      stories: { Row: Story; Insert: Omit<Story, 'id' | 'created_at'>; Update: Partial<Story> }
-      camp_stats: { Row: CampStat; Insert: Omit<CampStat, 'id'>; Update: Partial<CampStat> }
-      team_members: { Row: TeamMember; Insert: Omit<TeamMember, 'id' | 'created_at'>; Update: Partial<TeamMember> }
-      gallery_albums: { Row: GalleryAlbum; Insert: Omit<GalleryAlbum, 'id' | 'created_at'>; Update: Partial<GalleryAlbum> }
-      gallery_photos: { Row: GalleryPhoto; Insert: Omit<GalleryPhoto, 'id' | 'created_at'>; Update: Partial<GalleryPhoto> }
-      contact_submissions: { Row: ContactSubmission; Insert: Omit<ContactSubmission, 'id' | 'created_at'>; Update: never }
-      newsletter_subscribers: { Row: NewsletterSubscriber; Insert: Omit<NewsletterSubscriber, 'id' | 'created_at'>; Update: never }
-      enrollment_intakes: { Row: EnrollmentIntake; Insert: Omit<EnrollmentIntake, 'id' | 'created_at'>; Update: never }
-    }
-  }
-}
-
-export interface Post {
+export type Post = {
   id: string
   author: string
   role: string
@@ -34,7 +18,7 @@ export interface Post {
   created_at: string
 }
 
-export interface Story {
+export type Story = {
   id: string
   label: string
   image_url: string
@@ -43,7 +27,7 @@ export interface Story {
   created_at: string
 }
 
-export interface CampStat {
+export type CampStat = {
   id: string
   label: string
   value: string
@@ -51,7 +35,7 @@ export interface CampStat {
   position: number
 }
 
-export interface TeamMember {
+export type TeamMember = {
   id: string
   name: string
   title: string
@@ -60,7 +44,7 @@ export interface TeamMember {
   created_at: string
 }
 
-export interface GalleryAlbum {
+export type GalleryAlbum = {
   id: string
   title: string
   slug: string
@@ -69,7 +53,7 @@ export interface GalleryAlbum {
   created_at: string
 }
 
-export interface GalleryPhoto {
+export type GalleryPhoto = {
   id: string
   album_id: string
   src: string
@@ -79,7 +63,7 @@ export interface GalleryPhoto {
   created_at: string
 }
 
-export interface ContactSubmission {
+export type ContactSubmission = {
   id: string
   name: string
   email: string
@@ -89,17 +73,84 @@ export interface ContactSubmission {
   created_at: string
 }
 
-export interface NewsletterSubscriber {
+export type NewsletterSubscriber = {
   id: string
   email: string
   created_at: string
 }
 
-export interface EnrollmentIntake {
+export type EnrollmentIntake = {
   id: string
   name: string
   age: string
   interest: string
   parent_email: string
   created_at: string
+}
+
+export type Database = {
+  public: {
+    Tables: {
+      posts: {
+        Row: Post
+        Insert: Omit<Post, 'id' | 'created_at'>
+        Update: Partial<Omit<Post, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      stories: {
+        Row: Story
+        Insert: Omit<Story, 'id' | 'created_at'>
+        Update: Partial<Omit<Story, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      camp_stats: {
+        Row: CampStat
+        Insert: Omit<CampStat, 'id'>
+        Update: Partial<Omit<CampStat, 'id'>>
+        Relationships: []
+      }
+      team_members: {
+        Row: TeamMember
+        Insert: Omit<TeamMember, 'id' | 'created_at'>
+        Update: Partial<Omit<TeamMember, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      gallery_albums: {
+        Row: GalleryAlbum
+        Insert: Omit<GalleryAlbum, 'id' | 'created_at'>
+        Update: Partial<Omit<GalleryAlbum, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      gallery_photos: {
+        Row: GalleryPhoto
+        Insert: Omit<GalleryPhoto, 'id' | 'created_at'>
+        Update: Partial<Omit<GalleryPhoto, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: ContactSubmission
+        Insert: Omit<ContactSubmission, 'id' | 'created_at'>
+        Update: Record<string, never>
+        Relationships: []
+      }
+      newsletter_subscribers: {
+        Row: NewsletterSubscriber
+        Insert: Omit<NewsletterSubscriber, 'id' | 'created_at'>
+        Update: Record<string, never>
+        Relationships: []
+      }
+      enrollment_intakes: {
+        Row: EnrollmentIntake
+        Insert: Omit<EnrollmentIntake, 'id' | 'created_at'>
+        Update: Record<string, never>
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+  }
 }
