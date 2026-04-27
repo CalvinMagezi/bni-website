@@ -1,34 +1,18 @@
 import Image from 'next/image'
 import { FadeUp, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
+import { createClient } from '@/lib/supabase/server'
 
 interface MeetFoundersProps {
   heading?: string
 }
 
-const founders = [
-  {
-    name: 'Bryan Muwonge',
-    title: 'Founder, Executive & Marketing Director',
-    image: 'https://framerusercontent.com/images/5v7dGA4WDpwIeNXkE4HwYyfNjcE.jpg',
-  },
-  {
-    name: 'Alyce Kampire Muwonge',
-    title: 'Co-founder & Director Finance & Operations',
-    image: 'https://framerusercontent.com/images/Mpfb4UC3smoeX6ukSqlYGSZvt2g.jpg',
-  },
-  {
-    name: 'Pastor Sam Muyinda',
-    title: 'Co-founder & Director Programs & Impact',
-    image: 'https://framerusercontent.com/images/xFGs0HH0etkFYMRyCi2kYJSgyE.jpg',
-  },
-  {
-    name: 'Martin',
-    title: 'Director, Head of Partnerships',
-    image: null,
-  },
-]
+export default async function MeetFounders({ heading = 'Meet the Founders' }: MeetFoundersProps) {
+  const supabase = await createClient()
+  const { data: founders } = await supabase
+    .from('team_members')
+    .select('*')
+    .order('position')
 
-export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoundersProps) {
   return (
     <section style={{ background: 'linear-gradient(rgb(13,23,135) 0%, rgb(7,13,79) 100%)' }}>
       <div className="section-inner section-v-pad" style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px' }}>
@@ -57,16 +41,16 @@ export default function MeetFounders({ heading = 'Meet the Founders' }: MeetFoun
 
         {/* Cards */}
         <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {founders.map((founder) => (
+          {(founders ?? []).map((founder) => (
             <StaggerItem key={founder.name}>
             <div className="flex flex-col gap-4">
               <div
                 className="relative w-full overflow-hidden"
                 style={{ borderRadius: '16px', aspectRatio: '327 / 306' }}
               >
-                {founder.image ? (
+                {founder.image_url ? (
                   <Image
-                    src={founder.image}
+                    src={founder.image_url}
                     alt={`${founder.name}, ${founder.title} of Boys Network International`}
                     fill
                     className="object-cover object-top"

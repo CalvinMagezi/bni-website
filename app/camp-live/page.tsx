@@ -4,6 +4,7 @@ import { FadeUp, FadeIn, StaggerGrid, StaggerItem } from '@/components/shared/An
 import NewsletterSignup from '@/components/camp-live/NewsletterSignup'
 import FloatingEnrollmentBot from '@/components/camp-live/FloatingEnrollmentBot'
 import CTABanner from '@/components/shared/CTABanner'
+import { createClient } from '@/lib/supabase/server'
 
 export const metadata: Metadata = {
   title: 'Camp Live Hub',
@@ -17,97 +18,18 @@ export const metadata: Metadata = {
   },
 }
 
-// ── Stories ──────────────────────────────────────────────────────
-const stories = [
-  { label: 'Bryan M.', image: 'https://framerusercontent.com/images/5v7dGA4WDpwIeNXkE4HwYyfNjcE.jpg', live: true },
-  { label: 'Alyce K.', image: 'https://framerusercontent.com/images/Mpfb4UC3smoeX6ukSqlYGSZvt2g.jpg', live: false },
-  { label: 'Day 3', image: 'https://framerusercontent.com/images/tHvY3AbJZ8zaSnRhxUWdzbSA4cY.jpg', live: true },
-  { label: 'Skills', image: 'https://framerusercontent.com/images/23E8Glzn2lG32ufwoYudaeHWI2M.jpg', live: false },
-  { label: 'Devotion', image: 'https://framerusercontent.com/images/YHnOeCG842ZFYULBtDXkOYTtKaA.jpg', live: false },
-  { label: 'Sports', image: 'https://framerusercontent.com/images/VrM5zXzaGHj1y4jxYG5JjfkgZc.jpg', live: false },
-  { label: 'Sam M.', image: 'https://framerusercontent.com/images/xFGs0HH0etkFYMRyCi2kYJSgyE.jpg', live: false },
-]
+export default async function CampLivePage() {
+  const supabase = await createClient()
+  const [
+    { data: stories },
+    { data: posts },
+    { data: campStats },
+  ] = await Promise.all([
+    supabase.from('stories').select('*').order('position'),
+    supabase.from('posts').select('*').order('position'),
+    supabase.from('camp_stats').select('*').order('position'),
+  ])
 
-// ── Feed posts ────────────────────────────────────────────────────
-const posts = [
-  {
-    id: 1,
-    author: 'Bryan Muwonge',
-    role: 'Founder & Lead Mentor',
-    avatar: 'https://framerusercontent.com/images/5v7dGA4WDpwIeNXkE4HwYyfNjcE.jpg',
-    time: 'Just now',
-    live: true,
-    text: "🔴 We are LIVE from Day 3 of the Rise & Thrive Bootcamp! The energy in this room is absolutely electric. These boys are transforming right before our eyes. Swipe to see this morning's highlights 👇",
-    image: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg',
-    imageAspect: 'landscape',
-    reactions: { fire: 42, heart: 31, clap: 19 },
-    comments: 8,
-  },
-  {
-    id: 2,
-    author: 'Camp Updates',
-    role: 'Official BNI Account',
-    avatar: 'https://framerusercontent.com/images/Bzl1MQ2nbPIpGlSNl4HuF8ffMyE.png',
-    time: '1h ago',
-    live: false,
-    text: "📢 Parents Visiting Day is this Saturday, 10am – 2pm at the campsite. Please bring a valid ID. Boys will be presenting projects they've built during the week — you won't want to miss it!",
-    image: null,
-    imageAspect: null,
-    highlight: '#fffbeb',
-    reactions: { fire: 12, heart: 58, clap: 34 },
-    comments: 14,
-  },
-  {
-    id: 3,
-    author: 'Alyce Kampire Muwonge',
-    role: 'Co-Founder',
-    avatar: 'https://framerusercontent.com/images/Mpfb4UC3smoeX6ukSqlYGSZvt2g.jpg',
-    time: '2h ago',
-    live: false,
-    text: "Morning devotions just wrapped up. Watching these boys open their Bibles and lead each other in prayer is exactly why we started this. Proverbs 22:6 is coming alive this week 🙏✨",
-    image: 'https://framerusercontent.com/images/tHvY3AbJZ8zaSnRhxUWdzbSA4cY.jpg',
-    imageAspect: 'portrait',
-    reactions: { fire: 28, heart: 91, clap: 44 },
-    comments: 21,
-  },
-  {
-    id: 4,
-    author: 'Skills Workshop',
-    role: 'Camp Activity',
-    avatar: null,
-    avatarEmoji: '🔨',
-    time: '4h ago',
-    live: false,
-    text: "Carpentry, cooking, financial literacy — our boys are getting their hands dirty and their minds sharp. Today's practical skills session had every single participant fully engaged. This is holistic development in action.",
-    image: 'https://framerusercontent.com/images/23E8Glzn2lG32ufwoYudaeHWI2M.jpg',
-    imageAspect: 'portrait',
-    reactions: { fire: 67, heart: 43, clap: 55 },
-    comments: 11,
-  },
-  {
-    id: 5,
-    author: 'Pastor Sam Muyinda',
-    role: 'Co-Founder & Spiritual Director',
-    avatar: 'https://framerusercontent.com/images/xFGs0HH0etkFYMRyCi2kYJSgyE.jpg',
-    time: 'Yesterday',
-    live: false,
-    text: "Day 2 recap: Leadership session today was powerful. Each boy was asked to stand up and describe one quality of a great leader. The answers we heard were beyond their years. The next generation of leaders is rising 🦁",
-    image: 'https://framerusercontent.com/images/FItTHEGhmchbftUSG01x7HznJQ.jpg',
-    imageAspect: 'portrait',
-    reactions: { fire: 38, heart: 72, clap: 29 },
-    comments: 16,
-  },
-]
-
-// ── Stats ─────────────────────────────────────────────────────────
-const campStats = [
-  { label: 'Boys Enrolled', value: '150', icon: '👦' },
-  { label: 'Days Running', value: '3 / 7', icon: '📅' },
-  { label: 'Mentors On-Site', value: '12', icon: '👨‍🏫' },
-  { label: 'Activities Today', value: '6', icon: '⚡' },
-]
-
-export default function CampLivePage() {
   return (
     <>
       {/* ── HERO ──────────────────────────────────────────────── */}
@@ -150,14 +72,14 @@ export default function CampLivePage() {
       <section style={{ background: '#fafafa', borderBottom: '1px solid #f0f0f5', padding: '24px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <div className="scrollbar-hide flex gap-4 sm:gap-6 overflow-x-auto pb-1">
-            {stories.map((story) => (
+            {(stories ?? []).map((story) => (
               <div key={story.label} className="flex flex-col items-center gap-2 shrink-0 cursor-pointer group">
                 {/* Ring */}
                 <div
                   style={{
                     padding: '2.5px',
                     borderRadius: '50%',
-                    background: story.live
+                    background: story.is_live
                       ? 'linear-gradient(135deg, #ef4444, #f97316)'
                       : 'linear-gradient(135deg, #1f2fe6, #070d4f)',
                   }}
@@ -172,7 +94,7 @@ export default function CampLivePage() {
                     }}
                   >
                     <Image
-                      src={story.image}
+                      src={story.image_url}
                       alt={story.label}
                       fill
                       className="object-cover object-top group-hover:scale-110 transition-transform duration-300"
@@ -193,7 +115,7 @@ export default function CampLivePage() {
                 >
                   {story.label}
                 </span>
-                {story.live && (
+                {story.is_live && (
                   <span
                     className="text-xs font-bold -mt-1"
                     style={{ color: '#ef4444', fontFamily: 'Inter, sans-serif', fontSize: 10 }}
@@ -214,11 +136,11 @@ export default function CampLivePage() {
 
             {/* ── FEED (2 cols wide) ─────────────────────────── */}
             <div className="md:col-span-2 flex flex-col gap-5 md:gap-7">
-              {posts.map((post, i) => (
+              {(posts ?? []).map((post, i) => (
                 <FadeUp key={post.id} delay={i * 0.05}>
                   <article
                     style={{
-                      background: (post as { highlight?: string }).highlight ?? '#ffffff',
+                      background: post.highlight_bg ?? '#ffffff',
                       borderRadius: '24px',
                       overflow: 'hidden',
                       boxShadow: '0 4px 24px rgba(7,13,79,0.08)',
@@ -240,11 +162,11 @@ export default function CampLivePage() {
                           boxShadow: '0 0 0 3px #f0f0f5',
                         }}
                       >
-                        {post.avatar ? (
-                          <Image src={post.avatar} alt={post.author} fill className="object-cover object-top" unoptimized />
+                        {post.avatar_url ? (
+                          <Image src={post.avatar_url} alt={post.author} fill className="object-cover object-top" unoptimized />
                         ) : (
                           <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', fontSize: 22 }}>
-                            {(post as { avatarEmoji?: string }).avatarEmoji}
+                            {post.avatar_emoji}
                           </span>
                         )}
                       </div>
@@ -255,12 +177,12 @@ export default function CampLivePage() {
                           {post.author}
                         </p>
                         <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#adbeca', marginTop: '4px' }}>
-                          {post.role} · {post.time}
+                          {post.role} · {post.time_label}
                         </p>
                       </div>
 
                       {/* LIVE badge */}
-                      {post.live && (
+                      {post.is_live && (
                         <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '11px', fontWeight: 700, padding: '6px 12px', borderRadius: '100px', background: '#fef2f2', color: '#ef4444', fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', flexShrink: 0 }}>
                           <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                           LIVE
@@ -269,12 +191,12 @@ export default function CampLivePage() {
                     </div>
 
                     {/* ── Caption ── */}
-                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', lineHeight: 1.65, color: '#2d2d3e', padding: post.image ? '0 32px 24px' : '0 32px 28px' }}>
+                    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', lineHeight: 1.65, color: '#2d2d3e', padding: post.image_url ? '0 32px 24px' : '0 32px 28px' }}>
                       {post.text}
                     </p>
 
                     {/* ── Media ── */}
-                    {post.image && (
+                    {post.image_url && (
                       <div style={{ padding: '0 24px 24px' }}>
                         <div
                           style={{
@@ -282,11 +204,11 @@ export default function CampLivePage() {
                             width: '100%',
                             overflow: 'hidden',
                             borderRadius: '16px',
-                            aspectRatio: post.imageAspect === 'portrait' ? '4/5' : '16/9',
+                            aspectRatio: post.image_aspect === 'portrait' ? '4/5' : '16/9',
                           }}
                         >
                           <Image
-                            src={post.image}
+                            src={post.image_url}
                             alt={`Camp photo by ${post.author}`}
                             fill
                             className="object-cover object-top"
@@ -300,9 +222,9 @@ export default function CampLivePage() {
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 32px 20px', borderTop: '1px solid #f0f0f5' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                         {[
-                          { emoji: '🔥', count: post.reactions.fire },
-                          { emoji: '❤️', count: post.reactions.heart },
-                          { emoji: '👏', count: post.reactions.clap },
+                          { emoji: '🔥', count: post.reactions?.fire },
+                          { emoji: '❤️', count: post.reactions?.heart },
+                          { emoji: '👏', count: post.reactions?.clap },
                         ].map(({ emoji, count }) => (
                           <button
                             key={emoji}
@@ -343,7 +265,7 @@ export default function CampLivePage() {
                     </p>
                   </div>
                   <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-2">
-                    {campStats.map((stat) => (
+                    {(campStats ?? []).map((stat) => (
                       <div
                         key={stat.label}
                         className="flex flex-col items-center justify-center text-center p-4"

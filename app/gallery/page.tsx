@@ -4,6 +4,7 @@ import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
 import CTABanner from '@/components/shared/CTABanner'
 import { StaggerGrid, StaggerItem } from '@/components/shared/Animate'
+import { createClient } from '@/lib/supabase/server'
 
 export const metadata: Metadata = {
   title: 'Gallery',
@@ -17,16 +18,13 @@ export const metadata: Metadata = {
   },
 }
 
-const collections = [
-  {
-    title: 'The Inaugural Boys Network Camp 2025',
-    slug: 'the-inaugural-boys-network-camp-2025',
-    coverImage: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg',
-    count: 12,
-  },
-]
+export default async function GalleryPage() {
+  const supabase = await createClient()
+  const { data: collections } = await supabase
+    .from('gallery_albums')
+    .select('*')
+    .order('created_at', { ascending: false })
 
-export default function GalleryPage() {
   return (
     <>
       <PageHero title="Gallery" />
@@ -34,7 +32,7 @@ export default function GalleryPage() {
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
         <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
           <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {collections.map((col) => (
+            {(collections ?? []).map((col) => (
               <StaggerItem key={col.slug}>
               <Link
                 href={`/gallery/${col.slug}`}
@@ -45,7 +43,7 @@ export default function GalleryPage() {
                   style={{ borderRadius: '12px', aspectRatio: '4/3' }}
                 >
                   <Image
-                    src={col.coverImage}
+                    src={col.cover_image}
                     alt={`Cover image for ${col.title}`}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -81,7 +79,7 @@ export default function GalleryPage() {
                   className="text-bni-muted text-sm mt-1"
                   style={{ fontFamily: 'Inter, sans-serif' }}
                 >
-                  {col.count} photos
+                  {col.photo_count} photos
                 </p>
               </Link>
               </StaggerItem>
