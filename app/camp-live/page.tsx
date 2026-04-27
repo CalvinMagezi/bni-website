@@ -206,7 +206,7 @@ export default function CampLivePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 
             {/* ── FEED (2 cols wide) ─────────────────────────── */}
-            <div className="md:col-span-2 flex flex-col gap-6">
+            <div className="md:col-span-2 flex flex-col gap-6 md:gap-8">
               {posts.map((post, i) => (
                 <FadeUp key={post.id} delay={i * 0.05}>
                   <article
@@ -219,7 +219,7 @@ export default function CampLivePage() {
                     }}
                   >
                     {/* Post header */}
-                    <div className="flex items-center gap-3 p-4 pb-3 sm:p-6 sm:pb-4">
+                    <div className="flex items-center gap-3 p-5 pb-4 sm:p-7 sm:pb-5">
                       <div
                         className="relative shrink-0 overflow-hidden"
                         style={{ width: 46, height: 46, borderRadius: '50%', background: '#e8eaf0' }}
@@ -231,10 +231,10 @@ export default function CampLivePage() {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-sm truncate" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
+                        <p className="font-bold text-base truncate" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
                           {post.author}
                         </p>
-                        <p className="text-xs mt-0.5" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
+                        <p className="text-xs mt-1" style={{ fontFamily: 'Inter, sans-serif', color: '#adbeca' }}>
                           {post.role} · {post.time}
                         </p>
                       </div>
@@ -251,7 +251,7 @@ export default function CampLivePage() {
 
                     {/* Caption */}
                     <p
-                      className="px-4 pb-4 sm:px-6 sm:pb-5 text-sm leading-relaxed"
+                      className="px-5 pb-5 sm:px-7 sm:pb-6 text-sm leading-loose"
                       style={{ fontFamily: 'Inter, sans-serif', color: '#2d2d3e' }}
                     >
                       {post.text}
@@ -274,7 +274,7 @@ export default function CampLivePage() {
                     )}
 
                     {/* Reactions */}
-                    <div className="flex items-center justify-between px-4 py-4 sm:px-6 sm:py-5" style={{ borderTop: '1px solid #f5f5f8' }}>
+                    <div className="flex items-center justify-between px-5 py-4 sm:px-7 sm:py-5" style={{ borderTop: '1px solid #f5f5f8' }}>
                       <div className="flex items-center gap-3 sm:gap-5">
                         <button className="flex items-center gap-1.5 text-sm hover:opacity-70 transition-opacity" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63', background: 'none', border: 'none', cursor: 'pointer' }}>
                           🔥 <span>{post.reactions.fire}</span>
