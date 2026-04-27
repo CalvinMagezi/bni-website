@@ -15,7 +15,8 @@ const navItems = [
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/admin/login')
+  const ALLOWED_EMAILS = ['calvin.m.magezi@gmail.com']
+  if (!user || !ALLOWED_EMAILS.includes(user.email ?? '')) redirect('/admin/login')
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#f8f9fb' }}>

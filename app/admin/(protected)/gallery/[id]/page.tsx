@@ -6,6 +6,8 @@ import { notFound, redirect } from 'next/navigation'
 async function addPhoto(albumId: string, formData: FormData) {
   'use server'
   const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error('Unauthorized')
   await supabase.from('gallery_photos').insert({
     album_id: albumId,
     src: formData.get('src') as string,
@@ -21,6 +23,8 @@ async function addPhoto(albumId: string, formData: FormData) {
 async function deletePhoto(formData: FormData) {
   'use server'
   const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error('Unauthorized')
   const photoId = formData.get('photo_id') as string
   const albumId = formData.get('album_id') as string
   await supabase.from('gallery_photos').delete().eq('id', photoId)

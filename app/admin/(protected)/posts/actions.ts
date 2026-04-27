@@ -5,6 +5,8 @@ import { redirect } from 'next/navigation'
 
 export async function createPost(formData: FormData) {
   const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error('Unauthorized')
   const { error } = await supabase.from('posts').insert({
     author: formData.get('author') as string,
     role: formData.get('role') as string,
@@ -26,6 +28,8 @@ export async function createPost(formData: FormData) {
 
 export async function updatePost(id: string, formData: FormData) {
   const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error('Unauthorized')
   const { error } = await supabase.from('posts').update({
     author: formData.get('author') as string,
     role: formData.get('role') as string,
@@ -45,6 +49,8 @@ export async function updatePost(id: string, formData: FormData) {
 
 export async function deletePost(id: string) {
   const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) throw new Error('Unauthorized')
   await supabase.from('posts').delete().eq('id', id)
   redirect('/admin/posts')
 }
