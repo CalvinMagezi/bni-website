@@ -8,8 +8,8 @@ const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about-us' },
   { label: 'Programs', href: '/programs' },
+  { label: 'Magazine', href: '/magazine' },
   { label: 'Contact', href: '/contact-us' },
-  { label: 'Gallery', href: '/gallery' },
   { label: '🔴 Camp Live', href: '/camp-live' },
 ]
 

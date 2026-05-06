@@ -1,7 +1,7 @@
 'use client'
 
 // Pre-filled message that opens when the button is clicked
-const WA_NUMBER = '256757026880' // Alyce Kampire — main contact
+const WA_NUMBER = '256791408459' // BNI company WhatsApp (MTN)
 const WA_MESSAGE = encodeURIComponent(
   "Hi! I'm on the Boys Network International website and I'd like to learn more about the camp."
 )

@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { FadeUp } from '@/components/shared/Animate'
 
-const ENROLL_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSeO84OkbLX6EMl_jYJoiR_uHcraGbuaCU2Zg7txbpXjDnXo5Q/viewform?usp=header'
+const ENROLL_URL = '/enroll'
 
 export default function CTABanner() {
   return (
@@ -40,8 +39,6 @@ export default function CTABanner() {
             {/* Button */}
             <Link
               href={ENROLL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               className="shrink-0 inline-flex items-center justify-center font-bold text-sm hover:opacity-90 transition-opacity"
               style={{
                 background: '#ffffff',

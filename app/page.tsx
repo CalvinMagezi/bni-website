@@ -32,11 +32,14 @@ const organizationSchema = {
   areaServed: 'Uganda',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+256-757-026880',
+    telephone: '+256-791-408459',
     contactType: 'customer support',
-    email: 'join@boysnetwork.com',
+    email: 'theboysnetworkinternational@gmail.com',
   },
-  sameAs: [],
+  sameAs: [
+    'https://instagram.com/boysnetworkint',
+    'https://twitter.com/BoysNetworkInt',
+  ],
 }
 
 const websiteSchema = {

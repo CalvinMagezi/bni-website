@@ -19,8 +19,7 @@ export const metadata: Metadata = {
   },
 }
 
-const ENROLL_URL =
-  'https://docs.google.com/forms/d/e/1FAIpQLSeO84OkbLX6EMl_jYJoiR_uHcraGbuaCU2Zg7txbpXjDnXo5Q/viewform?usp=header'
+const ENROLL_URL = '/enroll'
 
 const stats = [
   { icon: '⏱', label: 'Duration', value: '7 days' },
@@ -42,7 +41,7 @@ const eventSchema = {
   '@type': 'Event',
   name: 'Rise & Thrive Bootcamp 2026',
   description: 'A 7-day life-transforming mentorship camp for boys and young men, focusing on spiritual grounding, personal growth, life skills, and leadership.',
-  startDate: '2026-08-22',
+  startDate: '2026-08-23',
   endDate: '2026-08-29',
   eventStatus: 'https://schema.org/EventScheduled',
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
@@ -61,7 +60,7 @@ const eventSchema = {
   offers: {
     '@type': 'Offer',
     availability: 'https://schema.org/InStock',
-    url: 'https://docs.google.com/forms/d/e/1FAIpQLSeO84OkbLX6EMl_jYJoiR_uHcraGbuaCU2Zg7txbpXjDnXo5Q/viewform',
+    url: 'https://boysnetworkinternational.com/enroll',
   },
 }
 
@@ -71,7 +70,7 @@ export default function ProgramsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(eventSchema) }} />
       <PageHero
         title="Rise & Thrive Bootcamp"
-        subtitle="22 August, 2026"
+        subtitle="23–29 August, 2026"
       />
 
       {/* ── PROGRAM DETAIL ──────────────────────────────────── */}
@@ -129,8 +128,6 @@ export default function ProgramsPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href={ENROLL_URL}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center text-white font-bold text-sm hover:opacity-90 transition-opacity"
                 style={{
                   background: '#1f2fe6',

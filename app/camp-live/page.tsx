@@ -308,7 +308,7 @@ export default async function CampLivePage() {
                     Spots are filling fast. Secure your boy's place at the next Rise &amp; Thrive Bootcamp.
                   </p>
                   <a
-                    href="https://wa.me/256757026880?text=Hi%2C%20I%27d%20like%20to%20enroll%20my%20son%20in%20the%20Rise%20%26%20Thrive%20Bootcamp"
+                    href="https://wa.me/256791408459?text=Hi%2C%20I%27d%20like%20to%20enroll%20my%20son%20in%20the%20Rise%20%26%20Thrive%20Bootcamp"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-center text-white text-sm font-bold py-3 rounded-full hover:opacity-90 transition-opacity"

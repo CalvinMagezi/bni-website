@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 
 // Camp date — Rise & Thrive Bootcamp
-const CAMP_DATE = new Date('2026-08-22T00:00:00+03:00') // EAT (UTC+3)
+const CAMP_DATE = new Date('2026-08-23T00:00:00+03:00') // EAT (UTC+3)
 
 function getTimeLeft() {
   const diff = CAMP_DATE.getTime() - Date.now()
@@ -51,7 +51,7 @@ export default function CampCountdown() {
         className="text-center text-white/70 mb-4 uppercase"
         style={{ fontFamily: 'Inter, sans-serif', fontSize: 'clamp(10px, 2.5vw, 13px)', letterSpacing: '0.1em' }}
       >
-        Rise &amp; Thrive Bootcamp — 22 Aug 2026
+        Rise &amp; Thrive Bootcamp — 23 Aug 2026
       </p>
       <div className="flex items-center justify-center" style={{ gap: 'clamp(8px, 3vw, 16px)' }}>
         {units.map(({ label, value }, i) => (

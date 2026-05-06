@@ -3,6 +3,8 @@ import Link from 'next/link'
 const quickLinks = [
   { label: 'About', href: '/about-us' },
   { label: 'Programs', href: '/programs' },
+  { label: 'Magazine', href: '/magazine' },
+  { label: 'Enroll', href: '/enroll' },
   { label: 'Contact Us', href: '/contact-us' },
   { label: 'Important Info', href: '/info' },
 ]
@@ -68,10 +70,13 @@ export default function Footer() {
                 className="text-white text-sm font-semibold mb-1"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
-                Enroll
+                WhatsApp / Call
               </p>
               <p className="text-bni-light text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
-                0767961323 / 0747772656
+                +256 791 408 459 (MTN)
+              </p>
+              <p className="text-bni-light text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+                +256 741 132 842 (Airtel)
               </p>
             </div>
             <div>
@@ -79,14 +84,14 @@ export default function Footer() {
                 className="text-white text-sm font-semibold mb-1"
                 style={{ fontFamily: 'Space Grotesk, sans-serif' }}
               >
-                Need support?
+                Email
               </p>
               <a
-                href="mailto:join@boysnetwork.com"
+                href="mailto:theboysnetworkinternational@gmail.com"
                 className="text-bni-light text-sm hover:text-white transition-colors"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
-                join@boysnetwork.com
+                theboysnetworkinternational@gmail.com
               </a>
             </div>
           </div>

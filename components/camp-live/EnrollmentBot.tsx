@@ -80,7 +80,7 @@ export default function EnrollmentBot() {
           parent_email: val,
         })
         botSay(
-          `Perfect! Here's a summary of your intake:\n\n👤 Name: ${data.name}\n📅 Age: ${data.age}\n⭐ Interest: ${data.interest}\n📧 Parent email: ${val}\n\nWe'll send full details to that email shortly. Welcome to the Boys Network family! 🙌`,
+          `Perfect! Here's a summary of your intake:\n\n👤 Name: ${data.name}\n📅 Age: ${data.age}\n⭐ Interest: ${data.interest}\n📧 Parent email: ${val}\n\nTo secure your son's place, complete the full enrollment form below. Welcome to the Boys Network family! 🙌`,
           800
         )
         break
@@ -267,12 +267,13 @@ export default function EnrollmentBot() {
         )}
 
         {step === 'done' && (
-          <p
-            className="text-center text-sm py-2"
-            style={{ fontFamily: 'Inter, sans-serif', color: '#515c63' }}
+          <a
+            href={`/enroll?name=${encodeURIComponent(data.name)}&age=${encodeURIComponent(data.age)}&interest=${encodeURIComponent(data.interest)}&email=${encodeURIComponent(data.parent)}`}
+            className="block text-center text-white text-sm font-bold py-3 rounded-full transition-opacity hover:opacity-90"
+            style={{ background: 'linear-gradient(135deg, #1f2fe6, #070d4f)', fontFamily: 'Space Grotesk, sans-serif' }}
           >
-            ✅ Intake complete — check your email for next steps!
-          </p>
+            Complete Full Enrollment →
+          </a>
         )}
       </div>
     </div>
