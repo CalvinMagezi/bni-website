@@ -1,11 +1,39 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 import EnrollmentBot from './EnrollmentBot'
+
+// Pages where 2-minute lead recovery fires
+const CONVERSION_PAGES = ['/enroll', '/programs']
 
 export default function FloatingEnrollmentBot() {
   const [isOpen, setIsOpen] = useState(false)
+  const [leadRecovery, setLeadRecovery] = useState(false)
+  const pathname = usePathname()
+  const userInteracted = useRef(false)
+  const timerFired = useRef(false)
+
+  // Lead recovery: auto-open after 2 min on enrollment/programs pages
+  useEffect(() => {
+    if (!CONVERSION_PAGES.includes(pathname) || timerFired.current) return
+
+    const timer = setTimeout(() => {
+      timerFired.current = true
+      if (!userInteracted.current) {
+        setLeadRecovery(true)
+        setIsOpen(true)
+      }
+    }, 120_000)
+
+    return () => clearTimeout(timer)
+  }, [pathname])
+
+  function handleToggle() {
+    userInteracted.current = true
+    setIsOpen(o => !o)
+  }
 
   return (
     <div
@@ -34,14 +62,14 @@ export default function FloatingEnrollmentBot() {
               filter: 'drop-shadow(0 8px 40px rgba(7,13,79,0.18))',
             }}
           >
-            <EnrollmentBot />
+            <EnrollmentBot leadRecovery={leadRecovery} />
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Toggle button */}
       <motion.button
-        onClick={() => setIsOpen(o => !o)}
+        onClick={handleToggle}
         whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.96 }}
         aria-label={isOpen ? 'Close enrollment chat' : 'Open enrollment chat'}
@@ -87,9 +115,11 @@ export default function FloatingEnrollmentBot() {
           )}
         </AnimatePresence>
 
-        {/* Unread dot */}
+        {/* Notification dot — pulses when lead recovery fires */}
         {!isOpen && (
-          <span
+          <motion.span
+            animate={leadRecovery ? { scale: [1, 1.3, 1] } : {}}
+            transition={{ duration: 1, repeat: Infinity }}
             style={{
               position: 'absolute',
               top: 2,
@@ -97,7 +127,7 @@ export default function FloatingEnrollmentBot() {
               width: 14,
               height: 14,
               borderRadius: '50%',
-              background: '#ef4444',
+              background: leadRecovery ? '#f59e0b' : '#ef4444',
               border: '2px solid #fff',
               display: 'block',
             }}

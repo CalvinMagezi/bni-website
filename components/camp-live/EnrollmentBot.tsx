@@ -4,6 +4,12 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { submitEnrollment } from '@/app/actions/enrollment'
 
+const WA_URL = `https://wa.me/256791408459?text=${encodeURIComponent("Hi, I'm on the BNI website and need help with enrollment for the Rise & Thrive Bootcamp 2026.")}`
+
+const FIRST_TIME_MSG = "Hi there! 👋 I'm here to help you enroll in the Rise & Thrive Bootcamp 2026. It'll only take a minute."
+const RETURNING_MSG = "Welcome back! 👋 Registration for the Rise & Thrive Bootcamp 2026 is still open — ready to secure your son's spot?"
+const LEAD_RECOVERY_MSG = "Hey! 👀 I noticed you've been looking at enrollment. Need help with the Mobile Money or bank transfer payment process? I can walk you through it."
+
 const INTEREST_OPTIONS = [
   'Spiritual Growth',
   'Leadership Development',
@@ -24,15 +30,29 @@ const bubble = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 }
 
-export default function EnrollmentBot() {
+interface Props {
+  leadRecovery?: boolean
+}
+
+export default function EnrollmentBot({ leadRecovery = false }: Props) {
   const [step, setStep] = useState<Step>('intro')
   const [messages, setMessages] = useState<Message[]>([
-    { from: 'bot', text: "Hi there! 👋 I'm here to help you enroll in the Rise & Thrive Bootcamp 2026. It'll only take a minute. What's your name?" },
+    { from: 'bot', text: leadRecovery ? LEAD_RECOVERY_MSG : FIRST_TIME_MSG },
   ])
   const [input, setInput] = useState('')
   const [data, setData] = useState({ name: '', age: '', interest: '', parent: '' })
   const [isTyping, setIsTyping] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // Return visitor recognition — swap first-time greeting if they've visited before
+  useEffect(() => {
+    if (leadRecovery) return // lead recovery message takes priority
+    const isReturning = localStorage.getItem('bni_visited') === '1'
+    if (isReturning) {
+      setMessages([{ from: 'bot', text: RETURNING_MSG }])
+    }
+    localStorage.setItem('bni_visited', '1')
+  }, [leadRecovery])
 
   useEffect(() => {
     const el = containerRef.current
@@ -67,18 +87,13 @@ export default function EnrollmentBot() {
         userSay(val)
         setData(d => ({ ...d, age: val }))
         setStep('interest')
-        botSay("Great! Which area of the camp are you most excited about?")
+        botSay('Great! Which area of the camp are you most excited about?')
         break
       case 'parent':
         userSay(val)
         setData(d => ({ ...d, parent: val }))
         setStep('done')
-        submitEnrollment({
-          name: data.name,
-          age: data.age,
-          interest: data.interest,
-          parent_email: val,
-        })
+        submitEnrollment({ name: data.name, age: data.age, interest: data.interest, parent_email: val })
         botSay(
           `Perfect! Here's a summary of your intake:\n\n👤 Name: ${data.name}\n📅 Age: ${data.age}\n⭐ Interest: ${data.interest}\n📧 Parent email: ${val}\n\nTo secure your son's place, complete the full enrollment form below. Welcome to the Boys Network family! 🙌`,
           800
@@ -91,7 +106,7 @@ export default function EnrollmentBot() {
     userSay(choice)
     setData(d => ({ ...d, interest: choice }))
     setStep('parent')
-    botSay(`Awesome choice! Last one — what's a parent or guardian's email so we can send them the full details?`, 700)
+    botSay("Awesome choice! Last one — what's a parent or guardian's email so we can send them the full details?", 700)
   }
 
   function handleStart() {
@@ -127,15 +142,26 @@ export default function EnrollmentBot() {
             BNI Enrollment Assistant
           </p>
           <p className="text-white/60 text-xs" style={{ fontFamily: 'Inter, sans-serif' }}>
-            Rise & Thrive Bootcamp 2026
+            Rise &amp; Thrive Bootcamp 2026
           </p>
         </div>
-        <span
-          className="ml-auto text-xs font-bold px-2 py-1 rounded-full"
-          style={{ background: 'rgba(74,222,128,0.2)', color: '#4ade80', fontFamily: 'Inter, sans-serif' }}
-        >
-          ● Online
-        </span>
+        <div className="ml-auto flex flex-col items-end gap-1.5">
+          <span
+            className="text-xs font-bold px-2 py-1 rounded-full"
+            style={{ background: 'rgba(74,222,128,0.2)', color: '#4ade80', fontFamily: 'Inter, sans-serif' }}
+          >
+            ● Online
+          </span>
+          <a
+            href={WA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs"
+            style={{ color: 'rgba(255,255,255,0.65)', fontFamily: 'Inter, sans-serif', textDecoration: 'none', whiteSpace: 'nowrap' }}
+          >
+            💬 Talk to a human
+          </a>
+        </div>
       </div>
 
       {/* Messages */}
@@ -233,9 +259,9 @@ export default function EnrollmentBot() {
               value={input}
               onChange={e => setInput(e.target.value)}
               placeholder={
-                step === 'name' ? "Full name…" :
-                step === 'age' ? "e.g. 14 years / Grade 9…" :
-                "parent@email.com"
+                step === 'name' ? 'Full name…' :
+                step === 'age' ? 'e.g. 14 years / Grade 9…' :
+                'parent@email.com'
               }
               className="flex-1 text-sm outline-none"
               style={{
@@ -275,6 +301,18 @@ export default function EnrollmentBot() {
             Complete Full Enrollment →
           </a>
         )}
+      </div>
+
+      {/* WhatsApp footer — always visible */}
+      <div style={{ padding: '8px 16px 12px', textAlign: 'center' }}>
+        <a
+          href={WA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: '#9ca3af', textDecoration: 'none' }}
+        >
+          Prefer WhatsApp? <span style={{ color: '#25D366', fontWeight: 600 }}>Chat with us directly →</span>
+        </a>
       </div>
     </div>
   )
