@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { submitEnrollment } from '@/app/actions/enrollment'
+import { checkEnrollmentStatus } from '@/app/actions/enrollment-status'
 
 const WA_URL = `https://wa.me/256791408459?text=${encodeURIComponent("Hi, I'm on the BNI website and need help with enrollment for the Rise & Thrive Bootcamp 2026.")}`
 
@@ -18,7 +19,7 @@ const INTEREST_OPTIONS = [
   'All of the above',
 ]
 
-type Step = 'intro' | 'name' | 'age' | 'interest' | 'parent' | 'done'
+type Step = 'intro' | 'name' | 'age' | 'interest' | 'parent' | 'done' | 'status_email' | 'status_result'
 
 interface Message {
   from: 'bot' | 'user'
@@ -112,6 +113,30 @@ export default function EnrollmentBot({ leadRecovery = false }: Props) {
   function handleStart() {
     setStep('name')
     botSay("Great! Let's get started. 👆 First, what's the boy's full name?", 400)
+  }
+
+  function handleCheckStatus() {
+    setStep('status_email')
+    botSay("Sure! Enter the parent email address used during enrollment and I'll pull up the status.", 400)
+  }
+
+  async function handleStatusLookup(email: string) {
+    userSay(email)
+    setInput('')
+    setStep('status_result')
+    setIsTyping(true)
+    const result = await checkEnrollmentStatus(email)
+    setIsTyping(false)
+    if (!result.found) {
+      setMessages(prev => [...prev, { from: 'bot', text: `I couldn't find an enrollment for ${email}. Double-check the email or start a new enrollment below.` }])
+      setStep('intro')
+      return
+    }
+    const statusLabel = result.status === 'confirmed' ? '✅ Confirmed' : result.status === 'paid' ? '💰 Paid' : '⏳ Pending payment'
+    botSay(
+      `Found it! Here's ${result.boy_name}'s status:\n\n${statusLabel}\n\nIf payment is still pending, use ${result.payment_preference === 'airtel' ? 'Airtel Money code 4395441 (*185*9#)' : 'MTN MoMo code 657538 (*165*3#)'}.\n\nQuestions? WhatsApp us directly. 👇`,
+      0,
+    )
   }
 
   return (
@@ -218,13 +243,22 @@ export default function EnrollmentBot({ leadRecovery = false }: Props) {
       {/* Input area */}
       <div style={{ borderTop: '1px solid #f0f0f5', padding: '12px 16px' }}>
         {step === 'intro' && (
-          <button
-            onClick={handleStart}
-            className="w-full text-white font-bold text-sm py-3 rounded-full transition-opacity hover:opacity-90"
-            style={{ background: 'linear-gradient(135deg, #1f2fe6, #070d4f)', fontFamily: 'Space Grotesk, sans-serif' }}
-          >
-            Start Enrollment →
-          </button>
+          <div className="flex flex-col gap-2">
+            <button
+              onClick={handleStart}
+              className="w-full text-white font-bold text-sm py-3 rounded-full transition-opacity hover:opacity-90"
+              style={{ background: 'linear-gradient(135deg, #1f2fe6, #070d4f)', fontFamily: 'Space Grotesk, sans-serif' }}
+            >
+              Start Enrollment →
+            </button>
+            <button
+              onClick={handleCheckStatus}
+              className="w-full font-semibold text-sm py-2.5 rounded-full transition-opacity hover:opacity-80"
+              style={{ border: '1.5px solid #d1d5db', color: '#6b7280', background: 'transparent', fontFamily: 'Inter, sans-serif', cursor: 'pointer' }}
+            >
+              Check my registration status
+            </button>
+          </div>
         )}
 
         {step === 'interest' && (
@@ -248,6 +282,29 @@ export default function EnrollmentBot({ leadRecovery = false }: Props) {
               </button>
             ))}
           </div>
+        )}
+
+        {step === 'status_email' && (
+          <form
+            onSubmit={e => { e.preventDefault(); if (input.trim()) handleStatusLookup(input.trim()) }}
+            className="flex gap-2"
+          >
+            <input
+              type="email"
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              placeholder="parent@email.com"
+              className="flex-1 text-sm outline-none"
+              style={{ border: '1.5px solid #e8eaf0', borderRadius: '100px', padding: '10px 16px', fontFamily: 'Inter, sans-serif', color: '#1a1a2e' }}
+              autoFocus
+            />
+            <button
+              type="submit"
+              style={{ background: '#1f2fe6', borderRadius: '100px', padding: '10px 18px', color: '#fff', fontFamily: 'Space Grotesk, sans-serif', fontSize: 13, fontWeight: 700, cursor: 'pointer', border: 'none' }}
+            >
+              Check
+            </button>
+          </form>
         )}
 
         {(step === 'name' || step === 'age' || step === 'parent') && (

@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/lib/supabase/server'
+import { sendEnrollmentConfirmation } from './send-email'
 
 export interface FullEnrollmentData {
   boy_name: string
@@ -59,5 +60,14 @@ export async function submitFullEnrollment(data: FullEnrollmentData) {
     status: 'pending',
   })
   if (error) return { success: false, error: error.message }
+
+  // Fire confirmation email — non-blocking, failure is silent
+  sendEnrollmentConfirmation({
+    parent_email: data.parent_email,
+    parent_name: data.parent_name,
+    boy_name: data.boy_name,
+    payment_preference: data.payment_preference ?? null,
+  }).catch(() => {})
+
   return { success: true }
 }
