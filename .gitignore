@@ -26,3 +26,11 @@ next-env.d.ts
 # misc
 .DS_Store
 *.pem
+
+# local dev artifacts
+.playwright-mcp/
+screenshots/
+*.png
+*.gif
+download.html
+excalidraw.log

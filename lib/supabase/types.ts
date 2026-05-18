@@ -89,6 +89,36 @@ export type EnrollmentIntake = {
   created_at: string
 }
 
+export type Enrollment = {
+  id: string
+  boy_name: string
+  boy_age: string | null
+  boy_dob: string | null
+  school: string | null
+  grade: string | null
+  district: string | null
+  interests: string | null
+  dietary_needs: string | null
+  medical_conditions: string | null
+  can_swim: boolean | null
+  parent_name: string
+  relationship: string | null
+  parent_phone: string | null
+  parent_whatsapp: string | null
+  parent_email: string
+  emergency_name: string | null
+  emergency_phone: string | null
+  emergency_relationship: string | null
+  photo_consent: boolean
+  medical_consent: boolean
+  rules_accepted: boolean
+  terms_accepted: boolean
+  payment_preference: string | null
+  notes: string | null
+  status: string
+  created_at: string
+}
+
 export type Database = {
   public: {
     Tables: {
@@ -144,6 +174,86 @@ export type Database = {
         Row: EnrollmentIntake
         Insert: Omit<EnrollmentIntake, 'id' | 'created_at'>
         Update: Record<string, never>
+        Relationships: []
+      }
+      enrollments: {
+        Row: Enrollment
+        Insert: Omit<Enrollment, 'id' | 'created_at'>
+        Update: Partial<Omit<Enrollment, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      camp_feedback: {
+        Row: {
+          id: string
+          parent_name: string
+          parent_email: string
+          son_name: string
+          rating: number
+          improvements: string | null
+          would_recommend: boolean
+          comments: string | null
+          created_at: string
+        }
+        Insert: {
+          parent_name: string
+          parent_email: string
+          son_name: string
+          rating: number
+          improvements?: string | null
+          would_recommend: boolean
+          comments?: string | null
+        }
+        Update: Record<string, never>
+        Relationships: []
+      }
+      magazine_issues: {
+        Row: {
+          id: string
+          title: string
+          issue_number: string | null
+          description: string | null
+          pdf_url: string
+          cover_image_url: string | null
+          published_date: string | null
+          is_featured: boolean
+          created_at: string
+        }
+        Insert: {
+          title: string
+          issue_number?: string | null
+          description?: string | null
+          pdf_url: string
+          cover_image_url?: string | null
+          published_date?: string | null
+          is_featured?: boolean
+        }
+        Update: Partial<{
+          title: string
+          issue_number: string | null
+          description: string | null
+          pdf_url: string
+          cover_image_url: string | null
+          published_date: string | null
+          is_featured: boolean
+        }>
+        Relationships: []
+      }
+      site_settings: {
+        Row: {
+          key: string
+          value: string
+          updated_at: string
+        }
+        Insert: {
+          key: string
+          value: string
+          updated_at?: string
+        }
+        Update: {
+          key?: string
+          value?: string
+          updated_at?: string
+        }
         Relationships: []
       }
     }
