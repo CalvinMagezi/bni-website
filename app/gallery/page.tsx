@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
+import SafeImage from '@/components/shared/SafeImage'
 import PageHero from '@/components/layout/PageHero'
 import CTABanner from '@/components/shared/CTABanner'
+import EmptyState from '@/components/shared/EmptyState'
 import { StaggerGrid, StaggerItem } from '@/components/shared/Animate'
 import { createClient } from '@/lib/supabase/server'
 
@@ -25,14 +26,37 @@ export default async function GalleryPage() {
     .select('*')
     .order('created_at', { ascending: false })
 
+  const albums = collections ?? []
+
+  const heroSubtitle =
+    albums.length > 0
+      ? `Moments from our camps and events — ${albums.length} ${albums.length === 1 ? 'album' : 'albums'}`
+      : 'Moments from our camps and events'
+
+  // A lone card in a 3-column grid floats in dead space, so a sparse set
+  // collapses to a centered, width-capped layout sized to its item count.
+  const gridClassName =
+    albums.length === 1
+      ? 'grid grid-cols-1 gap-6 max-w-sm mx-auto'
+      : albums.length === 2
+        ? 'grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto'
+        : 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
+
   return (
     <>
-      <PageHero title="Gallery" />
+      <PageHero title="Gallery" subtitle={heroSubtitle} />
 
       <section style={{ background: '#ffffff', padding: '80px 0' }}>
-        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
-          <StaggerGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {(collections ?? []).map((col) => (
+        <div className="section-inner max-w-7xl mx-auto" style={{ padding: '0 40px' }}>
+          {albums.length === 0 ? (
+            <EmptyState
+              icon="📸"
+              title="No albums yet"
+              description="Photos and moments from our camps will appear here. Check back after the next Rise & Thrive Bootcamp."
+            />
+          ) : (
+          <StaggerGrid className={gridClassName}>
+            {albums.map((col) => (
               <StaggerItem key={col.slug}>
               <Link
                 href={`/gallery/${col.slug}`}
@@ -42,12 +66,10 @@ export default async function GalleryPage() {
                   className="relative w-full overflow-hidden mb-4"
                   style={{ borderRadius: '12px', aspectRatio: '4/3' }}
                 >
-                  <Image
+                  <SafeImage
                     src={col.cover_image}
                     alt={`Cover image for ${col.title}`}
-                    fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    unoptimized
                   />
                   {/* Hover overlay with "Discover More" label */}
                   <div
@@ -85,6 +107,7 @@ export default async function GalleryPage() {
               </StaggerItem>
             ))}
           </StaggerGrid>
+          )}
         </div>
       </section>
 

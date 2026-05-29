@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import PageHero from '@/components/layout/PageHero'
+import SafeImage from '@/components/shared/SafeImage'
 import MeetFounders from '@/components/shared/MeetFounders'
 import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, SlideLeft, SlideRight, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
+import { PrayingHands, Crown, Coins, Handshake } from '@/components/shared/Icons'
 
 export const metadata: Metadata = {
   title: 'About Us',
@@ -20,32 +22,36 @@ export const metadata: Metadata = {
 
 const whatWeDo = [
   {
-    icon: '🙏',
+    Icon: PrayingHands,
     title: 'Spiritual Growth',
     description: 'Through daily fellowship, guided Bible reflection, and devotions that anchor identity and purpose in faith.',
     accent: '#eef0fd',
     accentBorder: 'rgba(31,47,230,0.12)',
+    iconColor: '#1f2fe6',
   },
   {
-    icon: '👑',
+    Icon: Crown,
     title: 'Leadership Development',
     description: 'Via hands-on challenges, role-playing scenarios, and one-on-one mentorship from experienced leaders.',
     accent: '#fdf6ee',
     accentBorder: 'rgba(245,158,11,0.2)',
+    iconColor: '#070d4f',
   },
   {
-    icon: '💰',
+    Icon: Coins,
     title: 'Financial & Life Literacy',
     description: 'Including entrepreneurship, budgeting, personal grooming, and career exploration — practical skills for real life.',
     accent: '#eefdf4',
     accentBorder: 'rgba(16,185,129,0.2)',
+    iconColor: '#070d4f',
   },
   {
-    icon: '🤝',
+    Icon: Handshake,
     title: 'Community Engagement',
     description: 'That fosters empathy and a servant-leader mindset, building lifelong friendships and a culture of giving back.',
     accent: '#fdeef0',
     accentBorder: 'rgba(239,68,68,0.15)',
+    iconColor: '#1f2fe6',
   },
 ]
 
@@ -165,12 +171,10 @@ export default function AboutPage() {
             className="relative w-full"
             style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3' }}
           >
-            <Image
+            <SafeImage
               src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
               alt="Boys participating in leadership and outdoor development activities"
-              fill
               className="object-cover"
-              unoptimized
             />
           </div>
           </SlideRight>
@@ -222,10 +226,10 @@ export default function AboutPage() {
                       height: 56,
                       borderRadius: '16px',
                       background: item.accent,
-                      fontSize: 26,
+                      color: item.iconColor,
                     }}
                   >
-                    {item.icon}
+                    <item.Icon size={28} />
                   </div>
                   <h4
                     className="text-bni-navy font-bold text-lg mb-3"

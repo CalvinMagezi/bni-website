@@ -1,5 +1,5 @@
-import Image from 'next/image'
 import { FadeUp, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
+import SafeImage from '@/components/shared/SafeImage'
 import { createClient } from '@/lib/supabase/server'
 
 interface MeetFoundersProps {
@@ -64,22 +64,12 @@ export default async function MeetFounders({ heading = 'Meet the Founders' }: Me
                   position: 'relative',
                   border: '2px solid rgba(255,255,255,0.15)',
                 }}>
-                  {founder.image_url ? (
-                    <Image
-                      src={founder.image_url}
-                      alt={`${founder.name}`}
-                      fill
-                      style={{ objectFit: 'cover', objectPosition: 'top' }}
-                      unoptimized
-                    />
-                  ) : (
-                    <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                      <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                        <circle cx="20" cy="16" r="9" fill="rgba(255,255,255,0.2)" />
-                        <ellipse cx="20" cy="36" rx="14" ry="8" fill="rgba(255,255,255,0.2)" />
-                      </svg>
-                    </div>
-                  )}
+                  <SafeImage
+                    src={founder.image_url}
+                    alt={founder.name}
+                    fallback="avatar"
+                    objectPosition="top"
+                  />
                 </div>
 
                 {/* Text */}

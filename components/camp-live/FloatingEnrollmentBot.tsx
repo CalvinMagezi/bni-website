@@ -39,12 +39,14 @@ export default function FloatingEnrollmentBot() {
     <div
       style={{
         position: 'fixed',
-        bottom: 24,
-        left: 24,
-        zIndex: 9999,
+        // Upper slot of the right-side FAB stack; +68px clears the 56px WhatsApp
+        // button below plus a 12px gap.
+        bottom: 'calc(24px + 68px + env(safe-area-inset-bottom))',
+        right: 24,
+        zIndex: 1001,
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'flex-end',
         gap: 12,
       }}
     >
@@ -58,7 +60,7 @@ export default function FloatingEnrollmentBot() {
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
             style={{
               width: 'min(380px, calc(100vw - 48px))',
-              transformOrigin: 'bottom left',
+              transformOrigin: 'bottom right',
               filter: 'drop-shadow(0 8px 40px rgba(7,13,79,0.18))',
             }}
           >
@@ -99,7 +101,9 @@ export default function FloatingEnrollmentBot() {
               transition={{ duration: 0.18 }}
               style={{ lineHeight: 1, display: 'block' }}
             >
-              ✕
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6 6 18M6 6l12 12" />
+              </svg>
             </motion.span>
           ) : (
             <motion.span
@@ -108,17 +112,19 @@ export default function FloatingEnrollmentBot() {
               animate={{ rotate: 0, opacity: 1 }}
               exit={{ rotate: -90, opacity: 0 }}
               transition={{ duration: 0.18 }}
-              style={{ lineHeight: 1, display: 'block', fontSize: 24 }}
+              style={{ lineHeight: 1, display: 'block' }}
             >
-              🏕️
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+              </svg>
             </motion.span>
           )}
         </AnimatePresence>
 
-        {/* Notification dot — pulses when lead recovery fires */}
-        {!isOpen && (
+        {/* Dot only signals a real lead-recovery notification, never an idle state */}
+        {!isOpen && leadRecovery && (
           <motion.span
-            animate={leadRecovery ? { scale: [1, 1.3, 1] } : {}}
+            animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 1, repeat: Infinity }}
             style={{
               position: 'absolute',
@@ -127,7 +133,7 @@ export default function FloatingEnrollmentBot() {
               width: 14,
               height: 14,
               borderRadius: '50%',
-              background: leadRecovery ? '#f59e0b' : '#ef4444',
+              background: '#f59e0b',
               border: '2px solid #fff',
               display: 'block',
             }}

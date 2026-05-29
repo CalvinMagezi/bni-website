@@ -5,6 +5,7 @@ import PageHero from '@/components/layout/PageHero'
 import FoundationalPillars from '@/components/shared/FoundationalPillars'
 import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, SlideLeft, SlideRight } from '@/components/shared/Animate'
+import { Clock, Users, ClipboardList } from '@/components/shared/Icons'
 
 export const metadata: Metadata = {
   title: 'Rise & Thrive Bootcamp',
@@ -22,9 +23,9 @@ export const metadata: Metadata = {
 const ENROLL_URL = '/enroll'
 
 const stats = [
-  { icon: '⏱', label: 'Duration', value: '7 days' },
-  { icon: '👦', label: 'Number', value: '150 boys' },
-  { icon: '📋', label: 'Classes', value: '16' },
+  { Icon: Clock, label: 'Duration', value: '7 days' },
+  { Icon: Users, label: 'Number', value: '150 boys' },
+  { Icon: ClipboardList, label: 'Classes', value: '16' },
 ]
 
 const highlights = [
@@ -107,7 +108,7 @@ export default function ProgramsPage() {
                   style={{ background: '#f3f4f8' }}
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-xl">{s.icon}</span>
+                    <s.Icon size={22} className="text-bni-blue" />
                     <span
                       className="text-bni-slate text-sm font-medium"
                       style={{ fontFamily: 'Inter, sans-serif' }}

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { FadeUp, FadeIn, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
+import SafeImage from '@/components/shared/SafeImage'
 import NewsletterSignup from '@/components/camp-live/NewsletterSignup'
 import FloatingEnrollmentBot from '@/components/camp-live/FloatingEnrollmentBot'
 import CTABanner from '@/components/shared/CTABanner'
@@ -93,12 +93,11 @@ export default async function CampLivePage() {
                       border: '2.5px solid #fafafa',
                     }}
                   >
-                    <Image
+                    <SafeImage
                       src={story.image_url}
                       alt={story.label}
-                      fill
                       className="object-cover object-top group-hover:scale-110 transition-transform duration-300"
-                      unoptimized
+                      objectPosition="top"
                     />
                   </div>
                 </div>
@@ -163,7 +162,7 @@ export default async function CampLivePage() {
                         }}
                       >
                         {post.avatar_url ? (
-                          <Image src={post.avatar_url} alt={post.author} fill className="object-cover object-top" unoptimized />
+                          <SafeImage src={post.avatar_url} alt={post.author} fallback="avatar" objectPosition="top" />
                         ) : (
                           <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%', fontSize: 22 }}>
                             {post.avatar_emoji}
@@ -207,12 +206,11 @@ export default async function CampLivePage() {
                             aspectRatio: post.image_aspect === 'portrait' ? '4/5' : '16/9',
                           }}
                         >
-                          <Image
+                          <SafeImage
                             src={post.image_url}
                             alt={`Camp photo by ${post.author}`}
-                            fill
                             className="object-cover object-top"
-                            unoptimized
+                            objectPosition="top"
                           />
                         </div>
                       </div>

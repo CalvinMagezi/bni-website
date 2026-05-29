@@ -39,7 +39,7 @@ const empty: FormData = {
 const inputStyle: React.CSSProperties = {
   width: '100%', border: '1.5px solid #e5e7eb', borderRadius: '10px',
   padding: '11px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px',
-  color: '#1a1a2e', outline: 'none', background: '#ffffff',
+  color: '#1a1a2e', background: '#ffffff',
 }
 
 const labelStyle: React.CSSProperties = {

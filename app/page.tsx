@@ -39,6 +39,7 @@ const organizationSchema = {
   sameAs: [
     'https://instagram.com/boysnetworkint',
     'https://twitter.com/BoysNetworkInt',
+    'https://ug.linkedin.com/in/the-boys-network-international-9790a5375',
   ],
 }
 
@@ -250,24 +251,6 @@ export default function HomePage() {
             <div className="relative shrink-0" style={{ height: '82px', width: '250px' }}>
               <Image
                 src="https://framerusercontent.com/images/y9Lt3M9oqgQXMYtQiFooT0GYDgg.png"
-                alt="Partner organisation logo"
-                fill
-                className="object-contain"
-                unoptimized
-              />
-            </div>
-            <div className="relative shrink-0" style={{ height: '81px', width: '109px' }}>
-              <Image
-                src="https://framerusercontent.com/images/yzzkyPvETMdlNXHs0OmoTu55JqM.png"
-                alt="Partner organisation logo"
-                fill
-                className="object-contain"
-                unoptimized
-              />
-            </div>
-            <div className="relative shrink-0" style={{ height: '82px', width: '250px' }}>
-              <Image
-                src="https://framerusercontent.com/images/uBZGDq1rg3z7Qng5fQAXN8tBMM.png"
                 alt="Partner organisation logo"
                 fill
                 className="object-contain"

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
+import EmptyState from '@/components/shared/EmptyState'
 
 export const metadata: Metadata = {
   title: 'TBNI Magazine',
@@ -33,11 +34,31 @@ export default async function MagazinePage() {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
 
           {rows.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '80px 0' }}>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: '#9ca3af' }}>
-                No magazine issues published yet. Check back soon!
-              </p>
-            </div>
+            <EmptyState
+              icon="📖"
+              title="No issues published yet"
+              description="Our first magazine issue is on its way. Check back soon for stories and updates from the BNI community."
+              action={
+                <Link
+                  href="/enroll"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'linear-gradient(135deg, #1f2fe6, #070d4f)',
+                    color: '#ffffff',
+                    borderRadius: '100px',
+                    padding: '11px 22px',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                  }}
+                >
+                  Join the community →
+                </Link>
+              }
+            />
           ) : (
             <>
               {/* Featured issue */}

@@ -16,7 +16,7 @@ export default function WhatsAppWidget() {
       aria-label="Chat with us on WhatsApp"
       style={{
         position: 'fixed',
-        bottom: '28px',
+        bottom: 'calc(24px + env(safe-area-inset-bottom))',
         right: '24px',
         zIndex: 1000,
         width: '56px',
