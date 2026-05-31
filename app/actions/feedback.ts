@@ -26,3 +26,28 @@ export async function submitFeedback(data: FeedbackData) {
   if (error) return { success: false, error: error.message }
   return { success: true }
 }
+
+export interface CamperFeedbackData {
+  camper_name: string
+  age?: string
+  rating: number
+  favorite_part?: string
+  improvements?: string
+  would_return: boolean
+  comments?: string
+}
+
+export async function submitCamperFeedback(data: CamperFeedbackData) {
+  const supabase = await createClient()
+  const { error } = await supabase.from('camper_feedback').insert({
+    camper_name: data.camper_name,
+    age: data.age || null,
+    rating: data.rating,
+    favorite_part: data.favorite_part || null,
+    improvements: data.improvements || null,
+    would_return: data.would_return,
+    comments: data.comments || null,
+  })
+  if (error) return { success: false, error: error.message }
+  return { success: true }
+}

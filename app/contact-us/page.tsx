@@ -53,7 +53,7 @@ const paymentOptions = [
 ]
 
 const socialLinks = [
-  { label: 'TikTok', href: 'https://www.tiktok.com/@boysnetworkinternational', Icon: TikTok },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@boysnetworkint', Icon: TikTok },
   { label: 'Instagram', href: 'https://instagram.com/boysnetworkint', Icon: Instagram },
   { label: 'X / Twitter', href: 'https://twitter.com/BoysNetworkInt', Icon: XTwitter },
   { label: 'LinkedIn', href: 'https://ug.linkedin.com/in/the-boys-network-international-9790a5375', Icon: LinkedIn },

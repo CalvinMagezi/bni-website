@@ -45,6 +45,19 @@ create table if not exists camp_feedback (
   created_at timestamptz not null default now()
 );
 
+-- Post-camp feedback from the campers themselves
+create table if not exists camper_feedback (
+  id uuid primary key default gen_random_uuid(),
+  camper_name text not null,
+  age text,
+  rating integer not null,
+  favorite_part text,
+  improvements text,
+  would_return boolean not null default true,
+  comments text,
+  created_at timestamptz not null default now()
+);
+
 -- Magazine/newsletter PDFs managed from admin
 create table if not exists magazine_issues (
   id uuid primary key default gen_random_uuid(),
@@ -76,6 +89,7 @@ on conflict (key) do nothing;
 -- RLS: admin reads all, public inserts only (enrollments, feedback, camp_feedback)
 alter table enrollments     enable row level security;
 alter table camp_feedback   enable row level security;
+alter table camper_feedback enable row level security;
 alter table magazine_issues enable row level security;
 alter table site_settings   enable row level security;
 
@@ -86,12 +100,18 @@ create policy if not exists "public insert enrollments"
 create policy if not exists "public insert feedback"
   on camp_feedback for insert to anon with check (true);
 
+create policy if not exists "public insert camper feedback"
+  on camper_feedback for insert to anon with check (true);
+
 -- Allow authenticated (admin) to read/write everything
 create policy if not exists "admin all enrollments"
   on enrollments for all to authenticated using (true) with check (true);
 
 create policy if not exists "admin all feedback"
   on camp_feedback for all to authenticated using (true) with check (true);
+
+create policy if not exists "admin all camper feedback"
+  on camper_feedback for all to authenticated using (true) with check (true);
 
 create policy if not exists "admin all magazine"
   on magazine_issues for all to authenticated using (true) with check (true);

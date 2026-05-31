@@ -119,6 +119,18 @@ export type Enrollment = {
   created_at: string
 }
 
+export type CamperFeedback = {
+  id: string
+  camper_name: string
+  age: string | null
+  rating: number
+  favorite_part: string | null
+  improvements: string | null
+  would_return: boolean
+  comments: string | null
+  created_at: string
+}
+
 export type Database = {
   public: {
     Tables: {
@@ -203,6 +215,12 @@ export type Database = {
           would_recommend: boolean
           comments?: string | null
         }
+        Update: Record<string, never>
+        Relationships: []
+      }
+      camper_feedback: {
+        Row: CamperFeedback
+        Insert: Omit<CamperFeedback, 'id' | 'created_at'>
         Update: Record<string, never>
         Relationships: []
       }

@@ -10,6 +10,7 @@ const navItems = [
   { href: '/admin/enrollments', label: 'Enrollments', icon: '🎒' },
   { href: '/admin/newsletters', label: 'Newsletters', icon: '📨' },
   { href: '/admin/newsletters/feedback', label: 'Parent Feedback', icon: '💬' },
+  { href: '/admin/newsletters/camper-feedback', label: 'Camper Feedback', icon: '🙋' },
   { href: '/admin/magazine', label: 'Magazine', icon: '📚' },
   { href: '/admin/gallery', label: 'Gallery', icon: '🖼️' },
   { href: '/admin/team', label: 'Team', icon: '👥' },
