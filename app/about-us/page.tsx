@@ -1,51 +1,57 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import PageHero from '@/components/layout/PageHero'
+import SafeImage from '@/components/shared/SafeImage'
 import MeetFounders from '@/components/shared/MeetFounders'
 import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, SlideLeft, SlideRight, StaggerGrid, StaggerItem } from '@/components/shared/Animate'
+import { PrayingHands, Crown, Coins, Handshake } from '@/components/shared/Icons'
 
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Boys Network International is a faith-based mentorship organisation committed to raising the next generation of grounded, confident, and purpose-driven young men in Uganda.',
+    'The Boys Network International is a faith-based mentorship organisation committed to raising the next generation of grounded, confident, and purpose-driven young men in Uganda.',
   alternates: { canonical: 'https://boysnetworkinternational.com/about-us' },
   openGraph: {
-    title: 'About Us | Boys Network International',
+    title: 'About Us | The Boys Network International',
     description: 'Faith-based mentorship and leadership organisation raising purpose-driven young men in Uganda.',
     url: 'https://boysnetworkinternational.com/about-us',
-    images: [{ url: 'https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg', width: 1200, height: 800, alt: 'Boys Network International mentorship' }],
+    images: [{ url: 'https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg', width: 1200, height: 800, alt: 'The Boys Network International mentorship' }],
   },
 }
 
 const whatWeDo = [
   {
-    icon: '🙏',
+    Icon: PrayingHands,
     title: 'Spiritual Growth',
     description: 'Through daily fellowship, guided Bible reflection, and devotions that anchor identity and purpose in faith.',
     accent: '#eef0fd',
     accentBorder: 'rgba(31,47,230,0.12)',
+    iconColor: '#1f2fe6',
   },
   {
-    icon: '👑',
+    Icon: Crown,
     title: 'Leadership Development',
     description: 'Via hands-on challenges, role-playing scenarios, and one-on-one mentorship from experienced leaders.',
     accent: '#fdf6ee',
     accentBorder: 'rgba(245,158,11,0.2)',
+    iconColor: '#070d4f',
   },
   {
-    icon: '💰',
+    Icon: Coins,
     title: 'Financial & Life Literacy',
-    description: 'Including entrepreneurship, budgeting, personal grooming, and career exploration — practical skills for real life.',
+    description: 'Including entrepreneurship, budgeting, personal grooming, and career exploration: practical skills for real life.',
     accent: '#eefdf4',
     accentBorder: 'rgba(16,185,129,0.2)',
+    iconColor: '#070d4f',
   },
   {
-    icon: '🤝',
+    Icon: Handshake,
     title: 'Community Engagement',
     description: 'That fosters empathy and a servant-leader mindset, building lifelong friendships and a culture of giving back.',
     accent: '#fdeef0',
     accentBorder: 'rgba(239,68,68,0.15)',
+    iconColor: '#1f2fe6',
   },
 ]
 
@@ -72,7 +78,7 @@ export default function AboutPage() {
               className="text-bni-slate text-base leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              Boys Network International (BNI) is a faith-based mentorship and leadership
+              The Boys Network International (TBNI) is a faith-based mentorship and leadership
               organisation committed to raising the next generation of grounded, confident, and
               purpose-driven young men. We are a community of mentors, educators, coaches, and
               professionals dedicated to nurturing the spiritual, intellectual, emotional, and
@@ -129,7 +135,7 @@ export default function AboutPage() {
               className="text-bni-slate text-base leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              A future where every boy becomes a compassionate and capable leader — grounded in
+              A future where every boy becomes a compassionate and capable leader, grounded in
               faith, character, and community.
             </p>
           </div>
@@ -165,12 +171,10 @@ export default function AboutPage() {
             className="relative w-full"
             style={{ borderRadius: '16px', overflow: 'hidden', aspectRatio: '4/3' }}
           >
-            <Image
+            <SafeImage
               src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
               alt="Boys participating in leadership and outdoor development activities"
-              fill
               className="object-cover"
-              unoptimized
             />
           </div>
           </SlideRight>
@@ -222,10 +226,10 @@ export default function AboutPage() {
                       height: 56,
                       borderRadius: '16px',
                       background: item.accent,
-                      fontSize: 26,
+                      color: item.iconColor,
                     }}
                   >
-                    {item.icon}
+                    <item.Icon size={28} />
                   </div>
                   <h4
                     className="text-bni-navy font-bold text-lg mb-3"
@@ -267,8 +271,8 @@ export default function AboutPage() {
             <strong className="text-white">how to succeed</strong>, but how to{' '}
             <strong className="text-white">lead with character</strong>,{' '}
             <strong className="text-white">live with purpose</strong>, and{' '}
-            <strong className="text-white">build meaningful relationships</strong>. Boys Network
-            International exists to fill that gap — walking with boys on their journey to manhood.
+            <strong className="text-white">build meaningful relationships</strong>. The Boys Network
+            International exists to fill that gap, walking with boys on their journey to manhood.
             </p>
           </FadeUp>
         </div>

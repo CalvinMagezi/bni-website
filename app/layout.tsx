@@ -4,7 +4,7 @@ import SiteChrome from './SiteChrome'
 
 const OG_IMAGE = 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg'
 const SITE_URL = 'https://boysnetworkinternational.com'
-const SITE_NAME = 'Boys Network International'
+const SITE_NAME = 'The Boys Network International'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    'Boys Network International empowers boys through faith-based mentorship, leadership development and the Rise & Thrive Bootcamp — raising purpose-driven young men in Uganda.',
+    'The Boys Network International empowers boys through faith-based mentorship, leadership development and the Rise & Thrive Bootcamp, raising purpose-driven young men in Uganda.',
   keywords: [
     'boys mentorship Uganda',
     'faith-based camp Uganda',
     'boys leadership development',
     'Rise and Thrive Bootcamp',
-    'Boys Network International',
+    'The Boys Network International',
     'Christian mentorship boys',
     'youth development Uganda',
   ],

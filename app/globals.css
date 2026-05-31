@@ -31,6 +31,31 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
+/* Reserve a page-level gutter so end-of-page content and CTAs clear the fixed
+   FAB stack (WhatsApp + enrollment bot) docked bottom-right. */
+main {
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
+}
+
+/* Keep a footer allowance for footer-internal content above the home bar. */
+footer {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+}
+
+/* Site-wide form accessibility baseline: visible focus ring for keyboard users
+   and placeholder text that meets contrast. */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #1f2fe6;
+  outline-offset: 2px;
+}
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
 /* ── Scrollbar hide utility ─────────────────────────────────── */
 .scrollbar-hide {
   -ms-overflow-style: none;
@@ -78,6 +103,14 @@ h1, h2, h3, h4, h5, h6 {
   /* Sidebar cards — reduce internal padding on mobile */
   .sidebar-card {
     padding: 16px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab-dock {
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
   }
 }
 

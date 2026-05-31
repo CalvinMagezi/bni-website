@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Logo from '@/components/shared/Logo'
 
 const navLinks = [
@@ -10,11 +11,26 @@ const navLinks = [
   { label: 'Programs', href: '/programs' },
   { label: 'Magazine', href: '/magazine' },
   { label: 'Contact', href: '/contact-us' },
-  { label: '🔴 Camp Live', href: '/camp-live' },
+  { label: 'Camp Live', href: '/camp-live', live: true },
 ]
+
+function LiveDot() {
+  return (
+    <span
+      aria-hidden="true"
+      className="inline-block rounded-full animate-pulse"
+      style={{ width: '8px', height: '8px', background: '#ef4444', marginRight: '7px' }}
+    />
+  )
+}
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  // Home matches only the exact root; other links match their path or any nested route.
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`)
 
   return (
     <header
@@ -33,16 +49,16 @@ export default function Navbar() {
         style={{
           backdropFilter: 'blur(55px)',
           WebkitBackdropFilter: 'blur(55px)',
-          background: 'rgba(117, 117, 117, 0.05)',
+          background: 'rgba(7, 13, 79, 0.55)',
           borderRadius: '99px',
           border: '1px solid rgba(255,255,255,0.12)',
           padding: '0 20px',
           height: '60px',
         }}
       >
-        {/* Logo — exact SVG from original site (white paths) */}
+        {/* Logo — mark-only variant stays crisp at navbar size; wordmark text is dropped */}
         <Link href="/" className="flex items-center shrink-0">
-          <Logo className="h-8 w-auto" style={{ width: 'auto', height: '32px' }} />
+          <Logo variant="mark" className="h-[34px] w-auto" />
         </Link>
 
         {/* Desktop Nav — absolutely centered within the pill */}
@@ -50,16 +66,39 @@ export default function Navbar() {
           className="hidden md:flex items-center gap-8"
           style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)' }}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium transition-colors hover:text-white"
-              style={{ fontFamily: 'Inter, sans-serif', color: 'rgba(255,255,255,0.9)' }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = isActive(link.href)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? 'page' : undefined}
+                className="relative inline-flex items-center text-sm font-medium transition-colors hover:text-white"
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  color: active ? '#ffffff' : 'rgba(255,255,255,0.9)',
+                }}
+                aria-label={link.live ? 'Camp Live (live now)' : undefined}
+              >
+                {link.live && <LiveDot />}
+                {link.label}
+                {active && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute rounded-full"
+                    style={{
+                      width: '4px',
+                      height: '4px',
+                      background: '#ffffff',
+                      bottom: '-7px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                    }}
+                  />
+                )}
+              </Link>
+            )
+          })}
         </nav>
 
         {/* Enroll Now */}
@@ -111,24 +150,37 @@ export default function Navbar() {
             padding: '8px 24px 24px',
           }}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="flex items-center border-b border-white/10 last:border-0"
-              style={{
-                fontFamily: 'Inter, sans-serif',
-                color: 'rgba(255,255,255,0.92)',
-                fontSize: '17px',
-                fontWeight: 500,
-                padding: '16px 0',
-                letterSpacing: '-0.01em',
-              }}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const active = isActive(link.href)
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={active ? 'page' : undefined}
+                className="flex items-center border-b border-white/10 last:border-0"
+                style={{
+                  fontFamily: 'Inter, sans-serif',
+                  color: active ? '#ffffff' : 'rgba(255,255,255,0.92)',
+                  fontSize: '17px',
+                  fontWeight: active ? 700 : 500,
+                  padding: '16px 0',
+                  letterSpacing: '-0.01em',
+                }}
+                onClick={() => setMenuOpen(false)}
+                aria-label={link.live ? 'Camp Live (live now)' : undefined}
+              >
+                {active && !link.live && (
+                  <span
+                    aria-hidden="true"
+                    className="inline-block rounded-full"
+                    style={{ width: '6px', height: '6px', background: '#ffffff', marginRight: '10px' }}
+                  />
+                )}
+                {link.live && <LiveDot />}
+                {link.label}
+              </Link>
+            )
+          })}
           <Link
             href="/programs"
             className="inline-flex items-center justify-center text-white font-bold mt-5"

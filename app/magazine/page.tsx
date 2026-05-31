@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import PageHero from '@/components/layout/PageHero'
+import EmptyState from '@/components/shared/EmptyState'
 
 export const metadata: Metadata = {
   title: 'TBNI Magazine',
-  description: 'Read the Boys Network International magazine — stories, updates, and inspiration from the BNI community.',
+  description: 'Read The Boys Network International magazine: stories, updates, and inspiration from the TBNI community.',
   alternates: { canonical: 'https://boysnetworkinternational.com/magazine' },
 }
 
@@ -26,18 +27,38 @@ export default async function MagazinePage() {
     <>
       <PageHero
         title="TBNI Magazine"
-        subtitle="Stories, inspiration, and updates from the Boys Network community"
+        subtitle="Stories, inspiration, and updates from The Boys Network International community"
       />
 
       <section style={{ background: '#f8f9fb', padding: '64px 0 80px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 40px' }}>
 
           {rows.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '80px 0' }}>
-              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: '#9ca3af' }}>
-                No magazine issues published yet. Check back soon!
-              </p>
-            </div>
+            <EmptyState
+              icon="📖"
+              title="No issues published yet"
+              description="Our first magazine issue is on its way. Check back soon for stories and updates from the TBNI community."
+              action={
+                <Link
+                  href="/enroll"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'linear-gradient(135deg, #1f2fe6, #070d4f)',
+                    color: '#ffffff',
+                    borderRadius: '100px',
+                    padding: '11px 22px',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    fontSize: '14px',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                  }}
+                >
+                  Join the community →
+                </Link>
+              }
+            />
           ) : (
             <>
               {/* Featured issue */}
@@ -56,7 +77,7 @@ export default async function MagazinePage() {
                     }}>
                       <div style={{ padding: 'clamp(32px, 5vw, 56px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         {featured.issue_number && (
-                          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
+                          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.85)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
                             Issue #{featured.issue_number}
                           </span>
                         )}

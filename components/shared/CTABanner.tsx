@@ -29,7 +29,7 @@ export default function CTABanner() {
                 Ready to Become the Future Leader?
               </h4>
               <p
-                className="text-white/60 text-sm mt-2"
+                className="text-white/85 text-sm mt-2"
                 style={{ fontFamily: 'Inter, sans-serif' }}
               >
                 Join the Boys Network International Rise &amp; Thrive Bootcamp 2026.

@@ -8,23 +8,23 @@ import CampCountdown from '@/components/shared/CampCountdown'
 import { HeroReveal, FadeUp, SlideLeft, SlideRight, FadeIn } from '@/components/shared/Animate'
 
 export const metadata: Metadata = {
-  title: 'Boys Network International — Nurturing Potential, Shaping Lives',
+  title: 'The Boys Network International: Nurturing Potential, Shaping Lives',
   description:
-    'Boys Network International empowers boys through faith-based mentorship, leadership development and the Rise & Thrive Bootcamp — raising purpose-driven young men in Uganda.',
+    'The Boys Network International empowers boys through faith-based mentorship, leadership development and the Rise & Thrive Bootcamp, raising purpose-driven young men in Uganda.',
   alternates: { canonical: 'https://boysnetworkinternational.com' },
   openGraph: {
-    title: 'Boys Network International — Nurturing Potential, Shaping Lives',
+    title: 'The Boys Network International: Nurturing Potential, Shaping Lives',
     description: 'Empowering boys to grow in faith, lead with purpose, and impact their world through the Rise & Thrive Bootcamp.',
     url: 'https://boysnetworkinternational.com',
-    images: [{ url: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg', width: 1200, height: 630, alt: 'Boys Network International — Rise & Thrive Bootcamp group photo' }],
+    images: [{ url: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg', width: 1200, height: 630, alt: 'The Boys Network International Rise & Thrive Bootcamp group photo' }],
   },
 }
 
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'NGO',
-  name: 'Boys Network International',
-  alternateName: 'BNI',
+  name: 'The Boys Network International',
+  alternateName: 'TBNI',
   url: 'https://boysnetworkinternational.com',
   logo: 'https://framerusercontent.com/images/bmEr6BuAPZ4ibh0n7jxJ57JU4.png',
   description: 'A faith-based mentorship and leadership organisation committed to raising the next generation of grounded, confident, and purpose-driven young men.',
@@ -39,13 +39,14 @@ const organizationSchema = {
   sameAs: [
     'https://instagram.com/boysnetworkint',
     'https://twitter.com/BoysNetworkInt',
+    'https://ug.linkedin.com/in/the-boys-network-international-9790a5375',
   ],
 }
 
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Boys Network International',
+  name: 'The Boys Network International',
   url: 'https://boysnetworkinternational.com',
   potentialAction: {
     '@type': 'SearchAction',
@@ -192,9 +193,9 @@ export default function HomePage() {
                 className="leading-relaxed mb-8"
                 style={{ fontFamily: 'Inter, sans-serif', fontSize: '16px', color: '#515c63' }}
               >
-                At Boys Network International, we believe that mentoring boys is not just a program
-                — it&apos;s a calling. Everything we do is rooted in Scripture, pointing boys toward
-                a life of purpose, leadership, and faith.
+                At The Boys Network International, we believe that mentoring boys is not just a
+                program. It&apos;s a calling. Everything we do is rooted in Scripture, pointing boys
+                toward a life of purpose, leadership, and faith.
               </p>
               {/* Scripture — muted gray, NOT italic */}
               <p
@@ -221,7 +222,7 @@ export default function HomePage() {
             >
               <Image
                 src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
-                alt="Biblical foundation — boys in prayer"
+                alt="Biblical foundation, boys in prayer"
                 fill
                 className="object-cover"
                 unoptimized
@@ -250,24 +251,6 @@ export default function HomePage() {
             <div className="relative shrink-0" style={{ height: '82px', width: '250px' }}>
               <Image
                 src="https://framerusercontent.com/images/y9Lt3M9oqgQXMYtQiFooT0GYDgg.png"
-                alt="Partner organisation logo"
-                fill
-                className="object-contain"
-                unoptimized
-              />
-            </div>
-            <div className="relative shrink-0" style={{ height: '81px', width: '109px' }}>
-              <Image
-                src="https://framerusercontent.com/images/yzzkyPvETMdlNXHs0OmoTu55JqM.png"
-                alt="Partner organisation logo"
-                fill
-                className="object-contain"
-                unoptimized
-              />
-            </div>
-            <div className="relative shrink-0" style={{ height: '82px', width: '250px' }}>
-              <Image
-                src="https://framerusercontent.com/images/uBZGDq1rg3z7Qng5fQAXN8tBMM.png"
                 alt="Partner organisation logo"
                 fill
                 className="object-contain"

@@ -3,13 +3,14 @@ import PageHero from '@/components/layout/PageHero'
 import ContactForm from '@/components/contact/ContactForm'
 import CTABanner from '@/components/shared/CTABanner'
 import { FadeUp, SlideLeft, SlideRight } from '@/components/shared/Animate'
+import { Chat, Phone, Mail, TikTok, Instagram, XTwitter, LinkedIn } from '@/components/shared/Icons'
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with Boys Network International. Reach our directors by email or phone, or send us a message directly.',
+  description: 'Get in touch with The Boys Network International. Reach our directors by email or phone, or send us a message directly.',
   alternates: { canonical: 'https://boysnetworkinternational.com/contact-us' },
   openGraph: {
-    title: 'Contact Us | Boys Network International',
+    title: 'Contact Us | The Boys Network International',
     description: 'Reach our directors by email or phone, or send us a message directly.',
     url: 'https://boysnetworkinternational.com/contact-us',
   },
@@ -19,20 +20,20 @@ const contactChannels = [
   {
     label: 'WhatsApp (MTN)',
     value: '+256 791 408 459',
-    href: 'https://wa.me/256791408459?text=Hi%21%20I%27m%20on%20the%20Boys%20Network%20International%20website%20and%20I%27d%20like%20to%20learn%20more.',
-    icon: '💬',
+    href: 'https://wa.me/256791408459?text=Hi%21%20I%27m%20on%20The%20Boys%20Network%20International%20website%20and%20I%27d%20like%20to%20learn%20more.',
+    Icon: Chat,
   },
   {
     label: 'Phone (Airtel)',
     value: '+256 741 132 842',
     href: 'tel:+256741132842',
-    icon: '📞',
+    Icon: Phone,
   },
   {
     label: 'Email',
     value: 'theboysnetworkinternational@gmail.com',
     href: 'mailto:theboysnetworkinternational@gmail.com',
-    icon: '✉️',
+    Icon: Mail,
   },
 ]
 
@@ -52,11 +53,10 @@ const paymentOptions = [
 ]
 
 const socialLinks = [
-  { label: 'TikTok', href: 'https://www.tiktok.com/@boysnetworkinternational', icon: '🎵' },
-  { label: 'Instagram', href: 'https://instagram.com/boysnetworkint', icon: '📸' },
-  { label: 'X / Twitter', href: 'https://twitter.com/BoysNetworkInt', icon: '𝕏' },
-  { label: 'Facebook', href: '#', icon: '📘' },
-  { label: 'LinkedIn', href: '#', icon: '💼' },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@boysnetworkinternational', Icon: TikTok },
+  { label: 'Instagram', href: 'https://instagram.com/boysnetworkint', Icon: Instagram },
+  { label: 'X / Twitter', href: 'https://twitter.com/BoysNetworkInt', Icon: XTwitter },
+  { label: 'LinkedIn', href: 'https://ug.linkedin.com/in/the-boys-network-international-9790a5375', Icon: LinkedIn },
 ]
 
 export default function ContactPage() {
@@ -99,7 +99,7 @@ export default function ContactPage() {
                       textDecoration: 'none',
                     }}
                   >
-                    <span style={{ fontSize: 24 }}>{c.icon}</span>
+                    <c.Icon size={24} className="text-bni-blue shrink-0" />
                     <div>
                       <p
                         className="text-bni-navy font-bold text-sm"
@@ -145,7 +145,7 @@ export default function ContactPage() {
                         {p.label}
                       </p>
                       <p
-                        className="text-white/60 text-xs mt-0.5"
+                        className="text-white/85 text-xs mt-0.5"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                       >
                         {p.ussd} · {p.name}
@@ -189,6 +189,7 @@ export default function ContactPage() {
                   <a
                     key={s.label}
                     href={s.href}
+                    aria-label={s.label}
                     target={s.href !== '#' ? '_blank' : undefined}
                     rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
                     className="inline-flex items-center gap-2 font-semibold text-sm text-bni-navy hover:bg-bni-blue hover:text-white hover:border-bni-blue transition-all"
@@ -199,7 +200,7 @@ export default function ContactPage() {
                       fontFamily: 'Space Grotesk, sans-serif',
                     }}
                   >
-                    <span style={{ fontSize: 15 }}>{s.icon}</span>
+                    <s.Icon size={16} />
                     {s.label}
                   </a>
                 ))}
