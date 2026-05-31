@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: 'The Boys Network International: Nurturing Potential, Shaping Lives',
     description: 'Empowering boys to grow in faith, lead with purpose, and impact their world through the Rise & Thrive Bootcamp.',
     url: 'https://boysnetworkinternational.com',
-    images: [{ url: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg', width: 1200, height: 630, alt: 'The Boys Network International Rise & Thrive Bootcamp group photo' }],
+    images: [{ url: 'https://gqgwcznzsajvejrrtrhl.supabase.co/storage/v1/object/public/gallery/bootcamp-2025/Day_1-2__S_30.jpg', width: 1200, height: 630, alt: 'The Boys Network International Rise & Thrive Bootcamp group photo' }],
   },
 }
 
@@ -73,7 +73,7 @@ export default function HomePage() {
           overflow: 'visible',
           minHeight: '860px',
           background: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.92) 78%, rgba(0,0,0,0.92) 100%),
-            url(https://framerusercontent.com/images/zB5KOyiCxdp4LttYLBVC0dNDugQ.png) top center/cover no-repeat`,
+            url(https://gqgwcznzsajvejrrtrhl.supabase.co/storage/v1/object/public/gallery/bootcamp-2025/Day_1-2__S_30.jpg) top center/cover no-repeat`,
         }}
       >
         {/* Text block — centred in the upper portion */}
@@ -221,7 +221,7 @@ export default function HomePage() {
               style={{ borderRadius: '24px', aspectRatio: '4 / 3' }}
             >
               <Image
-                src="https://framerusercontent.com/images/wTqdx68GnSCK8utE0lxruCFEK04.jpg"
+                src="https://gqgwcznzsajvejrrtrhl.supabase.co/storage/v1/object/public/gallery/bootcamp-2025/Day_3__A_9.jpg"
                 alt="Biblical foundation, boys in prayer"
                 fill
                 className="object-cover"
