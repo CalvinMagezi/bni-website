@@ -33,7 +33,7 @@ export default function Footer() {
               className="text-white text-xl font-bold mb-3"
               style={{ fontFamily: 'Space Grotesk, sans-serif' }}
             >
-              Boys Network International
+              The Boys Network International
             </h3>
             <p className="text-bni-light text-sm leading-relaxed" style={{ fontFamily: 'Inter, sans-serif' }}>
               Empowering boys to grow in faith, lead with purpose, and impact their world.

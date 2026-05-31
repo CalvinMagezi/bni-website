@@ -8,7 +8,7 @@ import CTABanner from '@/components/shared/CTABanner'
 const sections = [
   {
     title: 'Code of Conduct',
-    content: `Boys Network International expects every participant to uphold our core values of respect, integrity, and community. Every boy attending the camp is expected to:
+    content: `The Boys Network International expects every participant to uphold our core values of respect, integrity, and community. Every boy attending the camp is expected to:
 
 • Treat fellow participants, mentors, and staff with dignity and respect
 • Participate actively and honestly in all sessions and activities
@@ -17,14 +17,14 @@ const sections = [
 • Honour the camp's spiritual values and faith-centred environment
 • Follow all instructions from mentors and staff
 
-Violations of the code of conduct may result in the participant being sent home. We believe every boy is capable of excellence — and we hold them to that standard.`,
+Violations of the code of conduct may result in the participant being sent home. We believe every boy is capable of excellence, and we hold them to that standard.`,
   },
   {
     title: 'Safety & Protection',
-    content: `The safety of every boy in our care is our highest priority. Boys Network International maintains a comprehensive Child Protection Plan which includes:
+    content: `The safety of every boy in our care is our highest priority. The Boys Network International maintains a comprehensive Child Protection Plan which includes:
 
 • Pre-screened mentors and staff with verified backgrounds
-• Strict no-corporal-punishment policy — all discipline is restorative
+• Strict no-corporal-punishment policy: all discipline is restorative
 • Secure camp perimeter with controlled access points
 • 24-hour supervision with mentor presence in all activity areas
 • Zero tolerance for abuse, harassment, or inappropriate conduct
@@ -40,7 +40,7 @@ All staff are trained in child safeguarding and are required to report any conce
 • Senior leadership present on-site throughout the entire camp duration
 • Dedicated medical staff and first-aiders on standby at all times
 • All mentors undergo orientation and values alignment before each camp
-• Discipline policy is firm, fair, and restorative — never punitive or humiliating
+• Discipline policy is firm, fair, and restorative, never punitive or humiliating
 • Parents and guardians are notified immediately of any welfare concerns`,
   },
   {
@@ -62,7 +62,7 @@ Accommodation: Boys are housed in supervised dormitories, segregated by age grou
 
 Health Services: A qualified nurse is present on-site throughout the camp. Participants must submit a medical history form prior to arrival. All medications are managed and administered by the medical team.
 
-Food Services: Three nutritious meals are provided daily plus snacks. Dietary requirements and allergies are accommodated — please notify us in advance.
+Food Services: Three nutritious meals are provided daily plus snacks. Dietary requirements and allergies are accommodated. Please notify us in advance.
 
 Hygiene: Regular cleaning schedules are maintained. Participants are taught and expected to maintain personal hygiene standards.`,
   },
@@ -74,14 +74,14 @@ Hygiene: Regular cleaning schedules are maintained. Participants are taught and 
 • Only verified, experienced drivers are engaged
 • Routes are pre-planned and communicated to parents in advance
 • Real-time location updates provided to parents during travel
-• No participant travels alone — adults are present on all journeys
+• No participant travels alone; adults are present on all journeys
 • Drop-off and pick-up points are clearly communicated prior to camp
 
-Parents are responsible for getting their boys to the designated assembly point. Assistance can be arranged for those with transport difficulties — please contact us in advance.`,
+Parents are responsible for getting their boys to the designated assembly point. Assistance can be arranged for those with transport difficulties. Please contact us in advance.`,
   },
   {
     title: 'Faith & Family Values',
-    content: `Faith is at the heart of everything we do at Boys Network International:
+    content: `Faith is at the heart of everything we do at The Boys Network International:
 
 Spiritual Formation: Daily devotions, worship sessions, and Bible study are woven throughout each day. Our approach is grounded in Christian faith while remaining respectful of all participants.
 
@@ -89,7 +89,7 @@ Prayer: Boys are encouraged to develop a personal prayer life and to intercede f
 
 Parent Communication: We partner with parents as the primary authority in a boy's life. Weekly summaries are shared and parents are encouraged to continue conversations at home.
 
-Family Roles: Boys learn about their responsibilities as sons, brothers, and future husbands and fathers — building a strong foundation for family life.`,
+Family Roles: Boys learn about their responsibilities as sons, brothers, and future husbands and fathers, building a strong foundation for family life.`,
   },
 ]
 
@@ -160,7 +160,7 @@ export default function InfoPage() {
             style={{ fontFamily: 'Inter, sans-serif' }}
           >
             Please read through this information carefully before enrolling your son or ward in
-            the Boys Network International camp. If you have any questions, don&apos;t hesitate
+            The Boys Network International camp. If you have any questions, don&apos;t hesitate
             to{' '}
             <a href="/contact-us" className="text-bni-blue hover:underline">
               contact us

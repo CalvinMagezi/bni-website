@@ -19,6 +19,7 @@ export default function WhatsAppWidget() {
         bottom: 'calc(24px + env(safe-area-inset-bottom))',
         right: '24px',
         zIndex: 1000,
+        pointerEvents: 'auto',
         width: '56px',
         height: '56px',
         borderRadius: '50%',

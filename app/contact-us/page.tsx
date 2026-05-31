@@ -7,10 +7,10 @@ import { Chat, Phone, Mail, TikTok, Instagram, XTwitter, LinkedIn } from '@/comp
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with Boys Network International. Reach our directors by email or phone, or send us a message directly.',
+  description: 'Get in touch with The Boys Network International. Reach our directors by email or phone, or send us a message directly.',
   alternates: { canonical: 'https://boysnetworkinternational.com/contact-us' },
   openGraph: {
-    title: 'Contact Us | Boys Network International',
+    title: 'Contact Us | The Boys Network International',
     description: 'Reach our directors by email or phone, or send us a message directly.',
     url: 'https://boysnetworkinternational.com/contact-us',
   },
@@ -20,7 +20,7 @@ const contactChannels = [
   {
     label: 'WhatsApp (MTN)',
     value: '+256 791 408 459',
-    href: 'https://wa.me/256791408459?text=Hi%21%20I%27m%20on%20the%20Boys%20Network%20International%20website%20and%20I%27d%20like%20to%20learn%20more.',
+    href: 'https://wa.me/256791408459?text=Hi%21%20I%27m%20on%20The%20Boys%20Network%20International%20website%20and%20I%27d%20like%20to%20learn%20more.',
     Icon: Chat,
   },
   {
@@ -145,7 +145,7 @@ export default function ContactPage() {
                         {p.label}
                       </p>
                       <p
-                        className="text-white/60 text-xs mt-0.5"
+                        className="text-white/85 text-xs mt-0.5"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                       >
                         {p.ussd} · {p.name}

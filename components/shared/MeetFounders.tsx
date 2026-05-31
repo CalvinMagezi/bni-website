@@ -33,7 +33,7 @@ export default async function MeetFounders({ heading = 'Meet the Founders' }: Me
             </h2>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginTop: '8px' }}>
+            <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '15px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, marginTop: '8px' }}>
               Our mentors bring decades of real-world experience and a deep commitment to raising the next generation of men.
             </p>
           </FadeUp>
@@ -87,7 +87,7 @@ export default async function MeetFounders({ heading = 'Meet the Founders' }: Me
                     fontFamily: 'Inter, sans-serif',
                     fontSize: '12px',
                     fontWeight: 500,
-                    color: 'rgba(255,255,255,0.45)',
+                    color: 'rgba(255,255,255,0.7)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
                     marginBottom: '12px',

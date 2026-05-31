@@ -37,7 +37,7 @@ const empty: FormData = {
 }
 
 const inputStyle: React.CSSProperties = {
-  width: '100%', border: '1.5px solid #e5e7eb', borderRadius: '10px',
+  width: '100%', border: '1.5px solid #cbd5e1', borderRadius: '10px',
   padding: '11px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px',
   color: '#1a1a2e', background: '#ffffff',
 }
@@ -202,7 +202,7 @@ export default function EnrollmentForm({ prefill }: { prefill?: Partial<FormData
                   type="button"
                   onClick={() => toggleInterest(opt)}
                   style={{
-                    border: `1.5px solid ${data.interests.includes(opt) ? '#1f2fe6' : '#e5e7eb'}`,
+                    border: `1.5px solid ${data.interests.includes(opt) ? '#1f2fe6' : '#cbd5e1'}`,
                     background: data.interests.includes(opt) ? '#eef0fd' : '#fff',
                     color: data.interests.includes(opt) ? '#1f2fe6' : '#515c63',
                     borderRadius: '100px',
@@ -244,7 +244,7 @@ export default function EnrollmentForm({ prefill }: { prefill?: Partial<FormData
                   type="button"
                   onClick={() => set('can_swim', v)}
                   style={{
-                    border: `1.5px solid ${data.can_swim === v ? '#1f2fe6' : '#e5e7eb'}`,
+                    border: `1.5px solid ${data.can_swim === v ? '#1f2fe6' : '#cbd5e1'}`,
                     background: data.can_swim === v ? '#eef0fd' : '#fff',
                     color: data.can_swim === v ? '#1f2fe6' : '#515c63',
                     borderRadius: '100px',
@@ -374,7 +374,7 @@ export default function EnrollmentForm({ prefill }: { prefill?: Partial<FormData
             <label style={{ ...labelStyle, marginBottom: 10 }}>Preferred Payment Method</label>
             <div className="flex flex-col gap-2">
               {PAYMENT_OPTIONS.map(p => (
-                <label key={p.id} className="flex items-center gap-3 cursor-pointer p-4 rounded-xl" style={{ border: `1.5px solid ${data.payment_preference === p.id ? '#1f2fe6' : '#e5e7eb'}`, background: data.payment_preference === p.id ? '#eef0fd' : '#fff', transition: 'all 0.15s' }}>
+                <label key={p.id} className="flex items-center gap-3 cursor-pointer p-4 rounded-xl" style={{ border: `1.5px solid ${data.payment_preference === p.id ? '#1f2fe6' : '#cbd5e1'}`, background: data.payment_preference === p.id ? '#eef0fd' : '#fff', transition: 'all 0.15s' }}>
                   <input type="radio" name="payment" value={p.id} checked={data.payment_preference === p.id} onChange={() => set('payment_preference', p.id)} style={{ accentColor: '#1f2fe6' }} />
                   <div>
                     <p style={{ fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: '14px', color: '#070d4f' }}>{p.label}</p>
@@ -401,7 +401,7 @@ export default function EnrollmentForm({ prefill }: { prefill?: Partial<FormData
           <button
             type="button"
             onClick={() => setStep(s => (s - 1) as typeof step)}
-            style={{ border: '1.5px solid #e5e7eb', background: '#fff', borderRadius: '100px', padding: '12px 24px', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px', fontWeight: 600, color: '#374151', cursor: 'pointer' }}
+            style={{ border: '1.5px solid #cbd5e1', background: '#fff', borderRadius: '100px', padding: '12px 24px', fontFamily: 'Space Grotesk, sans-serif', fontSize: '14px', fontWeight: 600, color: '#374151', cursor: 'pointer' }}
           >
             ← Back
           </button>

@@ -10,11 +10,11 @@ import { Clock, Users, ClipboardList } from '@/components/shared/Icons'
 export const metadata: Metadata = {
   title: 'Rise & Thrive Bootcamp',
   description:
-    'The Rise & Thrive Bootcamp is a 7-day mentorship camp for boys in Uganda — spiritual grounding, leadership, life skills, and physical development. Enrol for August 2026.',
+    'The Rise & Thrive Bootcamp is a 7-day mentorship camp for boys in Uganda, covering spiritual grounding, leadership, life skills, and physical development. Enrol for August 2026.',
   alternates: { canonical: 'https://boysnetworkinternational.com/programs' },
   openGraph: {
-    title: 'Rise & Thrive Bootcamp | Boys Network International',
-    description: '7-day life-transforming mentorship camp for boys — spiritual grounding, leadership, life skills, and physical development. Enrol now for August 2026.',
+    title: 'Rise & Thrive Bootcamp | The Boys Network International',
+    description: '7-day life-transforming mentorship camp for boys, covering spiritual grounding, leadership, life skills, and physical development. Enrol now for August 2026.',
     url: 'https://boysnetworkinternational.com/programs',
     images: [{ url: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg', width: 1200, height: 800, alt: 'Boys at the Rise & Thrive Bootcamp outdoor activities' }],
   },
@@ -48,12 +48,12 @@ const eventSchema = {
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   location: {
     '@type': 'Place',
-    name: 'Boys Network International Camp',
+    name: 'The Boys Network International Camp',
     address: { '@type': 'PostalAddress', addressCountry: 'UG', addressRegion: 'Uganda' },
   },
   organizer: {
     '@type': 'Organization',
-    name: 'Boys Network International',
+    name: 'The Boys Network International',
     url: 'https://boysnetworkinternational.com',
   },
   image: 'https://framerusercontent.com/images/PpPNLP5cXi4gOGPaBTA4sRgBUo.jpg',
@@ -167,8 +167,9 @@ export default function ProgramsPage() {
           >
             The Boys Network International 7-Day Camp is a life-transforming mentorship experience
             for boys and young men, focusing on spiritual grounding, personal growth, life skills,
-            and leadership. The camp compresses the key themes from Boys Network International&apos;s
-            extensive mentorship curriculum into a one-week intensive program designed to inspire
+            and leadership. The camp compresses the key themes from The Boys Network
+            International&apos;s extensive mentorship curriculum into a one-week intensive program
+            designed to inspire
             identity discovery, purpose-driven living, and multi-generational impact. Participants
             engage in structured days filled with physical activity, spiritual reflection, mentorship
             workshops, and practical learning experiences, all in a supportive, values-driven

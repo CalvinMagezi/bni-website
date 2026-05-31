@@ -30,6 +30,11 @@ export default function FloatingEnrollmentBot() {
     return () => clearTimeout(timer)
   }, [pathname])
 
+  // Tell the FabDock the panel state so it never slides an open chat away.
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('fab-panel-toggle', { detail: isOpen }))
+  }, [isOpen])
+
   function handleToggle() {
     userInteracted.current = true
     setIsOpen(o => !o)
@@ -48,6 +53,7 @@ export default function FloatingEnrollmentBot() {
         flexDirection: 'column',
         alignItems: 'flex-end',
         gap: 12,
+        pointerEvents: 'auto',
       }}
     >
       {/* Panel */}

@@ -48,12 +48,41 @@ function FallbackTile({ variant, alt, style }: { variant: 'tile' | 'avatar'; alt
   }
 
   return (
-    <div style={{ ...base, background: '#eef0fd', color: '#adbeca' }} aria-label={alt}>
-      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
-        <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
-        <path d="M21 15l-5-5L5 21" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+    <div
+      style={{
+        ...base,
+        flexDirection: 'column',
+        gap: 10,
+        padding: '16px',
+        textAlign: 'center',
+        background: 'linear-gradient(135deg, #eef0fd 0%, rgba(31,47,230,0.12) 100%)',
+        color: '#070d4f',
+      }}
+      aria-label={alt}
+    >
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden="true" style={{ opacity: 0.7 }}>
+        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.6" />
+        <circle cx="8.5" cy="8.5" r="1.6" fill="currentColor" />
+        <path d="M21 15l-5-5L5 21" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
       </svg>
+      {alt.trim().length > 0 && (
+        <span
+          style={{
+            fontFamily: 'Inter, sans-serif',
+            fontSize: '12px',
+            fontWeight: 500,
+            lineHeight: 1.4,
+            color: '#1f2fe6',
+            maxWidth: '90%',
+            overflow: 'hidden',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+          }}
+        >
+          {alt}
+        </span>
+      )}
     </div>
   )
 }

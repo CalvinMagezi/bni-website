@@ -4,17 +4,18 @@ import SafeImage from '@/components/shared/SafeImage'
 import NewsletterSignup from '@/components/camp-live/NewsletterSignup'
 import FloatingEnrollmentBot from '@/components/camp-live/FloatingEnrollmentBot'
 import CTABanner from '@/components/shared/CTABanner'
+import { Chat } from '@/components/shared/Icons'
 import { createClient } from '@/lib/supabase/server'
 
 export const metadata: Metadata = {
   title: 'Camp Live Hub',
-  description: 'Real-time stories, updates and highlights from the Boys Network International Rise & Thrive Bootcamp — for parents, supporters, and the BNI community.',
+  description: 'Real-time stories, updates and highlights from The Boys Network International Rise & Thrive Bootcamp, for parents, supporters, and the TBNI community.',
   alternates: { canonical: 'https://boysnetworkinternational.com/camp-live' },
   openGraph: {
-    title: 'Camp Live Hub | Boys Network International',
+    title: 'Camp Live Hub | The Boys Network International',
     description: 'Real-time stories, updates and highlights from the Rise & Thrive Bootcamp.',
     url: 'https://boysnetworkinternational.com/camp-live',
-    images: [{ url: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg', width: 1200, height: 630, alt: 'Boys Network International Rise & Thrive Bootcamp' }],
+    images: [{ url: 'https://framerusercontent.com/images/zNckLAoaorpjAkb2LSzjVcez7A.jpg', width: 1200, height: 630, alt: 'The Boys Network International Rise & Thrive Bootcamp' }],
   },
 }
 
@@ -51,7 +52,7 @@ export default async function CampLivePage() {
                 <span className="inline-block w-2 h-2 rounded-full bg-white animate-pulse" />
                 Live Now
               </span>
-              <span className="text-white/50 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <span className="text-white/80 text-sm" style={{ fontFamily: 'Inter, sans-serif' }}>
                 Rise &amp; Thrive Bootcamp 2026
               </span>
             </div>
@@ -62,7 +63,7 @@ export default async function CampLivePage() {
               Camp Live Hub
             </h1>
             <p className="text-white/70 text-base max-w-xl" style={{ fontFamily: 'Inter, sans-serif' }}>
-              Real-time stories, updates and highlights from the camp floor — for parents, supporters, and the BNI community.
+              Real-time stories, updates and highlights from the camp floor, for parents, supporters, and the TBNI community.
             </p>
           </FadeUp>
         </div>
@@ -300,7 +301,7 @@ export default async function CampLivePage() {
                   }}
                 >
                   <p className="font-bold mb-2" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f', fontSize: '1rem' }}>
-                    🏕️ Enroll for 2026
+                    Enroll for 2026
                   </p>
                   <p className="text-sm mb-5 leading-relaxed" style={{ fontFamily: 'Inter, sans-serif', color: '#515c63' }}>
                     Spots are filling fast. Secure your boy's place at the next Rise &amp; Thrive Bootcamp.
@@ -327,7 +328,7 @@ export default async function CampLivePage() {
                     border: '1px solid rgba(31,47,230,0.1)',
                   }}
                 >
-                  <span style={{ fontSize: 28 }}>🏕️</span>
+                  <Chat size={28} className="shrink-0" style={{ color: '#1f2fe6' }} />
                   <div>
                     <p className="text-sm font-bold" style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#070d4f' }}>
                       Chat to Enroll

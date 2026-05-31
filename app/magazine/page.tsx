@@ -6,7 +6,7 @@ import EmptyState from '@/components/shared/EmptyState'
 
 export const metadata: Metadata = {
   title: 'TBNI Magazine',
-  description: 'Read the Boys Network International magazine — stories, updates, and inspiration from the BNI community.',
+  description: 'Read The Boys Network International magazine: stories, updates, and inspiration from the TBNI community.',
   alternates: { canonical: 'https://boysnetworkinternational.com/magazine' },
 }
 
@@ -27,7 +27,7 @@ export default async function MagazinePage() {
     <>
       <PageHero
         title="TBNI Magazine"
-        subtitle="Stories, inspiration, and updates from the Boys Network community"
+        subtitle="Stories, inspiration, and updates from The Boys Network International community"
       />
 
       <section style={{ background: '#f8f9fb', padding: '64px 0 80px' }}>
@@ -37,7 +37,7 @@ export default async function MagazinePage() {
             <EmptyState
               icon="📖"
               title="No issues published yet"
-              description="Our first magazine issue is on its way. Check back soon for stories and updates from the BNI community."
+              description="Our first magazine issue is on its way. Check back soon for stories and updates from the TBNI community."
               action={
                 <Link
                   href="/enroll"
@@ -77,7 +77,7 @@ export default async function MagazinePage() {
                     }}>
                       <div style={{ padding: 'clamp(32px, 5vw, 56px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                         {featured.issue_number && (
-                          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
+                          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: '12px', color: 'rgba(255,255,255,0.85)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '12px' }}>
                             Issue #{featured.issue_number}
                           </span>
                         )}

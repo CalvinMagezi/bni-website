@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from 'react'
 import { submitFeedback } from '@/app/actions/feedback'
+import { PrayingHands } from '@/components/shared/Icons'
 
 const RATINGS = [1, 2, 3, 4, 5]
 
@@ -55,7 +56,9 @@ export default function FeedbackPage() {
     return (
       <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #070d4f 0%, #1f2fe6 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
         <div style={{ background: '#ffffff', borderRadius: '24px', padding: '48px 40px', maxWidth: '480px', width: '100%', textAlign: 'center' }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>🙏</div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+            <PrayingHands size={48} style={{ color: '#059669' }} />
+          </div>
           <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '24px', fontWeight: 800, color: '#0d1787', marginBottom: '12px' }}>
             Thank You!
           </h2>
@@ -93,7 +96,7 @@ export default function FeedbackPage() {
       {/* Form */}
       <div style={{ background: '#f8f9fb', padding: '48px 24px 80px' }}>
         <form onSubmit={handleSubmit} style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <div style={{ background: '#ffffff', borderRadius: '20px', border: '1.5px solid #e5e7eb', padding: '36px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div style={{ background: '#ffffff', borderRadius: '20px', border: '1.5px solid #cbd5e1', padding: '36px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
             {/* Rating */}
             <div>
@@ -147,7 +150,7 @@ export default function FeedbackPage() {
               </div>
               {rating > 0 && (
                 <p style={{ fontFamily: 'Inter, sans-serif', fontSize: '13px', color: '#059669', marginTop: '8px' }}>
-                  {['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][rating]} — {rating}/5 stars
+                  {['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'][rating]} ({rating}/5 stars)
                 </p>
               )}
             </div>
@@ -162,7 +165,7 @@ export default function FeedbackPage() {
                   value={form.parent_name}
                   onChange={e => update('parent_name', e.target.value)}
                   placeholder="Parent / Guardian name"
-                  style={{ width: '100%', border: '1.5px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', boxSizing: 'border-box' }}
+                  style={{ width: '100%', border: '1.5px solid #cbd5e1', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', boxSizing: 'border-box' }}
                 />
               </div>
               <div>
@@ -174,7 +177,7 @@ export default function FeedbackPage() {
                   value={form.son_name}
                   onChange={e => update('son_name', e.target.value)}
                   placeholder="Boy's full name"
-                  style={{ width: '100%', border: '1.5px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', boxSizing: 'border-box' }}
+                  style={{ width: '100%', border: '1.5px solid #cbd5e1', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', boxSizing: 'border-box' }}
                 />
               </div>
             </div>
@@ -189,7 +192,7 @@ export default function FeedbackPage() {
                 value={form.parent_email}
                 onChange={e => update('parent_email', e.target.value)}
                 placeholder="parent@email.com"
-                style={{ width: '100%', border: '1.5px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', boxSizing: 'border-box' }}
+                style={{ width: '100%', border: '1.5px solid #cbd5e1', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', boxSizing: 'border-box' }}
               />
             </div>
 
@@ -203,7 +206,7 @@ export default function FeedbackPage() {
                 onChange={e => update('improvements', e.target.value)}
                 rows={3}
                 placeholder="Suggestions, areas to improve, things that could be better…"
-                style={{ width: '100%', border: '1.5px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', resize: 'vertical', boxSizing: 'border-box' }}
+                style={{ width: '100%', border: '1.5px solid #cbd5e1', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', resize: 'vertical', boxSizing: 'border-box' }}
               />
             </div>
 
@@ -217,7 +220,7 @@ export default function FeedbackPage() {
                 onChange={e => update('comments', e.target.value)}
                 rows={3}
                 placeholder="Anything else you'd like to share…"
-                style={{ width: '100%', border: '1.5px solid #e5e7eb', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', resize: 'vertical', boxSizing: 'border-box' }}
+                style={{ width: '100%', border: '1.5px solid #cbd5e1', borderRadius: '8px', padding: '10px 14px', fontFamily: 'Inter, sans-serif', fontSize: '14px', color: '#1a1a2e', resize: 'vertical', boxSizing: 'border-box' }}
               />
             </div>
 
@@ -243,7 +246,7 @@ export default function FeedbackPage() {
                         gap: '8px',
                         padding: '12px',
                         borderRadius: '10px',
-                        border: `2px solid ${selected ? '#1f2fe6' : '#e5e7eb'}`,
+                        border: `2px solid ${selected ? '#1f2fe6' : '#cbd5e1'}`,
                         background: selected ? '#eff1fe' : '#ffffff',
                         color: selected ? '#1f2fe6' : '#6b7280',
                         fontFamily: 'Inter, sans-serif',

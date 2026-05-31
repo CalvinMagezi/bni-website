@@ -10,13 +10,13 @@ import { PrayingHands, Crown, Coins, Handshake } from '@/components/shared/Icons
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Boys Network International is a faith-based mentorship organisation committed to raising the next generation of grounded, confident, and purpose-driven young men in Uganda.',
+    'The Boys Network International is a faith-based mentorship organisation committed to raising the next generation of grounded, confident, and purpose-driven young men in Uganda.',
   alternates: { canonical: 'https://boysnetworkinternational.com/about-us' },
   openGraph: {
-    title: 'About Us | Boys Network International',
+    title: 'About Us | The Boys Network International',
     description: 'Faith-based mentorship and leadership organisation raising purpose-driven young men in Uganda.',
     url: 'https://boysnetworkinternational.com/about-us',
-    images: [{ url: 'https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg', width: 1200, height: 800, alt: 'Boys Network International mentorship' }],
+    images: [{ url: 'https://framerusercontent.com/images/Ohp4bhiHSQKQOIGd0A4n46icVK4.jpg', width: 1200, height: 800, alt: 'The Boys Network International mentorship' }],
   },
 }
 
@@ -40,7 +40,7 @@ const whatWeDo = [
   {
     Icon: Coins,
     title: 'Financial & Life Literacy',
-    description: 'Including entrepreneurship, budgeting, personal grooming, and career exploration — practical skills for real life.',
+    description: 'Including entrepreneurship, budgeting, personal grooming, and career exploration: practical skills for real life.',
     accent: '#eefdf4',
     accentBorder: 'rgba(16,185,129,0.2)',
     iconColor: '#070d4f',
@@ -78,7 +78,7 @@ export default function AboutPage() {
               className="text-bni-slate text-base leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              Boys Network International (BNI) is a faith-based mentorship and leadership
+              The Boys Network International (TBNI) is a faith-based mentorship and leadership
               organisation committed to raising the next generation of grounded, confident, and
               purpose-driven young men. We are a community of mentors, educators, coaches, and
               professionals dedicated to nurturing the spiritual, intellectual, emotional, and
@@ -135,7 +135,7 @@ export default function AboutPage() {
               className="text-bni-slate text-base leading-relaxed"
               style={{ fontFamily: 'Inter, sans-serif' }}
             >
-              A future where every boy becomes a compassionate and capable leader — grounded in
+              A future where every boy becomes a compassionate and capable leader, grounded in
               faith, character, and community.
             </p>
           </div>
@@ -271,8 +271,8 @@ export default function AboutPage() {
             <strong className="text-white">how to succeed</strong>, but how to{' '}
             <strong className="text-white">lead with character</strong>,{' '}
             <strong className="text-white">live with purpose</strong>, and{' '}
-            <strong className="text-white">build meaningful relationships</strong>. Boys Network
-            International exists to fill that gap — walking with boys on their journey to manhood.
+            <strong className="text-white">build meaningful relationships</strong>. The Boys Network
+            International exists to fill that gap, walking with boys on their journey to manhood.
             </p>
           </FadeUp>
         </div>

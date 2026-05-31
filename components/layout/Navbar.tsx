@@ -56,9 +56,9 @@ export default function Navbar() {
           height: '60px',
         }}
       >
-        {/* Logo — exact SVG from original site (white paths) */}
+        {/* Logo — mark-only variant stays crisp at navbar size; wordmark text is dropped */}
         <Link href="/" className="flex items-center shrink-0">
-          <Logo className="h-[38px] w-auto" />
+          <Logo variant="mark" className="h-[34px] w-auto" />
         </Link>
 
         {/* Desktop Nav — absolutely centered within the pill */}
