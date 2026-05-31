@@ -34,3 +34,7 @@ screenshots/
 *.gif
 download.html
 excalidraw.log
+
+# one-time seeding workdir — never commit images
+tmp/
+scripts/
