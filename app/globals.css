@@ -31,15 +31,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-/* Reserve a page-level gutter so end-of-page content and CTAs clear the fixed
-   FAB stack (WhatsApp + enrollment bot) docked bottom-right. */
-main {
-  padding-bottom: calc(96px + env(safe-area-inset-bottom));
-}
-
-/* Keep a footer allowance for footer-internal content above the home bar. */
+/* FAB-stack (WhatsApp + enrollment bot) clearance lives on the footer, which is
+   always the last block on every page. Keeping the gutter here makes it
+   blue-on-blue instead of opening a white gap between the CTA band and footer. */
 footer {
-  padding-bottom: calc(env(safe-area-inset-bottom) + 16px);
+  padding-bottom: calc(96px + env(safe-area-inset-bottom));
 }
 
 /* Site-wide form accessibility baseline: visible focus ring for keyboard users

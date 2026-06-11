@@ -41,14 +41,26 @@ const paymentOptions = [
   {
     label: 'MTN MoMo',
     code: '657538',
-    ussd: '*165*3#',
-    name: 'BNINT - BOYS NETWORK INT',
+    codeLabel: 'Merchant Code',
+    line: '*165*3# · BNINT - BOYS NETWORK INT',
+    accent: '#f5c518',
+    accentText: '#070d4f',
   },
   {
     label: 'Airtel Money',
     code: '4395441',
-    ussd: '*185*9#',
-    name: 'BNINT - BOYS NETWORK INT',
+    codeLabel: 'Merchant Code',
+    line: '*185*9# · BNINT - BOYS NETWORK INT',
+    accent: '#ef4444',
+    accentText: '#ffffff',
+  },
+  {
+    label: 'Bank Transfer',
+    code: '6009569136',
+    codeLabel: 'Account No.',
+    line: 'Absa Bank · BNINT (U) Limited',
+    accent: '#ffffff',
+    accentText: '#070d4f',
   },
 ]
 
@@ -131,10 +143,12 @@ export default function ContactPage() {
                 {paymentOptions.map((p) => (
                   <div
                     key={p.label}
-                    className="p-5 rounded-2xl flex items-center justify-between"
+                    className="flex items-center justify-between gap-4"
                     style={{
                       background: 'linear-gradient(135deg, #0d1787, #070d4f)',
                       border: '1.5px solid rgba(255,255,255,0.08)',
+                      borderRadius: '16px',
+                      padding: '22px 24px',
                     }}
                   >
                     <div>
@@ -145,30 +159,30 @@ export default function ContactPage() {
                         {p.label}
                       </p>
                       <p
-                        className="text-white/85 text-xs mt-0.5"
+                        className="text-white/85 text-xs mt-1"
                         style={{ fontFamily: 'Inter, sans-serif' }}
                       >
-                        {p.ussd} · {p.name}
+                        {p.line}
                       </p>
                     </div>
                     <div
-                      className="text-right"
+                      className="text-right shrink-0"
                       style={{
-                        background: p.label === 'MTN MoMo' ? '#f5c518' : '#ef4444',
-                        borderRadius: '8px',
-                        padding: '6px 14px',
+                        background: p.accent,
+                        borderRadius: '10px',
+                        padding: '10px 16px',
                       }}
                     >
                       <p
                         className="font-bold text-base"
-                        style={{ fontFamily: 'Space Grotesk, sans-serif', color: p.label === 'MTN MoMo' ? '#070d4f' : '#fff' }}
+                        style={{ fontFamily: 'Space Grotesk, sans-serif', color: p.accentText, letterSpacing: '0.02em' }}
                       >
                         {p.code}
                       </p>
                       <p
-                        style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, color: p.label === 'MTN MoMo' ? '#070d4f' : '#fff', opacity: 0.8 }}
+                        style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, color: p.accentText, opacity: 0.8 }}
                       >
-                        Merchant Code
+                        {p.codeLabel}
                       </p>
                     </div>
                   </div>
