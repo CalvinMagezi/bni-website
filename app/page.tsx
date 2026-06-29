@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import FoundationalPillars from '@/components/shared/FoundationalPillars'
 import MeetFounders from '@/components/shared/MeetFounders'
+import Partners from '@/components/shared/Partners'
 import CTABanner from '@/components/shared/CTABanner'
 import CampCountdown from '@/components/shared/CampCountdown'
 import { HeroReveal, FadeUp, SlideLeft, SlideRight, FadeIn } from '@/components/shared/Animate'
@@ -237,30 +238,7 @@ export default function HomePage() {
       <MeetFounders />
 
       {/* ── PARTNERS ────────────────────────────────────────────────── */}
-      <section style={{ background: '#ffffff', paddingTop: '70px', paddingBottom: '70px' }}>
-        <div className="section-inner" style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 100px' }}>
-          {/* "Partners" label inline with logos, all centered */}
-          <FadeIn>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
-            <h3
-              className="font-semibold text-3xl shrink-0"
-              style={{ fontFamily: 'Space Grotesk, sans-serif', color: '#000000' }}
-            >
-              Partners
-            </h3>
-            <div className="relative shrink-0" style={{ height: '82px', width: '250px' }}>
-              <Image
-                src="https://framerusercontent.com/images/y9Lt3M9oqgQXMYtQiFooT0GYDgg.png"
-                alt="Partner organisation logo"
-                fill
-                className="object-contain"
-                unoptimized
-              />
-            </div>
-          </div>
-          </FadeIn>
-        </div>
-      </section>
+      <Partners />
 
       {/* ── CTA ─────────────────────────────────────────────────────── */}
       <CTABanner />

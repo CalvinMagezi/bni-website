@@ -117,3 +117,33 @@ textarea::placeholder {
     padding-right: 32px !important;
   }
 }
+
+/* Article markdown body */
+.article-body h2,
+.article-body h3 {
+  font-family: var(--font-heading);
+  color: #0d1787;
+  margin: 1.75em 0 0.75em;
+}
+
+.article-body p {
+  margin-bottom: 1.25em;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0 0 1.25em 1.5em;
+}
+
+.article-body a {
+  color: #1f2fe6;
+  text-decoration: underline;
+}
+
+.article-body blockquote {
+  border-left: 4px solid #1f2fe6;
+  padding-left: 1em;
+  margin: 1.5em 0;
+  color: #6b7280;
+  font-style: italic;
+}

@@ -21,6 +21,7 @@ export async function addMagazineIssue(formData: FormData) {
   })
 
   revalidatePath('/magazine')
+  revalidatePath('/resources')
   revalidatePath('/admin/magazine')
   redirect('/admin/magazine')
 }
@@ -32,6 +33,7 @@ export async function deleteMagazineIssue(id: string) {
 
   await supabase.from('magazine_issues').delete().eq('id', id)
   revalidatePath('/magazine')
+  revalidatePath('/resources')
   revalidatePath('/admin/magazine')
   redirect('/admin/magazine')
 }

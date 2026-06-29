@@ -37,7 +37,7 @@ export default async function MagazineIssuePage({ params }: Props) {
       <div style={{ background: 'linear-gradient(135deg, #070d4f 0%, #1f2fe6 100%)', paddingTop: '100px', paddingBottom: '40px' }}>
         <div style={{ maxWidth: '960px', margin: '0 auto', padding: '0 24px' }}>
           <Link
-            href="/magazine"
+            href="/resources?tab=magazine"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'rgba(255,255,255,0.7)', fontFamily: 'Inter, sans-serif', fontSize: '13px', textDecoration: 'none', marginBottom: '20px' }}
           >
             ← All Issues

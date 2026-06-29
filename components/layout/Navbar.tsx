@@ -10,6 +10,7 @@ const navLinks = [
   { label: 'About', href: '/about-us' },
   { label: 'Programs', href: '/programs' },
   { label: 'Gallery', href: '/gallery' },
+  { label: 'Resources', href: '/resources' },
   { label: 'Contact', href: '/contact-us' },
   { label: 'Camp Live', href: '/camp-live', live: true },
 ]

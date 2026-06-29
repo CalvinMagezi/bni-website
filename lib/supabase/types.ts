@@ -45,6 +45,39 @@ export type TeamMember = {
   created_at: string
 }
 
+export type Partner = {
+  id: string
+  name: string
+  logo_url: string
+  website_url: string | null
+  position: number
+  created_at: string
+}
+
+export type Article = {
+  id: string
+  title: string
+  slug: string
+  excerpt: string | null
+  body: string
+  cover_image_url: string | null
+  published_date: string | null
+  is_featured: boolean
+  created_at: string
+}
+
+export type Video = {
+  id: string
+  title: string
+  youtube_url: string
+  description: string | null
+  thumbnail_url: string | null
+  published_date: string | null
+  position: number
+  is_featured: boolean
+  created_at: string
+}
+
 export type GalleryAlbum = {
   id: string
   title: string
@@ -156,6 +189,24 @@ export type Database = {
         Row: TeamMember
         Insert: Omit<TeamMember, 'id' | 'created_at'>
         Update: Partial<Omit<TeamMember, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      partners: {
+        Row: Partner
+        Insert: Omit<Partner, 'id' | 'created_at'>
+        Update: Partial<Omit<Partner, 'id' | 'created_at'>>
+        Relationships: []
+      }
+      articles: {
+        Row: Article
+        Insert: Omit<Article, 'id' | 'created_at'>
+        Update: Partial<Omit<Article, 'id' | 'created_at' | 'slug'>> & { slug?: string }
+        Relationships: []
+      }
+      videos: {
+        Row: Video
+        Insert: Omit<Video, 'id' | 'created_at'>
+        Update: Partial<Omit<Video, 'id' | 'created_at'>>
         Relationships: []
       }
       gallery_albums: {
