@@ -38,3 +38,4 @@ excalidraw.log
 # one-time seeding workdir — never commit images
 tmp/
 scripts/
+!public/**/*.png

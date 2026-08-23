@@ -20,4 +20,10 @@ export const DEFAULT_PARTNERS: Pick<Partner, 'name' | 'logo_url' | 'website_url'
     website_url: 'https://mthoreb-ics.com/',
     position: 3,
   },
+  {
+    name: 'Uganda Baati',
+    logo_url: '/uganda-baati-logo.png',
+    website_url: 'https://ugandabaati.com/',
+    position: 4,
+  },
 ]
